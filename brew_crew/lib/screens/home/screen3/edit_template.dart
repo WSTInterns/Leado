@@ -41,7 +41,7 @@ class _EditTemplateState extends State<EditTemplate> {
                     style: TextStyle(color: Colors.black, fontSize: 14),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 140),
+                    padding: EdgeInsets.only(left: 190),
                     child: TextButton(
                         onPressed: () {
                           bottomsheet(context);
@@ -54,24 +54,44 @@ class _EditTemplateState extends State<EditTemplate> {
                 ],
               ),
             ),
-            body: Center(
-              child: SizedBox(
-                height: 45,
-                width: 270,
-                child: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.send),
-                  label: Text(
-                    'SEND TO CLIENT',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      Color(0xffA85CF9),
+            body: Column(
+              children: [
+                Form(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 30),
+                    child: TextFormField(
+                      // controller: titleController,
+                      maxLines: null,
+
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(),
+                        hintText: 'e.g.Ask for coffee in next 3 days',
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Center(
+                  child: SizedBox(
+                    height: 45,
+                    width: 270,
+                    child: ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.send),
+                      label: Text(
+                        'SEND TO CLIENT',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          const Color(0xffA85CF9),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             )));
   }
 

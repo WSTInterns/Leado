@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "788978271561",
-    "project_id": "demoproject-96762",
-    "storage_bucket": "demoproject-96762.appspot.com"
+    "project_number": "918809505039",
+    "project_id": "leado-82a1d",
+    "storage_bucket": "leado-82a1d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:788978271561:android:992117d8785818eb998698",
+        "mobilesdk_app_id": "1:918809505039:android:017dd7f1fe6a520da7a27a",
         "android_client_info": {
-          "package_name": "com.wstinterns.brew_crew"
+          "package_name": "com.example.brew_crew"
         }
       },
       "oauth_client": [
         {
-          "client_id": "788978271561-8u9mm3cu2ci6ed7rh6o5jukcjiddrv5p.apps.googleusercontent.com",
+          "client_id": "918809505039-j6dcuq5muvqlvjtei330pis1au4446nt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCww_wjI35zsEzTUAlx0h9m8NUZ1MrOgrY"
+          "current_key": "AIzaSyCb0IVsViFlWBqpj2kNIaCScIcFuh0jpeY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "788978271561-8u9mm3cu2ci6ed7rh6o5jukcjiddrv5p.apps.googleusercontent.com",
+              "client_id": "918809505039-j6dcuq5muvqlvjtei330pis1au4446nt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

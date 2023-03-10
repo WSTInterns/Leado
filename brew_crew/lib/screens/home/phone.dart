@@ -1,4 +1,5 @@
 import 'package:brew_crew/screens/home/srceen1/upload_excel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -98,10 +99,47 @@ class phonebook extends StatelessWidget {
         ),
         body: Container(
           alignment: Alignment.center,
-          child: const Text(
-            "",
-            style: TextStyle(fontSize: 30),
-          ),
+          child: StreamBuilder<QuerySnapshot>(
+                stream:
+                    FirebaseFirestore.instance.collection("Leads").snapshots(),
+                builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 2,
+                      itemBuilder: ((context, int index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: Text(documentSnapshot["name"]),
+                            ),
+                            Expanded(
+                              child:
+                                  Text(documentSnapshot["phoneNo"].toString()),
+                            ),
+                            Expanded(
+                              child:
+                                  Text(documentSnapshot["email"]),
+                            ),
+                            Expanded(
+                              child:
+                                  Text(documentSnapshot["notes"]),
+                            ),
+                            // Expanded(
+                            //   child:
+                            //       Text(documentSnapshot["activity_status"]),
+                            // ),
+                          ],
+                        );
+                      }),
+                    );
+                  } else {
+                    return Text('data not found');
+                  }
+                }),
+              ),
         ),
       ),
     );

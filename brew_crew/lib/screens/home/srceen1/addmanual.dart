@@ -86,15 +86,41 @@ class DividerExample extends StatelessWidget {
 }
 */
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:brew_crew/screens/home/client.dart';
 import 'package:brew_crew/screens/home/phone.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 
-class manual extends StatelessWidget {
-  const manual({super.key});
+class manual extends StatefulWidget {
+  manual({super.key});
+
+  @override
+  State<manual> createState() => _manualState();
+}
+
+class _manualState extends State<manual> {
+  String name = '',email = '',password = '',notes = '',activity_status = 'warm';
+
+  int phoneNo = 0;
+
+  getName(String value) => {this.name = value};
+
+  getPhoneNo(String value)=> {this.phoneNo = int.parse(value)};
+
+  getEmail(String value)=> {this.email = value};
+
+  getNotes(String value)=> {this.notes = value};
+
+  createlead() async{
+                  DocumentReference doc= await FirebaseFirestore.instance.collection("Leads").doc(email);
+                  Map<String, dynamic> leadlist={"name":name, "email":email,"phoneNo":phoneNo,"notes": notes,"activity_status":activity_status};
+                  doc.set(leadlist).whenComplete(()=>{print("created")});
+                  
+                }
 
   // This widget is the root of your application.
   @override
@@ -138,6 +164,9 @@ class manual extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   child: TextField(
+                    onChanged: (value) => {
+                      getName(value)
+                    },
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(
@@ -167,6 +196,9 @@ class manual extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   child: TextField(
+                    onChanged: (value) {
+                      getPhoneNo(value);
+                    },
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       // enabledBorder: OutlineInputBorder(
@@ -205,6 +237,9 @@ class manual extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   child: TextField(
+                    onChanged: (value) {
+                      getEmail(value);
+                    },
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       // enabledBorder: OutlineInputBorder(
@@ -243,6 +278,9 @@ class manual extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0) , 
                   child: TextFormField(
+                    onChanged: (value) {
+                      getNotes(value);
+                    },
                     maxLength: 500,
                     expands: false,
 
@@ -263,8 +301,12 @@ class manual extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    createlead();
+                  },
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                     height: 50,
@@ -278,6 +320,7 @@ class manual extends StatelessWidget {
                         color: Color(0xffECF2FF),
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
+                      
                       ),
                     )),
                   ),

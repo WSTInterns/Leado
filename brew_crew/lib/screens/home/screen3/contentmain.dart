@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'files.dart';
 import 'pages.dart';
@@ -166,7 +167,8 @@ class templates extends StatelessWidget {
                       children: [
                         Text('Sorting by Title [A-Z]',
                             style: (TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold))),
+                              fontSize: 14,
+                            ))),
                         IconButton(
                           onPressed: () {
                             bottomsheet(context);
@@ -175,11 +177,15 @@ class templates extends StatelessWidget {
                             Icons.keyboard_arrow_down,
                             size: 27,
                           ),
-                          padding: EdgeInsets.only(left: 160),
+                          padding: EdgeInsets.only(left: 95),
                         ),
                       ],
                     ),
                   ),
+                ),
+                Divider(
+                  height: 0,
+                  thickness: 3,
                 ),
                 Container(
                   // padding: EdgeInsets.symmetric(horizontal: 7),
@@ -191,7 +197,7 @@ class templates extends StatelessWidget {
                         children: <Widget>[
                           ListTile(
                             title: Padding(
-                              padding: EdgeInsets.only(left: 5, top: 5),
+                              padding: EdgeInsets.only(left: 5, top: 15),
                               child: Text(
                                 'Example 1-Introduction-ACME Residences',
                                 style: TextStyle(
@@ -207,7 +213,7 @@ class templates extends StatelessWidget {
                               ),
                             ),
                             trailing: Padding(
-                              padding: EdgeInsets.only(top: 7),
+                              padding: EdgeInsets.only(top: 7, left: 7),
                               child: IconButton(
                                 icon: Icon(
                                   Icons.keyboard_arrow_right,
@@ -223,7 +229,36 @@ class templates extends StatelessWidget {
                             tileColor: Colors.white,
                           )
                         ],
-                      )
+                      ),
+                      StreamBuilder(
+                stream:
+                    FirebaseFirestore.instance.collection("message").snapshots(),
+                builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.length,
+                      itemBuilder: ((context, int index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: Text(documentSnapshot["title"]),
+                            ),
+                            Expanded(
+                              child:
+                                  Text(documentSnapshot["message"]),
+                            ),
+                          ],
+                        );
+                      }),
+                    );
+                  } else {
+                    return Text('data not found');
+                  }
+                }),
+              )
                     ],
                   ),
                 ),
