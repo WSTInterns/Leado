@@ -97,6 +97,7 @@ class phonebook extends StatelessWidget {
                 }),
           ],
         ),
+<<<<<<< Updated upstream
         body: Padding(
           padding: const EdgeInsets.fromLTRB(15, 23, 15, 0),
           child: Container(
@@ -184,6 +185,36 @@ class phonebook extends StatelessWidget {
               }),
             ),
           ),
+=======
+        body: Container(
+          alignment: Alignment.center,
+          child: StreamBuilder<QuerySnapshot>(
+                stream:
+                    FirebaseFirestore.instance.collection("Leads").snapshots(),
+                builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 4,
+                      itemBuilder: ((context, int index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: Text(documentSnapshot["name"]),
+                            ),
+                            
+                          ],
+                        );
+                      }),
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                }),
+              ),
+>>>>>>> Stashed changes
         ),
       ),
     );

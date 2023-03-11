@@ -237,7 +237,7 @@ class templates extends StatelessWidget {
                   if (snapshot.hasData) {
                     return ListView.builder(
                       shrinkWrap: true,
-                      itemCount: snapshot.data.length,
+                      itemCount: 1,
                       itemBuilder: ((context, int index) {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data!.docs[index];

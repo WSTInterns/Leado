@@ -8,33 +8,35 @@ import 'package:flutter/src/material/dropdown.dart';
 
 
 
-class MyAppShrey extends StatelessWidget {
-   const MyAppShrey({Key? key}) : super(key: key);
+// class MyAppShrey extends StatelessWidget {
+//    const MyAppShrey({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
        
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(title:'Client Details'),
-    );
-  }
-}
+//         primarySwatch: Colors.blue,
+//       ),
+//       home:  HomePage(title: 'Client Details',email:'email',salesnamefinal: 'name',phone: 7620,),
+//     );
+//   }
+// }
 
 class HomePage extends StatefulWidget {
 
 //  String  name, email,phone;
  // const HomePage({Key? key, required this.title});
  ///Homepage({required this.name,required this.email,required this.phone});
-const HomePage({Key? key, required this.title}) : super(key: key);
+const HomePage({Key? key, required this.title,required this.email,required this.salesnamefinal,required this.phone}) : super(key: key);
 
  
 
   final String title;
-
+  final String salesnamefinal ; 
+  final int phone;
+  final String email;
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -43,6 +45,7 @@ class _HomePageState extends State<HomePage> {
   late String _selectedProduct ='';
   final List<String> _products = ['Product A', 'Product B', 'Product C'];
   Map<String, dynamic> formDetails = {};
+  
   convertclients(){
     // DocumentReference documentReference = FirebaseFirestore.instance.collection('collectionPath').doc(formDetails["email"]);
     // documentReference.set(formDetails).whenComplete(()=>{print("created")});
@@ -60,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-            title: Text('Client Details',
+            title: Text(widget.title,
                 style: TextStyle(
                     color: Color(0xffffffff), fontWeight: FontWeight.bold)),
             elevation: 0,
@@ -98,13 +101,14 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                     child: TextField(
+                      enabled: false,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 4, color: Color(0xffD9ACF5)),
                         ),
-                        hintText: 'Enter a name',
+                        hintText: widget.salesnamefinal,
                       ),
                       onChanged: (value) => formDetails['name'] = value.trim(),
                     ),
@@ -148,13 +152,14 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                     child: TextField(
+                      enabled: false,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 4, color: Color(0xffD9ACF5)),
                         ),
-                        hintText: 'Enter the email',
+                        hintText: widget.email,
                       ),
                       onChanged: (value) => formDetails['email'] = value.trim(),
                     ),
