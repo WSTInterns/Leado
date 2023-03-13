@@ -108,7 +108,7 @@ class _NewTemplateState extends State<NewTemplate> {
                             onChanged: (value) => getTitle(value),
 
                         // controller: titleController,
-                        maxLines: null,
+                        
                         validator: (value) {
                           // if (value == null || value.isEmpty) {
                           //   return 'Please enter some text';
@@ -120,8 +120,7 @@ class _NewTemplateState extends State<NewTemplate> {
                             return null;
                           }
                           ;
-                          onSaved:
-                          (value) => form1Value = value;
+                          
                         },
                         decoration: InputDecoration(
                           filled: true,
