@@ -3,6 +3,7 @@ import 'package:brew_crew/screens/home/srceen1/leadmain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'phone.dart';
+
 class HomePage1 extends StatefulWidget {
   //const HomePage1({Key? key}) : super(key: key);
 
@@ -11,14 +12,12 @@ class HomePage1 extends StatefulWidget {
 }
 
 class _HomePage1State extends State<HomePage1> {
-ValueNotifier<bool> isDialOpen = ValueNotifier(false);
+  ValueNotifier<bool> isDialOpen = ValueNotifier(false);
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      
         length: 3,
         child: Scaffold(
-
           appBar: AppBar(
             title: Container(
               //alignment: Alignment.topLeft,
@@ -36,7 +35,7 @@ ValueNotifier<bool> isDialOpen = ValueNotifier(false);
             ),
             centerTitle: true,
             bottom: TabBar(
-              tabs:[
+              tabs: [
                 Tab(
                   text: 'All Clients',
                 ),
@@ -45,29 +44,17 @@ ValueNotifier<bool> isDialOpen = ValueNotifier(false);
                 ),
                 Tab(
                   text: 'Groups',
-                  
-                  
                 ),
               ],
             ),
           ),
           body: TabBarView(
             children: [
-              Center(
-                child: Scaffold(
-                  body:phonebook()
-                )
-
-              ),
+              Center(child: Scaffold(body: phonebook())),
               Center(
                 child: Text('Status Page'),
               ),
-              Center(
-                child: Scaffold(
-                  body:LeadMain()
-                )
-              ),
-              
+              Center(child: Scaffold(body: MyHomePage())),
             ],
           ),
         ));

@@ -127,8 +127,8 @@ class phonebook extends StatelessWidget {
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color.fromRGBO(0, 0, 0, 0)
-                                      .withOpacity(0.04),
+                                  color: const Color.fromRGBO(50, 50, 93, 0.25)
+                                      .withOpacity(0.08),
                                   // color:
                                   //     const Color.fromRGBO(50, 50, 93, 0.25).withOpacity(0.1),
                                   spreadRadius: 10,
