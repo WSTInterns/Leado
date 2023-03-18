@@ -1,3 +1,4 @@
+import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'hot_lead.dart';
@@ -25,17 +26,47 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Warm Leads',
-            style: TextStyle(
-              color: Colors.black,
-            )),
-        backgroundColor: Colors.white,
-      ),
-      body: Center(
-        child: Text('Warm leads are here'),
-      ),
-    );
+        appBar: AppBar(
+      title: Text("Hot Lead"),
+      leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+            );
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          )),
+      backgroundColor: Colors.redAccent,
+      actions: [
+        PopupMenuButton(itemBuilder: (context) {
+          return [
+            PopupMenuItem<int>(
+              value: 0,
+              child: Text("My Account"),
+            ),
+            PopupMenuItem<int>(
+              value: 1,
+              child: Text("Settings"),
+            ),
+            PopupMenuItem<int>(
+              value: 2,
+              child: Text("Logout"),
+            ),
+          ];
+        }, onSelected: (value) {
+          if (value == 0) {
+            print("My account menu is selected.");
+          } else if (value == 1) {
+            print("Settings menu is selected.");
+          } else if (value == 2) {
+            print("Logout menu is selected.");
+          }
+        }),
+      ],
+    ));
   }
 }
 
@@ -67,7 +98,6 @@ class MyHomePage extends StatelessWidget {
       //       )),
       //   backgroundColor: Colors.white,
       // ),
-
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
@@ -119,12 +149,18 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             onTap: () {
+<<<<<<< Updated upstream
               // Get.to(() => HotLeads());
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => HotLeads(),
                 ),
+=======
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HotLeads()),
+>>>>>>> Stashed changes
               );
             },
           ),
@@ -173,11 +209,17 @@ class MyHomePage extends StatelessWidget {
             ),
             onTap: () {
               // Get.to(() => SecondPage());
+<<<<<<< Updated upstream
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SecondPage(),
                 ),
+=======
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => SecondPage()),
+>>>>>>> Stashed changes
               );
             },
           ),
@@ -225,12 +267,18 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             onTap: () {
+<<<<<<< Updated upstream
               // Get.to(() => ThirdPage());
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ThirdPage(),
                 ),
+=======
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => ThirdPage()),
+>>>>>>> Stashed changes
               );
             },
           ),

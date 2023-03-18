@@ -9,7 +9,7 @@ class Contents extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         // padding: EdgeInsets.only(top:10.5),
-        child:  MyAppAk(),
+        child:  MyWidget(),
         );
   }
 }

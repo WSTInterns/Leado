@@ -54,7 +54,11 @@ class _HomePage1State extends State<HomePage1> {
               Center(
                 child: Text('Status Page'),
               ),
+<<<<<<< Updated upstream
               Center(child: Scaffold(body: MyHomePage())),
+=======
+             Center(child: Scaffold(body: MyHomePage())),
+>>>>>>> Stashed changes
             ],
           ),
         ));
