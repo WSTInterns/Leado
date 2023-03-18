@@ -15,18 +15,15 @@ class Person {
   Person({required this.name, required this.email, this.isChecked = false});
 }
 
-// <<<<<<< Updated upstream
 // class HotLeads extends StatefulWidget {
 //   HotLeads({Key? key}) : super(key: key);
 // // class HotLeads extends StatefulWidget {
 // //   HotLeads({Key? key}) : super(key: key);
-// >>>>>>> Stashed changes
 
 // //   @override
 // //   _HotLeadsState createState() => _HotLeadsState();
 // // }
 
-// <<<<<<< Updated upstream
 // class _HotLeadsState extends State<HotLeads> {
 //   String salesperson = '';
 //   String salesmail = '';
@@ -47,14 +44,13 @@ class Person {
 //     Person(name: 'Dob Rib', email: 'dob@example.com'),
 //     Person(name: 'Avi Rane', email: 'avir@example.com'),
 //   ];
-// =======
+
 // // class _HotLeadsState extends State<HotLeads> {
 // //   String salesperson = '';
 // //   String salesmail = '';
 // //   int phonenumber = 0;
 // //   CollectionReference collectionReference =
 // //       FirebaseFirestore.instance.collection("Leads");
-// >>>>>>> Stashed changes
 
 // //   final List<Person> people = [];
 // //   Future<List<Person>> getUsers(people) async {
@@ -68,7 +64,6 @@ class Person {
 // //         people.add(Person(name: name, email: email));
 // //       }
 
-// <<<<<<< Updated upstream
 //   void navigateToMyHomePage() {
 //     Navigator.push(
 //       context,
@@ -79,12 +74,11 @@ class Person {
 //   void _handleAddToSales() {
 //     // Remove clients who have been converted to sales
 //     _people.removeWhere((person) => person.isChecked);
-// =======
+
 // //       // people.add(Person(name: name, email: email));
 // //     });
 // //     return people;
 // //   }
-// >>>>>>> Stashed changes
 
 // //   Future myfun() async {
 // //     await getUsers(people);
@@ -96,7 +90,6 @@ class Person {
 // //     myfun();
 // //   }
 
-// <<<<<<< Updated upstream
 //     // Rebuild widget tree with updated list and button visibility
 //     setState(() {});
 //   }
@@ -227,7 +220,7 @@ class Person {
 //     );
 //   }
 // }
-// =======
+
 //   bool _showButton = false;
 
 //   void navigateToMyHomePage() {
@@ -573,13 +566,20 @@ class _HotLeadsState extends State<HotLeads> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hot Leads'),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Hot Leads',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
-          tooltip: 'Show Snackbar',
+          tooltip: 'Back',
           onPressed: () {
             Navigator.pushReplacement(
                 context,
@@ -590,131 +590,156 @@ class _HotLeadsState extends State<HotLeads> {
           },
         ),
       ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: leadsCollection
-            .where('activity_status', isEqualTo: 'hot')
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          }
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(15, 26, 15, 10),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: leadsCollection
+              .where('activity_status', isEqualTo: 'hot')
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
 
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          final List<Person> people = snapshot.data!.docs.map((doc) {
-            final String name = doc['name'];
-            final String email = doc['email'];
-            return Person(name: name, email: email);
-          }).toList();
+            final List<Person> people = snapshot.data!.docs.map((doc) {
+              final String name = doc['name'];
+              final String email = doc['email'];
+              return Person(name: name, email: email);
+            }).toList();
 
-          return Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: people.length,
-                  itemBuilder: (context, index) {
-                    final person = people[index];
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          people[index].isChecked = !people[index].isChecked;
-                          _showButton =
-                              people.any((person) => person.isChecked);
-                        });
-                      },
-                      child: CheckboxListTile(
-                        value: person.isChecked,
-                        title: Text(person.name),
-                        subtitle: Text(person.email),
-                        onChanged: (value) {
-                          // Update the isChecked value of the person
-                          person.isChecked = value ?? false;
-
-                          // Rebuild the widget tree to reflect the change
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: people.length,
+                    itemBuilder: (context, index) {
+                      final person = people[index];
+                      return GestureDetector(
+                        onTap: () {
                           setState(() {
-                            if (people[index].isChecked) {
-                              people
-                                  .where((person) => person != people[index])
-                                  .forEach(
-                                      (person) => person.isChecked = false);
-                            }
+                            people[index].isChecked = !people[index].isChecked;
                             _showButton =
                                 people.any((person) => person.isChecked);
-                            salesperson = people[index].name;
-                            salesmail = people[index].email;
                           });
                         },
-                        activeColor: Color(0XffA85CF9),
-                        checkColor: Colors.white,
-                      ),
-                    );
-                  },
-                ),
-              ),
-              if (people.any((person) => person.isChecked))
-                ElevatedButton(
-                  onPressed: () {
-                    // Remove checked items
-                    people.removeWhere((person) => person.isChecked);
-
-                    // Rebuild the widget tree to reflect the change
-                    setState(() {});
-                  },
-                  child: const Text('Remove Selected'),
-                ),
-              if (_showButton)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => CupertinoAlertDialog(
-                          content: const Text(
-                              'Do you want to convert these lead to sales?'),
-                          actions: [
-                            CupertinoDialogAction(
-                              child: const Text(
-                                'Yes',
-                                style:
-                                    TextStyle(color: const Color(0XffA85CF9)),
+                        child: Container(
+                          margin: const EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color.fromRGBO(50, 50, 93, 0.25)
+                                    .withOpacity(0.1),
+                                // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                                spreadRadius: 5,
+                                blurRadius: 20,
+                                offset: const Offset(
+                                    0, 8), // changes position of shadow
                               ),
-                              onPressed: () {
-                                Navigator.of(context)
-                                    .pushReplacement(MaterialPageRoute(
-                                        builder: (context) => HomePage(
-                                              title: 'Client Details',
-                                              email: salesmail,
-                                              salesnamefinal: salesperson,
-                                              phone: 7620,
-                                            ))); //abcd
-                              },
-                            ),
-                            CupertinoDialogAction(
-                              child: const Text('No',
-                                  style: TextStyle(
-                                      color: const Color(0XffA85CF9))),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
+                            ],
+                          ),
+                          child: CheckboxListTile(
+                            selected: person.isChecked,
+                            value: person.isChecked,
+                            title: Text(person.name),
+                            subtitle: Text(person.email),
+                            onChanged: (bool? newValue) {
+                              // Update the isChecked value of the person
+                              // Rebuild the widget tree to reflect the change
+                              setState(() {
+                                person.isChecked = newValue ?? false;
+                                if (people[index].isChecked) {
+                                  people
+                                      .where(
+                                          (person) => person != people[index])
+                                      .forEach(
+                                          (person) => person.isChecked = false);
+                                }
+                                _showButton =
+                                    people.any((person) => person.isChecked);
+                                salesperson = people[index].name;
+                                salesmail = people[index].email;
+                              });
+                            },
+                            activeColor: Color(0XffA85CF9),
+                            checkColor: Colors.white,
+                          ),
                         ),
                       );
                     },
-                    child: const Text('ADD TO SALES'),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color(0XffA85CF9)),
-                      minimumSize: MaterialStateProperty.all(Size(600, 50)),
-                    ),
                   ),
                 ),
-            ],
-          );
-        },
+                if (people.any((person) => person.isChecked))
+                  ElevatedButton(
+                    onPressed: () {
+                      // Remove checked items
+                      people.removeWhere((person) => person.isChecked);
+
+                      // Rebuild the widget tree to reflect the change
+                      setState(() {});
+                    },
+                    child: const Text('Remove Selected'),
+                  ),
+                if (_showButton)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              CupertinoAlertDialog(
+                            content: const Text(
+                                'Do you want to convert these lead to sales?'),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: const Text(
+                                  'Yes',
+                                  style:
+                                      TextStyle(color: const Color(0XffA85CF9)),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(
+                                          builder: (context) => HomePage(
+                                                title: 'Client Details',
+                                                email: salesmail,
+                                                salesnamefinal: salesperson,
+                                                phone: 7620,
+                                              ))); //abcd
+                                },
+                              ),
+                              CupertinoDialogAction(
+                                child: const Text('No',
+                                    style: TextStyle(
+                                        color: const Color(0XffA85CF9))),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      child: const Text('ADD TO SALES'),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color(0XffA85CF9)),
+                        minimumSize: MaterialStateProperty.all(Size(600, 50)),
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
