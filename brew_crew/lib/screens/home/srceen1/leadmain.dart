@@ -149,18 +149,18 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             onTap: () {
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
               // Get.to(() => HotLeads());
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HotLeads(),
-                ),
-=======
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => HotLeads(),
+              //   ),
+// =======
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => HotLeads()),
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
               );
             },
           ),
@@ -209,17 +209,17 @@ class MyHomePage extends StatelessWidget {
             ),
             onTap: () {
               // Get.to(() => SecondPage());
-<<<<<<< Updated upstream
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SecondPage(),
-                ),
-=======
+// <<<<<<< Updated upstream
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => SecondPage(),
+              //   ),
+// =======
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => SecondPage()),
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
               );
             },
           ),
@@ -267,18 +267,18 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             onTap: () {
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
               // Get.to(() => ThirdPage());
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ThirdPage(),
-                ),
-=======
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => ThirdPage(),
+              //   ),
+// =======
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => ThirdPage()),
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
               );
             },
           ),

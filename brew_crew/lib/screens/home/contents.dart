@@ -8,8 +8,8 @@ class Contents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        // padding: EdgeInsets.only(top:10.5),
-        child:  MyWidget(),
-        );
+      // padding: EdgeInsets.only(top:10.5),
+      child: MyAppAk(),
+    );
   }
 }

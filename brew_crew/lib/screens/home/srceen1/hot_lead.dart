@@ -3,12 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'clientside.dart';
-<<<<<<< Updated upstream
-import 'package:get/get.dart';
-import 'package:brew_crew/screens/home/srceen1/leadmain.dart';
-=======
+
+// import 'package:get/get.dart';
 // import 'package:brew_crew/screens/home/srceen1/leadmain.dart';
->>>>>>> Stashed changes
 
 class Person {
   final String name;
@@ -18,220 +15,219 @@ class Person {
   Person({required this.name, required this.email, this.isChecked = false});
 }
 
-<<<<<<< Updated upstream
-class HotLeads extends StatefulWidget {
-  HotLeads({Key? key}) : super(key: key);
-=======
+// <<<<<<< Updated upstream
 // class HotLeads extends StatefulWidget {
 //   HotLeads({Key? key}) : super(key: key);
->>>>>>> Stashed changes
+// // class HotLeads extends StatefulWidget {
+// //   HotLeads({Key? key}) : super(key: key);
+// >>>>>>> Stashed changes
 
-//   @override
-//   _HotLeadsState createState() => _HotLeadsState();
-// }
+// //   @override
+// //   _HotLeadsState createState() => _HotLeadsState();
+// // }
 
-<<<<<<< Updated upstream
-class _HotLeadsState extends State<HotLeads> {
-  String salesperson = '';
-  String salesmail = '';
-  int phonenumber = 0;
-  CollectionReference collectionReference =
-      FirebaseFirestore.instance.collection("name");
-
-  List<Person> _people = [
-    Person(name: 'John Doe', email: 'johndoe@example.com'),
-    Person(name: 'Jane Doe', email: 'janedoe@example.com'),
-    Person(name: 'Shreya', email: 'shreya@example.com'),
-    Person(name: 'Bob Smith', email: 'bobsmith@example.com'),
-    Person(name: 'Beni', email: 'beni@example.com'),
-    Person(name: 'Dob Rib', email: 'dob@example.com'),
-    Person(name: 'Avi Rane', email: 'avir@example.com'),
-    Person(name: 'Dob Rib', email: 'dob@example.com'),
-    Person(name: 'Avi Rane', email: 'avir@example.com'),
-    Person(name: 'Dob Rib', email: 'dob@example.com'),
-    Person(name: 'Avi Rane', email: 'avir@example.com'),
-  ];
-=======
+// <<<<<<< Updated upstream
 // class _HotLeadsState extends State<HotLeads> {
 //   String salesperson = '';
 //   String salesmail = '';
 //   int phonenumber = 0;
 //   CollectionReference collectionReference =
-//       FirebaseFirestore.instance.collection("Leads");
->>>>>>> Stashed changes
+//       FirebaseFirestore.instance.collection("name");
 
-//   final List<Person> people = [];
-//   Future<List<Person>> getUsers(people) async {
-//     QuerySnapshot querySnapshot =
-//         await FirebaseFirestore.instance.collection('Leads').get();
-//     querySnapshot.docs.forEach((doc) {
-//       String name = doc['name'];
-//       String email = doc['email'];
-//       String activity_status = doc['activity_status'];
-//       if (activity_status == 'hot') {
-//         people.add(Person(name: name, email: email));
-//       }
+//   List<Person> _people = [
+//     Person(name: 'John Doe', email: 'johndoe@example.com'),
+//     Person(name: 'Jane Doe', email: 'janedoe@example.com'),
+//     Person(name: 'Shreya', email: 'shreya@example.com'),
+//     Person(name: 'Bob Smith', email: 'bobsmith@example.com'),
+//     Person(name: 'Beni', email: 'beni@example.com'),
+//     Person(name: 'Dob Rib', email: 'dob@example.com'),
+//     Person(name: 'Avi Rane', email: 'avir@example.com'),
+//     Person(name: 'Dob Rib', email: 'dob@example.com'),
+//     Person(name: 'Avi Rane', email: 'avir@example.com'),
+//     Person(name: 'Dob Rib', email: 'dob@example.com'),
+//     Person(name: 'Avi Rane', email: 'avir@example.com'),
+//   ];
+// =======
+// // class _HotLeadsState extends State<HotLeads> {
+// //   String salesperson = '';
+// //   String salesmail = '';
+// //   int phonenumber = 0;
+// //   CollectionReference collectionReference =
+// //       FirebaseFirestore.instance.collection("Leads");
+// >>>>>>> Stashed changes
 
-<<<<<<< Updated upstream
-  void navigateToMyHomePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MyHomePage()),
-    );
-  }
+// //   final List<Person> people = [];
+// //   Future<List<Person>> getUsers(people) async {
+// //     QuerySnapshot querySnapshot =
+// //         await FirebaseFirestore.instance.collection('Leads').get();
+// //     querySnapshot.docs.forEach((doc) {
+// //       String name = doc['name'];
+// //       String email = doc['email'];
+// //       String activity_status = doc['activity_status'];
+// //       if (activity_status == 'hot') {
+// //         people.add(Person(name: name, email: email));
+// //       }
 
-  void _handleAddToSales() {
-    // Remove clients who have been converted to sales
-    _people.removeWhere((person) => person.isChecked);
-=======
-//       // people.add(Person(name: name, email: email));
-//     });
-//     return people;
+// <<<<<<< Updated upstream
+//   void navigateToMyHomePage() {
+//     Navigator.push(
+//       context,
+//       MaterialPageRoute(builder: (context) => MyHomePage()),
+//     );
 //   }
->>>>>>> Stashed changes
 
-//   Future myfun() async {
-//     await getUsers(people);
+//   void _handleAddToSales() {
+//     // Remove clients who have been converted to sales
+//     _people.removeWhere((person) => person.isChecked);
+// =======
+// //       // people.add(Person(name: name, email: email));
+// //     });
+// //     return people;
+// //   }
+// >>>>>>> Stashed changes
+
+// //   Future myfun() async {
+// //     await getUsers(people);
+// //   }
+
+// //   @override
+// //   void initState() {
+// //     super.initState();
+// //     myfun();
+// //   }
+
+// <<<<<<< Updated upstream
+//     // Rebuild widget tree with updated list and button visibility
+//     setState(() {});
 //   }
 
 //   @override
-//   void initState() {
-//     super.initState();
-//     myfun();
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text(
+//           'HOT LEADS',
+//           style: TextStyle(
+//             color: Colors.black,
+//           ),
+//         ),
+//         elevation: 0.0,
+
+//         backgroundColor: Colors.white,
+//         // backgroundColor: Color.white,
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back_ios),
+//           color: Colors.black,
+//           tooltip: 'Go back',
+//           onPressed: () {
+//             Navigator.pop(context);
+//             Get.to(() => MyHomePage());
+//           },
+//         ),
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 16.0),
+//         child: Column(
+//           children: [
+//             Expanded(
+//               child: ListView.builder(
+//                 itemCount: _people.length,
+//                 itemBuilder: (context, index) {
+//                   return GestureDetector(
+//                       onTap: () {
+//                         setState(() {
+//                           _people[index].isChecked = !_people[index].isChecked;
+//                           _showButton =
+//                               _people.any((person) => person.isChecked);
+//                         });
+//                       },
+//                       child: ListTile(
+//                         leading: const Icon(Icons.person),
+//                         title: Text(_people[index].name),
+//                         subtitle: Text(_people[index].email),
+//                         trailing: Checkbox(
+//                           value: _people[index].isChecked,
+//                           onChanged: (bool? value) {
+//                             setState(() {
+//                               _people[index].isChecked = value ?? false;
+//                               if (_people[index].isChecked) {
+//                                 _people
+//                                     .where((person) => person != _people[index])
+//                                     .forEach(
+//                                         (person) => person.isChecked = false);
+//                               }
+//                               _showButton =
+//                                   _people.any((person) => person.isChecked);
+//                               salesperson = _people[index].name;
+//                               salesmail = _people[index].email;
+//                             });
+//                           },
+//                           activeColor: Color(0XffA85CF9),
+//                           checkColor: Colors.white,
+//                         ),
+//                         // onTap: () {
+//                         // Do something when the user taps on the tile
+//                         //},
+//                       ));
+//                 },
+//               ),
+//             ),
+//             if (_showButton)
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     showDialog(
+//                       context: context,
+//                       builder: (BuildContext context) => CupertinoAlertDialog(
+//                         content: const Text(
+//                             'Do you want to convert these lead to sales?'),
+//                         actions: [
+//                           CupertinoDialogAction(
+//                             child: const Text(
+//                               'Yes',
+//                               style: TextStyle(color: const Color(0XffA85CF9)),
+//                             ),
+//                             onPressed: () {
+//                               Navigator.of(context)
+//                                   .pushReplacement(MaterialPageRoute(
+//                                       builder: (context) => HomePage(
+//                                             title: 'Client Details',
+//                                             email: salesmail,
+//                                             salesnamefinal: salesperson,
+//                                             phone: 7620,
+//                                           ))); //abcd
+//                               // Get.to(()=> navigateToMyHomePage());
+//                               //  navigateToMyHomePage();
+//                             },
+//                           ),
+//                           CupertinoDialogAction(
+//                             child: const Text('No',
+//                                 style:
+//                                     TextStyle(color: const Color(0XffA85CF9))),
+//                             onPressed: () {
+//                               Navigator.of(context).pop();
+//                             },
+//                           ),
+//                         ],
+//                       ),
+//                     );
+//                   },
+//                   child: const Text('ADD TO SALES'),
+//                   style: ButtonStyle(
+//                     backgroundColor: MaterialStateProperty.all<Color>(
+//                         const Color(0XffA85CF9)),
+//                     minimumSize: MaterialStateProperty.all(Size(600, 50)),
+//                   ),
+//                 ),
+//               ),
+//           ],
+//         ),
+//       ),
+//     );
 //   }
-
-<<<<<<< Updated upstream
-    // Rebuild widget tree with updated list and button visibility
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'HOT LEADS',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        elevation: 0.0,
-
-        backgroundColor: Colors.white,
-        // backgroundColor: Color.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          color: Colors.black,
-          tooltip: 'Go back',
-          onPressed: () {
-            Navigator.pop(context);
-            Get.to(() => MyHomePage());
-          },
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: _people.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _people[index].isChecked = !_people[index].isChecked;
-                          _showButton =
-                              _people.any((person) => person.isChecked);
-                        });
-                      },
-                      child: ListTile(
-                        leading: const Icon(Icons.person),
-                        title: Text(_people[index].name),
-                        subtitle: Text(_people[index].email),
-                        trailing: Checkbox(
-                          value: _people[index].isChecked,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              _people[index].isChecked = value ?? false;
-                              if (_people[index].isChecked) {
-                                _people
-                                    .where((person) => person != _people[index])
-                                    .forEach(
-                                        (person) => person.isChecked = false);
-                              }
-                              _showButton =
-                                  _people.any((person) => person.isChecked);
-                              salesperson = _people[index].name;
-                              salesmail = _people[index].email;
-                            });
-                          },
-                          activeColor: Color(0XffA85CF9),
-                          checkColor: Colors.white,
-                        ),
-                        // onTap: () {
-                        // Do something when the user taps on the tile
-                        //},
-                      ));
-                },
-              ),
-            ),
-            if (_showButton)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => CupertinoAlertDialog(
-                        content: const Text(
-                            'Do you want to convert these lead to sales?'),
-                        actions: [
-                          CupertinoDialogAction(
-                            child: const Text(
-                              'Yes',
-                              style: TextStyle(color: const Color(0XffA85CF9)),
-                            ),
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
-                                      builder: (context) => HomePage(
-                                            title: 'Client Details',
-                                            email: salesmail,
-                                            salesnamefinal: salesperson,
-                                            phone: 7620,
-                                          ))); //abcd
-                              // Get.to(()=> navigateToMyHomePage());
-                              //  navigateToMyHomePage();
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            child: const Text('No',
-                                style:
-                                    TextStyle(color: const Color(0XffA85CF9))),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  child: const Text('ADD TO SALES'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color(0XffA85CF9)),
-                    minimumSize: MaterialStateProperty.all(Size(600, 50)),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-=======
+// }
+// =======
 //   bool _showButton = false;
 
 //   void navigateToMyHomePage() {
@@ -383,7 +379,6 @@ class _HotLeadsState extends State<HotLeads> {
 //     );
 //   }
 // }
->>>>>>> Stashed changes
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'clientside.dart' ;

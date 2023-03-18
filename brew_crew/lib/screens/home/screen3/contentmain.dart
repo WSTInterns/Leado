@@ -22,7 +22,7 @@ import './images.dart';
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
 //       debugShowCheckedModeBanner: false,
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 //       home: MyAppAk(),
 //     );
 //   }
@@ -32,13 +32,13 @@ class MyAppAk extends StatefulWidget {
   @override
   State<MyAppAk> createState() => _MyAppAkState();
 }
-=======
+// =======
 //       title: 'Flutter Demo',
 //       home: MyWidget(),
 //     );
 //   }
 // }
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
 
 class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
