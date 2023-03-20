@@ -36,23 +36,25 @@ class _NewTemplateState extends State<NewTemplate> {
   final _formkey1 = GlobalKey<FormState>();
   final _formkey2 = GlobalKey<FormState>();
 
-  String message = '',title = '';
+  String message = '', title = '';
 
   late String form1Value;
   late String form2Value;
 
-  getMessage(String message){
-    this.message= message;
-  }
-  getTitle(String title){
-    this.title= title ;
+  getMessage(String message) {
+    this.message = message;
   }
 
-  createMessage() async{
-    DocumentReference doc = await FirebaseFirestore.instance.collection("message").doc(title);
-    Map<String,dynamic> messages = {
-      "title" : title,
-      "message" : message,
+  getTitle(String title) {
+    this.title = title;
+  }
+
+  createMessage() async {
+    DocumentReference doc =
+        await FirebaseFirestore.instance.collection("message").doc(title);
+    Map<String, dynamic> messages = {
+      "title": title,
+      "message": message,
     };
     doc.set(messages).whenComplete(() => {print("Saved Message")});
   }
@@ -73,6 +75,7 @@ class _NewTemplateState extends State<NewTemplate> {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           appBar: AppBar(
+            elevation: 0,
             backgroundColor: Colors.white,
             title: Row(
               children: [
@@ -81,7 +84,9 @@ class _NewTemplateState extends State<NewTemplate> {
                     icon: Icon(Icons.arrow_back_ios, color: Colors.black)),
                 Text(
                   "New Message Template",
-                  style: TextStyle(color: Colors.black, fontSize: 14),
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
                 )
               ],
             ),
@@ -93,10 +98,13 @@ class _NewTemplateState extends State<NewTemplate> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 20, 4),
+                    padding: EdgeInsets.fromLTRB(10, 10, 20, 4),
                     child: Text(
-                      "Title",
-                      style: TextStyle(fontSize: 20),
+                      "TITLE",
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -105,10 +113,10 @@ class _NewTemplateState extends State<NewTemplate> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       child: TextFormField(
-                            onChanged: (value) => getTitle(value),
+                        onChanged: (value) => getTitle(value),
 
                         // controller: titleController,
-                        
+
                         validator: (value) {
                           // if (value == null || value.isEmpty) {
                           //   return 'Please enter some text';
@@ -120,22 +128,31 @@ class _NewTemplateState extends State<NewTemplate> {
                             return null;
                           }
                           ;
-                          
                         },
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 2.5, color: Color(0xffD9ACF5)),
+                          ),
                           hintText: 'e.g.Ask for coffee in next 3 days',
                         ),
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 23,
+                  ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 20, 2),
+                    padding: EdgeInsets.fromLTRB(10, 10, 20, 2),
                     child: Text(
-                      "Template Message",
-                      style: TextStyle(fontSize: 20),
+                      "TEMPLATE MESSAGE",
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -161,48 +178,51 @@ class _NewTemplateState extends State<NewTemplate> {
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 2.5, color: Color(0xffD9ACF5)),
+                          ),
                           hintText: 'Hi @clientname...',
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 20,
                   ),
-                  Padding(
-                      padding: EdgeInsets.fromLTRB(10, 9, 10, 6),
-                      child: InkWell(
-                        onTap: () {
-                          // Do something when the user taps the widget
-                        },
-                        child: Center(
-                            child: Container(
-                          width: 310,
-                          height: 50,
-                          child: ElevatedButton(
-                              onPressed: () {
-                                bool _form1Valid =
-                                    _formkey1.currentState!.validate();
-                                bool _form2Valid =
-                                    _formkey2.currentState!.validate();
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: InkWell(
+                      onTap: () {
+                        bool _form1Valid = _formkey1.currentState!.validate();
+                        bool _form2Valid = _formkey2.currentState!.validate();
 
-                                if (_form1Valid && _form2Valid) {
-                                  _formkey1.currentState!.save();
-                                  _formkey2.currentState!.save();
-                                  createMessage();
-                                }
-                              },
-                              child: Text(
-                                'CREATE  MESSAGE',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                ),
-                              ),
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Color(0xffA85CF9)))),
+                        if (_form1Valid && _form2Valid) {
+                          _formkey1.currentState!.save();
+                          _formkey2.currentState!.save();
+                          createMessage();
+                        }
+                        //////////////////////////////////////////////////////
+                        // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
+                      },
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffA85CF9),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(
+                            child: Text(
+                          "CREATE MESSAGE",
+                          style: TextStyle(
+                            color: Color(0xffECF2FF),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
                         )),
-                      ))
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

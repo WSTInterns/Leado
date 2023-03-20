@@ -1,14 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:math';
 import 'package:brew_crew/screens/home/srceen1/register.dart';
-
-
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -38,21 +33,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   List<Contact> contacts = [];
   int selectedIndex = -1;
   bool isLoading = true;
-List<Contact> foundUsers = [];
-  
+  List<Contact> foundUsers = [];
+
   @override
-   initState() {
+  initState() {
     // TODO: implement initState
     foundUsers = contacts;
     super.initState();
     getContactPermission();
-        
-
   }
+
   void getContactPermission() async {
     if (await Permission.contacts.isGranted) {
       await fetchContacts();
@@ -64,232 +57,232 @@ List<Contact> foundUsers = [];
   fetchContacts() async {
     contacts = await ContactsService.getContacts();
     print('contacts: ${contacts[0].displayName}');
-    setState(() { 
+    setState(() {
       isLoading = false;
     });
   }
-   void _runFilter(String enteredKeyword) {
+
+  void _runFilter(String enteredKeyword) {
     List<Contact> results = [];
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
-       results = contacts;
-     } else {
+      results = contacts;
+    } else {
       results = contacts
-          .where((user) =>user.givenName!.
-          toLowerCase()
-          .contains(enteredKeyword.toLowerCase()))
+          .where((user) => user.givenName!
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
           .toList();
       // we use the toLowerCase() method to make it case-insensitive
     }
-  setState(() {
+    setState(() {
       foundUsers = results;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-centerTitle: true,
-title: Text("Contacts"),
-          ),
-       body: 
-      // isLoading
-      //     ? Center(
-      //         child: CircularProgressIndicator(),
-      //       )
-      //     :
+        centerTitle: true,
+        title: Text("Contacts"),
+      ),
+      body:
+          // isLoading
+          //     ? Center(
+          //         child: CircularProgressIndicator(),
+          //       )
+          //     :
           Padding(
-        padding: const EdgeInsets.all(10),
-          child:Column(
-            children: [
-             TextField(
-              onChanged: (value) => _runFilter(value),
-              decoration: InputDecoration(
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
-                hintText: "Search",
-                suffixIcon: const Icon(Icons.search),
-                //prefix: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  borderSide: const BorderSide(),
-                ),
-              ),
-            ),
-               const SizedBox(
-              height: 20,
-            ),
-              Expanded(
-                child:foundUsers.isNotEmpty 
-                ?ListView.builder(
-                    itemCount: foundUsers.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Container(
-                          height: 30.h,
-                          width: 30.h,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 7,
-                                color: Colors.white.withOpacity(0.1),
-                                offset: const Offset(-3, -3),
-                              ),
-                              BoxShadow(
-                                blurRadius: 7,
-                                color: Colors.black.withOpacity(0.7),
-                                offset: const Offset(3, 3),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(6.r),
-                            color: Color(0xff262626),
-                          ),
-                          child: Text(
-                            foundUsers[index].givenName![0],
-                            style: TextStyle(
-                              fontSize: 23.sp,
-                              color: Colors.primaries[
-                                  Random().nextInt(Colors.primaries.length)],
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                        title: Text(
-                          foundUsers[index].givenName!,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: Colors.cyanAccent,
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        subtitle: Text(
-                          foundUsers[index].phones![0].value!,
-                          style: TextStyle(
-                            fontSize: 11.sp,
-                            color: const Color(0xffC4c4c4),
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        horizontalTitleGap: 12.w,
-                        trailing: Checkbox(
-                          checkColor: Colors.white,
-                          // fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: selectedIndex == index ? true : false,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              if (!value!) {
-                                selectedIndex = -1;
-                              } else {
-                                selectedIndex = index;
-                              }
-                            });
-                          },
-                        ),
-                      );
-                    },
-                  )
-             //     :Text("Not Found")
-:ListView.builder(
-                    itemCount: contacts.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Container(
-                          height: 30.h,
-                          width: 30.h,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 7,
-                                color: Colors.white.withOpacity(0.1),
-                                offset: const Offset(-3, -3),
-                              ),
-                              BoxShadow(
-                                blurRadius: 7,
-                                color: Colors.black.withOpacity(0.7),
-                                offset: const Offset(3, 3),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(6.r),
-                            color: Color(0xff262626),
-                          ),
-                          child: Text(
-                            contacts[index].givenName![0],
-                            style: TextStyle(
-                              fontSize: 23.sp,
-                              color: Colors.primaries[
-                                  Random().nextInt(Colors.primaries.length)],
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                        title: Text(
-                          contacts[index].givenName!,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: Colors.cyanAccent,
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        subtitle: Text(
-                          contacts[index].phones![0].value!,
-                          style: TextStyle(
-                            fontSize: 11.sp,
-                            color: const Color(0xffC4c4c4),
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        horizontalTitleGap: 12.w,
-                        trailing: Checkbox(
-                          checkColor: Colors.white,
-                          // fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: selectedIndex == index ? true : false,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              if (!value!) {
-                                selectedIndex = -1;
-                              } else {
-                                selectedIndex = index;
-                              }
-                            });
-                          },
-                        ),
-                      );
-                    },
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextField(
+                    onChanged: (value) => _runFilter(value),
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 15),
+                      hintText: "Search",
+                      suffixIcon: const Icon(Icons.search),
+                      //prefix: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
                   ),
-              ),
-            ],
-          )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: foundUsers.isNotEmpty
+                        ? ListView.builder(
+                            itemCount: foundUsers.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                leading: Container(
+                                  height: 30.h,
+                                  width: 30.h,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 7,
+                                        color: Colors.white.withOpacity(0.1),
+                                        offset: const Offset(-3, -3),
+                                      ),
+                                      BoxShadow(
+                                        blurRadius: 7,
+                                        color: Colors.black.withOpacity(0.7),
+                                        offset: const Offset(3, 3),
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(6.r),
+                                    color: Color(0xff262626),
+                                  ),
+                                  child: Text(
+                                    foundUsers[index].givenName![0],
+                                    style: TextStyle(
+                                      fontSize: 23.sp,
+                                      color: Colors.primaries[Random()
+                                          .nextInt(Colors.primaries.length)],
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(
+                                  foundUsers[index].givenName!,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: Colors.cyanAccent,
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  foundUsers[index].phones![0].value!,
+                                  style: TextStyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xffC4c4c4),
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                horizontalTitleGap: 12.w,
+                                trailing: Checkbox(
+                                  checkColor: Colors.white,
+                                  // fillColor: MaterialStateProperty.resolveWith(getColor),
+                                  value: selectedIndex == index ? true : false,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      if (!value!) {
+                                        selectedIndex = -1;
+                                      } else {
+                                        selectedIndex = index;
+                                      }
+                                    });
+                                  },
+                                ),
+                              );
+                            },
+                          )
+                        //     :Text("Not Found")
+                        : ListView.builder(
+                            itemCount: contacts.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                leading: Container(
+                                  height: 30.h,
+                                  width: 30.h,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 7,
+                                        color: Colors.white.withOpacity(0.1),
+                                        offset: const Offset(-3, -3),
+                                      ),
+                                      BoxShadow(
+                                        blurRadius: 7,
+                                        color: Colors.black.withOpacity(0.7),
+                                        offset: const Offset(3, 3),
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(6.r),
+                                    color: Color(0xff262626),
+                                  ),
+                                  child: Text(
+                                    contacts[index].givenName![0],
+                                    style: TextStyle(
+                                      fontSize: 23.sp,
+                                      color: Colors.primaries[Random()
+                                          .nextInt(Colors.primaries.length)],
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(
+                                  contacts[index].givenName!,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: Colors.cyanAccent,
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                // subtitle: Text(
+                                //   contacts[index].phones![0].value!,
+                                //   style: TextStyle(
+                                //     fontSize: 11.sp,
+                                //     color: const Color(0xffC4c4c4),
+                                //     fontFamily: "Poppins",
+                                //     fontWeight: FontWeight.w400,
+                                //   ),
+                                // ),
+                                horizontalTitleGap: 12.w,
+                                trailing: Checkbox(
+                                  checkColor: Colors.white,
+                                  // fillColor: MaterialStateProperty.resolveWith(getColor),
+                                  value: selectedIndex == index ? true : false,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      if (!value!) {
+                                        selectedIndex = -1;
+                                      } else {
+                                        selectedIndex = index;
+                                      }
+                                    });
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                  ),
+                ],
+              )),
       floatingActionButton: selectedIndex != -1
           ? ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                           
-                          StoreContact(
+                      builder: (context) => StoreContact(
                             '${contacts[selectedIndex].displayName}',
-                          contacts[selectedIndex].phones?.first.value ?? '',
+                            contacts[selectedIndex].phones?.first.value ?? '',
                           )),
                 );
               },
               child: const Text('Import Contact'),
             )
           : Container(),
-);
-}
+    );
+  }
 }
 /*import 'package:contact/register.dart';
 import 'package:flutter/material.dart';

@@ -21,7 +21,7 @@ class _pagesState extends State<pages> {
           backgroundColor: Color(0xffA85CF9),
           child: Icon(Icons.add),
         ),
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             Container(
@@ -31,17 +31,7 @@ class _pagesState extends State<pages> {
                 padding: EdgeInsets.fromLTRB(20, 4, 15, 7),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Sorting by Title [A-Z]',
-                        style: (TextStyle(fontSize: 10))),
-                    IconButton(
-                      onPressed: () {
-                        bottomsheet(context);
-                      },
-                      icon: Icon(Icons.keyboard_arrow_down),
-                      padding: EdgeInsets.only(left: 154),
-                    ),
-                  ],
+                  children: [],
                 ),
               ),
             ),
@@ -51,47 +41,4 @@ class _pagesState extends State<pages> {
           ],
         ));
   }
-}
-
-void bottomsheet(BuildContext context) {
-  showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-            // height: 670,
-            child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              dense: true,
-              title: Text('Sorting content by'),
-              tileColor: Colors.grey[100],
-            ),
-            ListTile(
-              dense: true,
-              title: Text('Message title (A-Z)'),
-            ),
-            Divider(thickness: 2, height: 5),
-            ListTile(
-              dense: true,
-              title: Text('Message title (Z-A)'),
-            ),
-            Divider(thickness: 2, height: 5),
-            ListTile(
-              dense: true,
-              title: Text('Most Recently Used'),
-            ),
-            Divider(thickness: 2, height: 5),
-            ListTile(
-              dense: true,
-              title: Text('Date Created (Newest First)'),
-            ),
-            Divider(thickness: 2, height: 5),
-            ListTile(
-              dense: true,
-              title: Text('Date Created (Oldest First)'),
-            ),
-          ],
-        ));
-      });
 }

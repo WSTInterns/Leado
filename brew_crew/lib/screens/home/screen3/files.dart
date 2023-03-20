@@ -24,7 +24,7 @@ class Wid extends StatelessWidget {
           // foregroundColor: Colors.black,
           child: Icon(
             Icons.upload_file,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),

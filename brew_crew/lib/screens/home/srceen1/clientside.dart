@@ -47,8 +47,6 @@ class _HomePageState extends State<HomePage> {
   final List<String> _products = ['Product A', 'Product B', 'Product C'];
   Map<String, dynamic> formDetails = {};
 
-  
-
   @override
   void initState() {
     super.initState();
@@ -60,11 +58,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text(widget.title,
-              style: TextStyle(
-                  color: Color(0xffffffff), fontWeight: FontWeight.bold)),
+          title: Text(
+            widget.title,
+            style: TextStyle(
+              color: Colors.black,
+              fontStyle: FontStyle.normal,
+            ),
+          ),
           elevation: 0,
-          backgroundColor: Color(0xFF7F41B6),
+          backgroundColor: Colors.white,
           leading: IconButton(
               icon: const Icon(Icons.arrow_back_ios),
               color: Colors.black,
@@ -82,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15, bottom: 0, right: 20, top: 20),
+                        left: 10, bottom: 0, right: 20, top: 20),
                     child: Text(
                       "NAME",
                       style:
@@ -93,12 +95,12 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                     child: TextField(
-                      enabled: false,
+                      enabled: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                         hintText: widget.salesnamefinal,
                       ),
@@ -107,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15, bottom: 0, right: 20, top: 20),
+                        left: 10, bottom: 0, right: 20, top: 20),
                     child: Text(
                       "PHONE NUMBER",
                       style:
@@ -122,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                         hintText: 'Enter a phone no',
                       ),
@@ -132,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15, bottom: 0, right: 20, top: 20),
+                        left: 10, bottom: 0, right: 20, top: 20),
                     child: Text(
                       "EMAIL",
                       style:
@@ -143,12 +145,12 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                     child: TextField(
-                      enabled: false,
+                      enabled: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                         hintText: widget.email,
                       ),
@@ -157,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15, bottom: 0, right: 20, top: 20),
+                        left: 10, bottom: 0, right: 20, top: 20),
                     child: Text(
                       "PRODUCT",
                       style:
@@ -172,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                         hintText: 'Select a product',
                       ),
@@ -194,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15, bottom: 0, right: 20, top: 20),
+                        left: 10, bottom: 0, right: 20, top: 20),
                     child: Text(
                       "PRODUCT CATEGORY",
                       style:
@@ -209,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                         hintText: 'Enter the product category',
                       ),
@@ -219,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15, bottom: 0, right: 20, top: 20),
+                        left: 10, bottom: 0, right: 20, top: 20),
                     child: Text(
                       "PRODUCT QUANTITY",
                       style:
@@ -237,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                         // ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                         // errorBorder: OutlineInputBorder(
                         //   borderSide: BorderSide(
@@ -252,28 +254,35 @@ class _HomePageState extends State<HomePage> {
                           formDetails['quantity'] = value.trim(),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      print('FormDetails: $formDetails');
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (BuildContext context) => HotLeads()));
-                      // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffA85CF9),
-                      ),
-                      child: const Center(
-                          child: Text(
-                        "SAVE & NEXT",
-                        style: TextStyle(
-                          color: Color(0xffECF2FF),
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(7, 0, 7, 0),
+                    child: InkWell(
+                      onTap: () {
+                        print('FormDetails: $formDetails');
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (BuildContext context) => HotLeads()));
+                        //////////////////////////////////////////////////////
+                        // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
+                      },
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffA85CF9),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                      )),
+                        child: const Center(
+                            child: Text(
+                          "SAVE & NEXT",
+                          style: TextStyle(
+                            color: Color(0xffECF2FF),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
+                      ),
                     ),
                   ),
                 ],

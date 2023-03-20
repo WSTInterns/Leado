@@ -572,6 +572,8 @@ class _HotLeadsState extends State<HotLeads> {
           'Hot Leads',
           style: TextStyle(
             color: Colors.black,
+            fontStyle: FontStyle.normal,
+            fontFamily: "Helvetica",
           ),
         ),
         leading: IconButton(

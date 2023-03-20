@@ -2,6 +2,8 @@ import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:brew_crew/screens/home/phone.dart';
 import 'package:flutter/material.dart';
 import './excel.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UploadExcel extends StatelessWidget {
   const UploadExcel({super.key});
@@ -17,6 +19,13 @@ class UploadExcel extends StatelessWidget {
 
 class UploadExcelPage extends StatelessWidget {
   const UploadExcelPage({super.key});
+  Future<FilePickerResult?> selectExcelFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['xlsx', 'xls'],
+    );
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +53,8 @@ class UploadExcelPage extends StatelessWidget {
           ),
           tooltip: 'Show Snackbar',
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeBar()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomeBar()));
           },
         ),
         elevation: 0,
@@ -74,25 +84,31 @@ class UploadExcelPage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.article_outlined,
-                    size: 35,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: Text(
-                      "DOWNLOAD TEMPLATE",
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
+              child: InkWell(
+                onTap: () async {
+                  String url = 'https://example.com/download/excel_file.xlsx';
+                  await launch(url);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.article_outlined,
+                      size: 35,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Text(
+                        "DOWNLOAD TEMPLATE",
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Icon(Icons.download),
-                ],
+                    Icon(Icons.download),
+                  ],
+                ),
               ),
               // : EdgeInsets.all(5),
             ),
@@ -106,9 +122,15 @@ class UploadExcelPage extends StatelessWidget {
               height: 23,
             ),
             InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (BuildContext context) => const Excel()));
+              onTap: () async {
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (BuildContext context) => const Excel()));
+                FilePickerResult? result = await selectExcelFile();
+                if (result != null) {
+                  // Do something with the file
+                } else {
+                  // User canceled the picker
+                }
               },
               child: Container(
                 // margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),

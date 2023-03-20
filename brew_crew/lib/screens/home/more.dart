@@ -31,7 +31,7 @@ class Moree extends StatelessWidget {
   @override
   Widget _taskList() {
     return Padding(
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
           SizedBox(
@@ -55,23 +55,30 @@ class Moree extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.manage_accounts,
-                    size: 38,
-                  ),
-                  Text(
-                    "ACCOUNT",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(18, 0, 15, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.manage_accounts,
+                      size: 38,
                     ),
-                  ),
-                  Icon(Icons.arrow_forward_ios),
-                ],
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      "ACCOUNT",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                  ],
+                ),
               ),
             ),
           ),
@@ -96,23 +103,30 @@ class Moree extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.bar_chart,
-                    size: 38,
-                  ),
-                  Text(
-                    "SALES",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(18, 0, 15, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.bar_chart,
+                      size: 38,
                     ),
-                  ),
-                  Icon(Icons.arrow_forward_ios),
-                ],
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      "SALES",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                  ],
+                ),
               ),
             ),
           ),

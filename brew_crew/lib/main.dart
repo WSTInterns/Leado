@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
             colorScheme:
                 Theme.of(context).colorScheme.copyWith(secondary: Colors.white),
           ),
-          fontFamily: 'Georgia',
+          fontFamily: "Helvetica",
           textTheme: const TextTheme(
             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            headline6: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic),
+            headline6: TextStyle(fontSize: 20.0, fontStyle: FontStyle.normal),
             bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
           ),
         ),

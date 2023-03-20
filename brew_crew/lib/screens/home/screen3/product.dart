@@ -234,7 +234,7 @@ class _ProductScreenState extends State<ProductScreen> {
           children: [
             const ListTile(
               leading: Text(
-                "Title",
+                "TITLE",
                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
               ),
               trailing: Text("*Required"),
@@ -242,13 +242,14 @@ class _ProductScreenState extends State<ProductScreen> {
 
             const SizedBox(height: 1),
             Padding(
-              padding: const EdgeInsets.all(3),
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: TextFormField(
                 controller: titleName,
                 decoration: InputDecoration(
                   hintText: "Enter Title",
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                    borderSide:
+                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(3)),
@@ -268,7 +269,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
             const ListTile(
               leading: Text(
-                "Description",
+                "DESCRIPTION",
                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
@@ -284,7 +285,7 @@ class _ProductScreenState extends State<ProductScreen> {
             //   ),
             // ),
             Padding(
-              padding: const EdgeInsets.all(3),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
                 controller: DescriptionName,
                 maxLength: 500,
@@ -297,7 +298,8 @@ class _ProductScreenState extends State<ProductScreen> {
                 decoration: const InputDecoration(
                   hintText: "Add description about your product or event...",
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                    borderSide:
+                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                   ),
                   // hintText: "Enter A Message Here",
                   hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
@@ -315,7 +317,7 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
             const ListTile(
               leading: Text(
-                "Title",
+                "UPLOAD IMAGE",
                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
@@ -325,12 +327,32 @@ class _ProductScreenState extends State<ProductScreen> {
             //container
 
             Container(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: InkWell(
                 //onTap: () => _showActionSheet(context),
                 onTap: () => _bottomsheet(context),
                 child: Container(
-                  margin: const EdgeInsets.all(10.0),
-                  color: Color(0xffffffff),
+                  // margin: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        // color: const Color.fromRGBO(
+                        //         0, 0, 0, 0)
+                        //     .withOpacity(0.04),
+                        color: const Color.fromRGBO(50, 50, 93, 0.25)
+                            .withOpacity(0.08),
+                        // color:
+                        //     const Color.fromRGBO(50, 50, 93, 0.25).withOpacity(0.1),
+                        spreadRadius: 10,
+                        blurRadius: 20,
+                        offset:
+                            const Offset(0, 8), // changes position of shadow
+                      ),
+                    ],
+                  ),
+
                   width: 48.0,
                   height: 80.0,
 
@@ -359,32 +381,35 @@ class _ProductScreenState extends State<ProductScreen> {
             //       return null;
             //     },
 
-            Container(
-              margin: const EdgeInsets.fromLTRB(10, 18, 10, 20),
-              child: ElevatedButton(
-                // Validate returns true if the form is valid, or false otherwise.
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // If the form is valid, display a snackbar. In the real world,
-                    // you'd often call a server or save the information in a database.
-                    print("Validated");
-                    print(titleName.text);
-                    print(DescriptionName.text);
-                    print(
-                        "Title Name ${titleName.text}, Description ${DescriptionName.text}");
-                    Map userRequiredData = {
-                      "title_name": titleName.text,
-                      "description": DescriptionName.text
-                    };
-                  } else {
-                    print("Please enter the title");
-                  }
-                },
-                child: const Text('Submit'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xffA85CF9),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                  //margin: const EdgeInsets.all(20),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(15, 18, 15, 20),
+                child: ElevatedButton(
+                  // Validate returns true if the form is valid, or false otherwise.
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      print("Validated");
+                      print(titleName.text);
+                      print(DescriptionName.text);
+                      print(
+                          "Title Name ${titleName.text}, Description ${DescriptionName.text}");
+                      Map userRequiredData = {
+                        "title_name": titleName.text,
+                        "description": DescriptionName.text
+                      };
+                    } else {
+                      print("Please enter the title");
+                    }
+                  },
+                  child: const Text('SAVE'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xffA85CF9),
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                    //margin: const EdgeInsets.all(20),
+                  ),
                 ),
               ),
             ),

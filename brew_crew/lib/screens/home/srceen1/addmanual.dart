@@ -93,8 +93,6 @@ import 'package:brew_crew/screens/home/client.dart';
 import 'package:brew_crew/screens/home/phone.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
-
 class manual extends StatefulWidget {
   manual({super.key});
 
@@ -103,230 +101,241 @@ class manual extends StatefulWidget {
 }
 
 class _manualState extends State<manual> {
-  String name = '',email = '',password = '',notes = '',activity_status = 'warm';
+  String name = '',
+      email = '',
+      password = '',
+      notes = '',
+      activity_status = 'warm';
 
   int phoneNo = 0;
 
   getName(String value) => {this.name = value};
 
-  getPhoneNo(String value)=> {this.phoneNo = int.parse(value)};
+  getPhoneNo(String value) => {this.phoneNo = int.parse(value)};
 
-  getEmail(String value)=> {this.email = value};
+  getEmail(String value) => {this.email = value};
 
-  getNotes(String value)=> {this.notes = value};
+  getNotes(String value) => {this.notes = value};
 
-  createlead() async{
-                  DocumentReference doc= await FirebaseFirestore.instance.collection("Leads").doc(email);
-                  Map<String, dynamic> leadlist={"name":name, "email":email,"phoneNo":phoneNo,"notes": notes,"activity_status":activity_status};
-                  doc.set(leadlist).whenComplete(()=>{print("created")});
-                  
-                }
+  createlead() async {
+    DocumentReference doc =
+        await FirebaseFirestore.instance.collection("Leads").doc(email);
+    Map<String, dynamic> leadlist = {
+      "name": name,
+      "email": email,
+      "phoneNo": phoneNo,
+      "notes": notes,
+      "activity_status": activity_status
+    };
+    doc.set(leadlist).whenComplete(() => {print("created")});
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-            title: Text('ADD NEW CLIENT',
-                style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold)),
-            elevation: 0,
-            backgroundColor: Colors.white,
-            leading: IconButton(
-                icon: const Icon(Icons.arrow_back_ios),
-                color: Colors.black,
-                tooltip: 'Show Snackbar',
-                onPressed: () {
-              //  Navigator.pop(context);
-                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ( context)=>HomeBar()));
-                  })),
-        body: Padding(
-              padding: const EdgeInsets.only(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text('Add New Client',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          color: Colors.black,
+          tooltip: 'Back',
+          onPressed: () {
+            //  Navigator.pop(context);
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HomeBar()));
+          },
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(
           top: 35.5,
         ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "CLIENT NAME",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    
-                    textAlign: TextAlign.left,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+              child: Text(
+                "CLIENT NAME",
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            const SizedBox(
+              height: 7,
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: TextField(
+                onChanged: (value) => {getName(value)},
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                  ),
+                  hintText: 'Enter a search term',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 23,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+              child: Text(
+                "PHONE NUMBER",
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            const SizedBox(
+              height: 7,
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: TextField(
+                onChanged: (value) {
+                  getPhoneNo(value);
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.black),
+                  // ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                  ),
+                  // errorBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(
+                  //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
+                  // ),
+                  // border: OutlineInputBorder(),
+                  hintText: 'Enter the Phone Number',
+
+                  // hintText: 'Ent',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 23,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+              child: Text(
+                "EMAIL ADDRESS",
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            const SizedBox(
+              height: 7,
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: TextField(
+                onChanged: (value) {
+                  getEmail(value);
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.black),
+                  // ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                  ),
+                  // errorBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(
+                  //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
+                  // ),
+                  // border: OutlineInputBorder(),
+                  hintText: 'Enter the Email Address',
+
+                  // hintText: 'Ent',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 23,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+              child: Text(
+                "NOTES",
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            const SizedBox(
+              height: 7,
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: TextFormField(
+                onChanged: (value) {
+                  getNotes(value);
+                },
+                maxLength: 500,
+                expands: false,
+
+                // minLines: 1,
+
+                maxLines: null,
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                  ),
+                  // hintText: "Enter A Message Here",
+                  hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(3)),
                   ),
                 ),
-                  const SizedBox(
-                    height: 7,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: InkWell(
+                onTap: () {
+                  createlead();
+                  //////////////////////////////////////////////////////
+                  // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
+                },
+                child: Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffA85CF9),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextField(
-                    onChanged: (value) => {
-                      getName(value)
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
-                      hintText: 'Enter a search term',
+                  child: const Center(
+                      child: Text(
+                    "SAVE",
+                    style: TextStyle(
+                      color: Color(0xffECF2FF),
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
+                  )),
                 ),
-
-                  const SizedBox(
-                    height: 23,
-                  ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "PHONE NUMBER",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextField(
-                    onChanged: (value) {
-                      getPhoneNo(value);
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      // enabledBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(color: Colors.black),
-                      // ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
-                      // errorBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(
-                      //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
-                      // ),
-                      // border: OutlineInputBorder(),
-                      hintText: 'Enter the Phone Number',
-
-                      // hintText: 'Ent',
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                    height: 23,
-                  ),
-                   Padding(
-                  padding:
-                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "EMAIL ADDRESS",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextField(
-                    onChanged: (value) {
-                      getEmail(value);
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      // enabledBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(color: Colors.black),
-                      // ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
-                      // errorBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(
-                      //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
-                      // ),
-                      // border: OutlineInputBorder(),
-                      hintText: 'Enter the Email Address',
-
-                      // hintText: 'Ent',
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                    height: 23,
-                  ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "NOTES",
-                    style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                 const SizedBox(
-                    height: 7,
-                  ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0) , 
-                  child: TextFormField(
-                    onChanged: (value) {
-                      getNotes(value);
-                    },
-                    maxLength: 500,
-                    expands: false,
-
-                    // minLines: 1,
-
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
-                      // hintText: "Enter A Message Here",
-                      hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(3)),
-                      ),
-                    ),
-                  ),
-                ),
-
-                
-                InkWell(
-                  onTap: () {
-                    createlead();
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    height: 50,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffA85CF9),
-                    ),
-                    child: const Center(
-                        child: Text(
-                      "SAVE",
-                      style: TextStyle(
-                        color: Color(0xffECF2FF),
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      
-                      ),
-                    )),
-                  ),
-                ),
-              ],
-            )));
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 /*
