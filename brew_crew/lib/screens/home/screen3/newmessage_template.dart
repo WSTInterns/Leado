@@ -1,9 +1,7 @@
+import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'contentmain.dart';
-// import 'package:flutter_websoft/template_body.dart';
-// import './data.dart';
-// import './template_body.dart';
+
 
 void main() {
   runApp(NewTemplate());
@@ -37,6 +35,7 @@ class _NewTemplateState extends State<NewTemplate> {
   final _formkey2 = GlobalKey<FormState>();
 
   String message = '', title = '';
+
 
   late String form1Value;
   late String form2Value;
@@ -80,9 +79,14 @@ class _NewTemplateState extends State<NewTemplate> {
             title: Row(
               children: [
                 IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(Icons.arrow_back_ios, color: Colors.black)),
-                Text(
+                    onPressed: () =>
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (BuildContext context) => const MyHomePage(
+                                  title: '',
+                                ))),
+                    icon:
+                        const Icon(Icons.arrow_back_ios, color: Colors.black)),
+                const Text(
                   "New Message Template",
                   style: TextStyle(
                     color: Colors.black,
@@ -114,8 +118,10 @@ class _NewTemplateState extends State<NewTemplate> {
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       child: TextFormField(
                         onChanged: (value) => getTitle(value),
+                        
 
                         // controller: titleController,
+
 
                         validator: (value) {
                           // if (value == null || value.isEmpty) {
@@ -170,9 +176,6 @@ class _NewTemplateState extends State<NewTemplate> {
                           } else {
                             return null;
                           }
-                          ;
-                          onSaved:
-                          (value) => form2Value = value;
                         },
                         decoration: InputDecoration(
                           filled: true,

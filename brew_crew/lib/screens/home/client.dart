@@ -19,9 +19,12 @@ class _HomePage1State extends State<HomePage1> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Color(0xffA85CF9),
             title: Container(
               //alignment: Alignment.topLeft,
               width: double.infinity,
+
               height: 40,
               color: Colors.white,
               child: const Center(
@@ -57,7 +60,7 @@ class _HomePage1State extends State<HomePage1> {
 // <<<<<<< Updated upstream
               Center(child: Scaffold(body: MyHomePage())),
 // =======
-             Center(child: Scaffold(body: MyHomePage())),
+              // Center(child: Scaffold(body: MyHomePage())),
 // >>>>>>> Stashed changes
             ],
           ),

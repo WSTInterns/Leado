@@ -88,45 +88,45 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
           //           builder: (BuildContext context) => NewTemplate()));
           //     }),
           backgroundColor: Colors.grey,
-          // appBar: AppBar(
-          //   backgroundColor: Color(0xffA85CF9),
-          //   title: Container(
-          //     //alignment: Alignment.topLeft,
-          //     width: double.infinity,
-          //     height: 40,
-          //     color: Colors.white,
-          //     child: const Center(
-          //       child: TextField(
-          //         decoration: InputDecoration(
-          //           border: InputBorder.none,
-          //           hintText: 'Search for something',
-          //           prefixIcon: Icon(
-          //             Icons.search,
-          //             color: Color(0xffA85CF9),
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          //   centerTitle: true,
-          //   bottom: TabBar(
-          //     labelColor: Colors.white, //<-- selected text color
-          //     unselectedLabelColor: Colors.white,
-          //     indicatorColor: Colors.white, //<-- Unselected text color
-          //     controller: _tabController,
-          //     tabs: const [
-          //       Tab(
-          //         text: 'Messages',
-          //       ),
-          //       Tab(
-          //         text: 'Files',
-          //       ),
-          //       Tab(
-          //         text: 'Pages',
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          appBar: AppBar(
+            backgroundColor: Color(0xffA85CF9),
+            title: Container(
+              //alignment: Alignment.topLeft,
+              width: double.infinity,
+              height: 40,
+              color: Colors.white,
+              child: const Center(
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Search for something',
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Color(0xffA85CF9),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            centerTitle: true,
+            bottom: TabBar(
+              labelColor: Colors.white, //<-- selected text color
+              unselectedLabelColor: Colors.white,
+              indicatorColor: Colors.white, //<-- Unselected text color
+              controller: _tabController,
+              tabs: const [
+                Tab(
+                  text: 'Messages',
+                ),
+                Tab(
+                  text: 'Files',
+                ),
+                Tab(
+                  text: 'Pages',
+                ),
+              ],
+            ),
+          ),
           body: TabBarView(
             controller: _tabController,
             children: <Widget>[
@@ -157,72 +157,10 @@ class templates extends StatefulWidget {
 class _templatesState extends State<templates>
     with SingleTickerProviderStateMixin {
   // String? title, message;
-  int _currentIndex = 0;
-  void onTap(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
-    _tabController.addListener(_switchTabIndex);
-  }
-
-  void _switchTabIndex() {
-    print(_tabController.index);
-    setState(() {});
-  }
-
-  @override
+   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      // debugShowCheckedModeBanner: false,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xffA85CF9),
-          title: Container(
-            //alignment: Alignment.topLeft,
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: const Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Search for something',
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Color(0xffA85CF9),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          centerTitle: true,
-          bottom: TabBar(
-            labelColor: Colors.white, //<-- selected text color
-            unselectedLabelColor: Colors.white,
-            indicatorColor: Colors.white, //<-- Unselected text color
-            controller: _tabController,
-            tabs: const [
-              Tab(
-                text: 'Messages',
-              ),
-              Tab(
-                text: 'Files',
-              ),
-              Tab(
-                text: 'Pages',
-              ),
-            ],
-          ),
-        ),
+    return Scaffold(
+      
         backgroundColor: Color(0xffffffff),
         body: SingleChildScrollView(
           child: Column(
@@ -321,14 +259,8 @@ class _templatesState extends State<templates>
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            MessageContentPage()));
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         MessageContent(),
-                                //   ),
-                                // );
+                                            MessageContentPage(message : message)));
+                                
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(
@@ -398,8 +330,8 @@ class _templatesState extends State<templates>
             ],
           ),
         ),
-      ),
-    );
+      );
+    
   }
 }
 

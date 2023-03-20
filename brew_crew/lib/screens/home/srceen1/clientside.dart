@@ -43,14 +43,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late String _selectedProduct = '';
+  late String _selectedProduct = '', category = '', product = '';
+  int quantity = 0;
   final List<String> _products = ['Product A', 'Product B', 'Product C'];
   Map<String, dynamic> formDetails = {};
+  final formGlobalKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
     _selectedProduct = '_products[0]';
+  }
+
+  converttosales() {
+    String name = widget.salesnamefinal, email = widget.email;
+    int phone = widget.phone;
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection('Sales').doc(widget.email);
+    Map<String, dynamic> details = {
+      "name": name,
+      "email": email,
+      "phoneNo": phone,
+      "category": category,
+      "product_name": _selectedProduct,
+      "quantity": quantity,
+    };
+    documentReference.set(details).whenComplete(() => {print("created")});
+  }
+
+  removefromhot() {
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection('Leads').doc(widget.email);
+        documentReference.update({"activity_status": "cold"})
+  .then((value) => print("Field updated"))
+  .catchError((error) => print("Failed to update field: $error"));
+    documentReference.set({"activity_status": 'cold'}).whenComplete(
+        () => {print("created")});
   }
 
   @override
@@ -79,199 +107,215 @@ class _HomePageState extends State<HomePage> {
         body: SingleChildScrollView(
           child: Padding(
               padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, bottom: 0, right: 20, top: 20),
-                    child: Text(
-                      "NAME",
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    child: TextField(
-                      enabled: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                        ),
-                        hintText: widget.salesnamefinal,
+              child: Form(
+                key: formGlobalKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 15, bottom: 0, right: 20, top: 20),
+                      child: Text(
+                        "NAME",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
                       ),
-                      onChanged: (value) => formDetails['name'] = value.trim(),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, bottom: 0, right: 20, top: 20),
-                    child: Text(
-                      "PHONE NUMBER",
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      child: TextFormField(
+                        enabled: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                          ),
+                          hintText: widget.salesnamefinal,
                         ),
-                        hintText: 'Enter a phone no',
+                        onChanged: (value) =>
+                            formDetails['name'] = value.trim(),
                       ),
-                      onChanged: (value) =>
-                          formDetails['phoneNumber'] = value.trim(),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, bottom: 0, right: 20, top: 20),
-                    child: Text(
-                      "EMAIL",
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    child: TextField(
-                      enabled: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                        ),
-                        hintText: widget.email,
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 15, bottom: 0, right: 20, top: 20),
+                      child: Text(
+                        "PHONE NUMBER",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
                       ),
-                      onChanged: (value) => formDetails['email'] = value.trim(),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, bottom: 0, right: 20, top: 20),
-                    child: Text(
-                      "PRODUCT",
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    child: DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      child: TextFormField(
+                        enabled: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                          ),
+                          hintText: '${widget.phone}',
                         ),
-                        hintText: 'Select a product',
+                        onChanged: (value) =>
+                            formDetails['phoneNumber'] = value.trim(),
                       ),
-                      items: <String>[
-                        'Product A',
-                        'Product B',
-                        'Product C',
-                        'Product D'
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        formDetails['product'] = newValue?.trim();
-                      },
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, bottom: 0, right: 20, top: 20),
-                    child: Text(
-                      "PRODUCT CATEGORY",
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                        ),
-                        hintText: 'Enter the product category',
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 15, bottom: 0, right: 20, top: 20),
+                      child: Text(
+                        "EMAIL",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
                       ),
-                      onChanged: (value) =>
-                          formDetails['category'] = value.trim(),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: 10, bottom: 0, right: 20, top: 20),
-                    child: Text(
-                      "PRODUCT QUANTITY",
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        // enabledBorder: OutlineInputBorder(
-                        //   borderSide: BorderSide(color: Colors.black),
-                        // ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      child: TextFormField(
+                        enabled: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                          ),
+                          hintText: widget.email,
                         ),
-                        // errorBorder: OutlineInputBorder(
-                        //   borderSide: BorderSide(
-                        //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
-                        // ),
-                        // border: OutlineInputBorder(),
-                        hintText: 'Enter the Quantity of Product',
+                        onChanged: (value) =>
+                            formDetails['email'] = value.trim(),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 15, bottom: 0, right: 20, top: 20),
+                      child: Text(
+                        "PRODUCT",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      child: DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                          ),
+                          hintText: 'Select a product',
+                        ),
+                        items: <String>[
+                          'Product A',
+                          'Product B',
+                          'Product C',
+                          'Product D'
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          this._selectedProduct = newValue!;
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 15, bottom: 0, right: 20, top: 20),
+                      child: Text(
+                        "PRODUCT CATEGORY",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required";
+                          } else {
+                            return null;
+                          }
+                        },
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                          ),
+                          hintText: 'Enter the product category',
+                        ),
+                        onChanged: (value) => this.category = value,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 15, bottom: 0, right: 20, top: 20),
+                      child: Text(
+                        "PRODUCT QUANTITY",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required";
+                          } else {
+                            return null;
+                          }
+                        },
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          // enabledBorder: OutlineInputBorder(
+                          //   borderSide: BorderSide(color: Colors.black),
+                          // ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 4, color: Color(0xffD9ACF5)),
+                          ),
+                          // errorBorder: OutlineInputBorder(
+                          //   borderSide: BorderSide(
+                          //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
+                          // ),
+                          // border: OutlineInputBorder(),
+                          hintText: 'Enter the Quantity of Product',
 
-                        // hintText: 'Ent',
+                          // hintText: 'Ent',
+                        ),
+                        onChanged: (value) => this.quantity = int.parse(value),
                       ),
-                      onChanged: (value) =>
-                          formDetails['quantity'] = value.trim(),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(7, 0, 7, 0),
-                    child: InkWell(
+                    InkWell(
                       onTap: () {
-                        print('FormDetails: $formDetails');
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (BuildContext context) => HotLeads()));
-                        //////////////////////////////////////////////////////
+                        if (formGlobalKey.currentState!.validate()) {
+                          converttosales();
+                          removefromhot();
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      HotLeads()));
+                        }
                         // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
                       },
                       child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffA85CF9),
-                          borderRadius: BorderRadius.circular(10),
+                        margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        height: 50,
+                        decoration: const BoxDecoration(
+                          color: Color(0xffA85CF9),
                         ),
                         child: const Center(
                             child: Text(
@@ -284,8 +328,8 @@ class _HomePageState extends State<HomePage> {
                         )),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )),
         ));
   }

@@ -105,6 +105,13 @@ class phonebook extends StatelessWidget {
                 stream:
                     FirebaseFirestore.instance.collection("Leads").snapshots(),
                 builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasError) {
+                    print('Error: ${snapshot.error}');
+                    return Text('Error: ${snapshot.error}');
+                  }
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
                   if (snapshot.hasData) {
                     return ListView.builder(
                       shrinkWrap: true,
@@ -112,7 +119,8 @@ class phonebook extends StatelessWidget {
                       itemBuilder: ((context, int index) {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data!.docs[index];
-                        var clientName = documentSnapshot["name"];
+
+                        // var clientName = documentSnapshot["name"];
                         return GestureDetector(
                           onTap: () {
                             print("I'm a disco dancer");
@@ -149,7 +157,7 @@ class phonebook extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    clientName.toUpperCase(),
+                                    documentSnapshot["name"].toUpperCase(),
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,

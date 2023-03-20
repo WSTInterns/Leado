@@ -94,182 +94,182 @@ class _HomeScreenState extends State<HomeScreen> {
           //       )
           //     :
           Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  TextField(
-                    onChanged: (value) => _runFilter(value),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 15),
-                      hintText: "Search",
-                      suffixIcon: const Icon(Icons.search),
-                      //prefix: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: const BorderSide(),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    child: foundUsers.isNotEmpty
-                        ? ListView.builder(
-                            itemCount: foundUsers.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                leading: Container(
-                                  height: 30.h,
-                                  width: 30.h,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 7,
-                                        color: Colors.white.withOpacity(0.1),
-                                        offset: const Offset(-3, -3),
-                                      ),
-                                      BoxShadow(
-                                        blurRadius: 7,
-                                        color: Colors.black.withOpacity(0.7),
-                                        offset: const Offset(3, 3),
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.circular(6.r),
-                                    color: Color(0xff262626),
-                                  ),
-                                  child: Text(
-                                    foundUsers[index].givenName![0],
-                                    style: TextStyle(
-                                      fontSize: 23.sp,
-                                      color: Colors.primaries[Random()
-                                          .nextInt(Colors.primaries.length)],
-                                      fontFamily: "Poppins",
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                title: Text(
-                                  foundUsers[index].givenName!,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: Colors.cyanAccent,
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  foundUsers[index].phones![0].value!,
-                                  style: TextStyle(
-                                    fontSize: 11.sp,
-                                    color: const Color(0xffC4c4c4),
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                horizontalTitleGap: 12.w,
-                                trailing: Checkbox(
-                                  checkColor: Colors.white,
-                                  // fillColor: MaterialStateProperty.resolveWith(getColor),
-                                  value: selectedIndex == index ? true : false,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      if (!value!) {
-                                        selectedIndex = -1;
-                                      } else {
-                                        selectedIndex = index;
-                                      }
-                                    });
-                                  },
-                                ),
-                              );
-                            },
-                          )
-                        //     :Text("Not Found")
-                        : ListView.builder(
-                            itemCount: contacts.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                leading: Container(
-                                  height: 30.h,
-                                  width: 30.h,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 7,
-                                        color: Colors.white.withOpacity(0.1),
-                                        offset: const Offset(-3, -3),
-                                      ),
-                                      BoxShadow(
-                                        blurRadius: 7,
-                                        color: Colors.black.withOpacity(0.7),
-                                        offset: const Offset(3, 3),
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.circular(6.r),
-                                    color: Color(0xff262626),
-                                  ),
-                                  child: Text(
-                                    contacts[index].givenName![0],
-                                    style: TextStyle(
-                                      fontSize: 23.sp,
-                                      color: Colors.primaries[Random()
-                                          .nextInt(Colors.primaries.length)],
-                                      fontFamily: "Poppins",
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                title: Text(
-                                  contacts[index].givenName!,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: Colors.cyanAccent,
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                // subtitle: Text(
-                                //   contacts[index].phones![0].value!,
-                                //   style: TextStyle(
-                                //     fontSize: 11.sp,
-                                //     color: const Color(0xffC4c4c4),
-                                //     fontFamily: "Poppins",
-                                //     fontWeight: FontWeight.w400,
-                                //   ),
-                                // ),
-                                horizontalTitleGap: 12.w,
-                                trailing: Checkbox(
-                                  checkColor: Colors.white,
-                                  // fillColor: MaterialStateProperty.resolveWith(getColor),
-                                  value: selectedIndex == index ? true : false,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      if (!value!) {
-                                        selectedIndex = -1;
-                                      } else {
-                                        selectedIndex = index;
-                                      }
-                                    });
-                                  },
-                                ),
-                              );
-                            },
+        padding: const EdgeInsets.all(10),
+          child:Column(
+            children: [
+             TextField(
+              onChanged: (value) => _runFilter(value),
+              decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+                hintText: "Search",
+                suffixIcon: const Icon(Icons.search),
+                //prefix: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  borderSide: const BorderSide(),
+                ),
+              ),
+            ),
+               const SizedBox(
+              height: 20,
+            ),
+              Expanded(
+                child:foundUsers.isNotEmpty 
+                ?ListView.builder(
+                    itemCount: foundUsers.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Container(
+                          height: 30.h,
+                          width: 30.h,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 7,
+                                color: Colors.white.withOpacity(0.1),
+                                offset: const Offset(-3, -3),
+                              ),
+                              BoxShadow(
+                                blurRadius: 7,
+                                color: Colors.black.withOpacity(0.7),
+                                offset: const Offset(3, 3),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(6.r),
+                            color: Color(0xff262626),
                           ),
+                          child: Text(
+                            foundUsers[index].givenName![0],
+                            style: TextStyle(
+                              fontSize: 23.sp,
+                              color: Colors.primaries[
+                                  Random().nextInt(Colors.primaries.length)],
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          foundUsers[index].givenName!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            color: Colors.cyanAccent,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        subtitle: Text(
+                          foundUsers[index].phones![0].value!,
+                          style: TextStyle(
+                            fontSize: 11.sp,
+                            color: const Color(0xffC4c4c4),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        horizontalTitleGap: 12.w,
+                        trailing: Checkbox(
+                          checkColor: Colors.white,
+                          // fillColor: MaterialStateProperty.resolveWith(getColor),
+                          value: selectedIndex == index ? true : false,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              if (!value!) {
+                                selectedIndex = -1;
+                              } else {
+                                selectedIndex = index;
+                              }
+                            });
+                          },
+                        ),
+                      );
+                    },
+                  )
+             //     :Text("Not Found")
+:ListView.builder(
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Container(
+                          height: 30.h,
+                          width: 30.h,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 7,
+                                color: Colors.white.withOpacity(0.1),
+                                offset: const Offset(-3, -3),
+                              ),
+                              BoxShadow(
+                                blurRadius: 7,
+                                color: Colors.black.withOpacity(0.7),
+                                offset: const Offset(3, 3),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(6.r),
+                            color: Color(0xff262626),
+                          ),
+                          child: Text(
+                            contacts[index].givenName![0],
+                            style: TextStyle(
+                              fontSize: 23.sp,
+                              color: Colors.primaries[
+                                  Random().nextInt(Colors.primaries.length)],
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          contacts[index].givenName!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            color: Colors.cyanAccent,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        // subtitle: Text(
+                        //   contacts[index].phones![0].value!,
+                        //   style: TextStyle(
+                        //     fontSize: 11.sp,
+                        //     color: const Color(0xffC4c4c4),
+                        //     fontFamily: "Poppins",
+                        //     fontWeight: FontWeight.w400,
+                        //   ),
+                        // ),
+                        horizontalTitleGap: 12.w,
+                        trailing: Checkbox(
+                          checkColor: Colors.white,
+                          // fillColor: MaterialStateProperty.resolveWith(getColor),
+                          value: selectedIndex == index ? true : false,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              if (!value!) {
+                                selectedIndex = -1;
+                              } else {
+                                selectedIndex = index;
+                              }
+                            });
+                          },
+                        ),
+                      );
+                    },
                   ),
-                ],
-              )),
+              ),
+            ],
+          )),
       floatingActionButton: selectedIndex != -1
           ? ElevatedButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => StoreContact(

@@ -1,19 +1,11 @@
+import 'package:brew_crew/screens/home/contents.dart';
+import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:brew_crew/screens/home/screen3/contentmain.dart';
 import 'package:flutter/material.dart';
 
-// class MessageContent extends StatelessWidget {
-//   const MessageContent({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       home: MessageContentPage(),
-//     );
-//   }
-// }
-
 class MessageContentPage extends StatelessWidget {
-  const MessageContentPage({super.key});
+  MessageContentPage({super.key, required this.message});
+  String message;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +39,11 @@ class MessageContentPage extends StatelessWidget {
           tooltip: 'Back',
           onPressed: () {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => MyAppAk()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MyHomePage(
+                          title: "",
+                        )));
           },
         ),
       ),
@@ -72,8 +68,7 @@ class MessageContentPage extends StatelessWidget {
               ),
             ],
           ),
-          child: Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique facilisis libero, sit amet congue urna dictum non. Suspendisse interdum velit eget consequat tincidunt. Curabitur vitae dolor augue. Nullam eu placerat odio. Vivamus fringilla convallis urna ut cursus. "),
+          child: Text(message),
         ),
       ),
     );

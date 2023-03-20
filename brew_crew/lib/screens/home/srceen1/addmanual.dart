@@ -106,14 +106,17 @@ class _manualState extends State<manual> {
       password = '',
       notes = '',
       activity_status = 'warm';
+ 
 
   int phoneNo = 0;
 
   getName(String value) => {this.name = value};
 
   getPhoneNo(String value) => {this.phoneNo = int.parse(value)};
+  
 
   getEmail(String value) => {this.email = value};
+  
 
   getNotes(String value) => {this.notes = value};
 
@@ -129,7 +132,11 @@ class _manualState extends State<manual> {
     };
     doc.set(leadlist).whenComplete(() => {print("created")});
   }
+ 
 
+
+
+  final _formkey = GlobalKey<FormState>();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -286,56 +293,49 @@ class _manualState extends State<manual> {
                 maxLength: 500,
                 expands: false,
 
-                // minLines: 1,
+                    // minLines: 1,
 
-                maxLines: null,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                  ),
-                  // hintText: "Enter A Message Here",
-                  hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(3)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: InkWell(
-                onTap: () {
-                  createlead();
-                  //////////////////////////////////////////////////////
-                  // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
-                },
-                child: Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffA85CF9),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                      child: Text(
-                    "SAVE",
-                    style: TextStyle(
-                      color: Color(0xffECF2FF),
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                      ),
+                      // hintText: "Enter A Message Here",
+                      hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(3)),
+                      ),
                     ),
-                  )),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+
+                
+                InkWell(
+                  onTap: () {
+                    createlead();
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    height: 50,
+                    decoration: const BoxDecoration(
+                      color: Color(0xffA85CF9),
+                    ),
+                    child: const Center(
+                        child: Text(
+                      "SAVE",
+                      style: TextStyle(
+                        color: Color(0xffECF2FF),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      
+                      ),
+                    )),
+                  ),
+                ),
+              ],
+            )));
   }
 }
 /*
@@ -414,7 +414,7 @@ class _MyState extends State<My> {
                   ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(
@@ -443,7 +443,7 @@ class _MyState extends State<My> {
                   ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       // enabledBorder: OutlineInputBorder(
@@ -481,7 +481,7 @@ class _MyState extends State<My> {
                   ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       // enabledBorder: OutlineInputBorder(
@@ -581,7 +581,7 @@ class _State extends State<manual> {
   Widget build(BuildContext context) {  
     return Scaffold(  
         appBar: AppBar(  
-          title: Text('Flutter TextField Example'),  
+          title: Text('Flutter TextFormField Example'),  
         ),  
         body: Padding(  
             padding: EdgeInsets.all(15),  
@@ -589,7 +589,7 @@ class _State extends State<manual> {
               children: <Widget>[  
                 Padding(  
                   padding: EdgeInsets.all(15),  
-                  child: TextField(  
+                  child: TextFormField(  
                     decoration: InputDecoration(  
                       border: OutlineInputBorder(),  
                       labelText: 'User Name',  
@@ -599,7 +599,7 @@ class _State extends State<manual> {
                 ),  
                 Padding(  
                   padding: EdgeInsets.all(15),  
-                  child: TextField(  
+                  child: TextFormField(  
                     obscureText: true,  
                     decoration: InputDecoration(  
                       border: OutlineInputBorder(),  
