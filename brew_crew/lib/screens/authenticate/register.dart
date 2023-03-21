@@ -1,6 +1,7 @@
 import 'package:brew_crew/models/loginuser.dart';
 import 'package:brew_crew/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:brew_crew/screens/authenticate/regAdminInfo.dart';
 
 
 class Register extends StatefulWidget{
@@ -93,6 +94,9 @@ class _Register extends State<Register>{
                       );
                     });
           }
+          else{
+            Navigator.push(context,MaterialPageRoute(builder: (context) => RegisterScreen()),);
+          }
           }
         },
         child: Text(
@@ -108,7 +112,7 @@ class _Register extends State<Register>{
    return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-          title: const Text('Registration Demo Page'),
+          title: const Text('Registration Page'),
           backgroundColor: Theme.of(context).primaryColor,
           automaticallyImplyLeading: false,
         ),

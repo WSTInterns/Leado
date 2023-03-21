@@ -73,7 +73,7 @@ class _Login extends State<Login> {
         onPressed: () {
           widget.toggleView!();
         },
-        child: const Text('New? Register here'));
+        child: const Text('New? Register here as Admin'));
 
     // final loginAnonymousButon = Material(
     //   elevation: 5.0,
@@ -112,18 +112,19 @@ class _Login extends State<Login> {
         padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
-          
-             dynamic result = await _auth.signInEmailPassword(LoginUser(email:_email.text, password:_password.text));
-              if (result.uid == null) { //null means unsuccessfull authentication
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        content: Text(result.code),
-                        // actions: [Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Wrapper()))],
-                      );
-                    });
-          }
+            dynamic result = await _auth.signInEmailPassword(
+                LoginUser(email: _email.text, password: _password.text));
+            if (result.uid == null) {
+              //null means unsuccessfull authentication
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Text(result.code),
+                      // actions: [Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Wrapper()))],
+                    );
+                  });
+            } else {}
           }
         },
         child: Text(
@@ -137,7 +138,8 @@ class _Login extends State<Login> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Login Demo Page'),
+        centerTitle: true,
+        title: const Text('Login'),
         backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
       ),

@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../../services/auth.dart';
+import '../authenticate/handler.dart';
+
 class Moree extends StatelessWidget {
-  const Moree({super.key});
+  final AuthService _auth = AuthService();
+
+  Moree({super.key});
 
   @override
   Widget build(BuildContext context) {
+    signOut() async {
+      await _auth.signOut();
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Handler()));
+    }
+
     return DefaultTabController(
-      
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            ElevatedButton.icon(
+                onPressed: () {
+                  signOut();
+                },
+                icon: Icon(Icons.logout_outlined),
+                label: Text('Logout'))
+          ],
           title: const Center(
             child: Text(
               "ADDITIONAL OPTIONS",
