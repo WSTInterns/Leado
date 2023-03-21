@@ -2,6 +2,8 @@ import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'hot_lead.dart';
+import "warm_lead.dart";
+import "cold_lead.dart";
 
 class ThirdPage extends StatelessWidget {
   @override
@@ -22,53 +24,53 @@ class ThirdPage extends StatelessWidget {
   }
 }
 
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-      title: Text("Hot Lead"),
-      leading: IconButton(
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => MyHomePage()),
-            );
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          )),
-      backgroundColor: Colors.redAccent,
-      actions: [
-        PopupMenuButton(itemBuilder: (context) {
-          return [
-            PopupMenuItem<int>(
-              value: 0,
-              child: Text("My Account"),
-            ),
-            PopupMenuItem<int>(
-              value: 1,
-              child: Text("Settings"),
-            ),
-            PopupMenuItem<int>(
-              value: 2,
-              child: Text("Logout"),
-            ),
-          ];
-        }, onSelected: (value) {
-          if (value == 0) {
-            print("My account menu is selected.");
-          } else if (value == 1) {
-            print("Settings menu is selected.");
-          } else if (value == 2) {
-            print("Logout menu is selected.");
-          }
-        }),
-      ],
-    ));
-  }
-}
+// class SecondPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//       title: Text("Hot Lead"),
+//       leading: IconButton(
+//           onPressed: () {
+//             Navigator.pushReplacement(
+//               context,
+//               MaterialPageRoute(builder: (context) => MyHomePage()),
+//             );
+//           },
+//           icon: Icon(
+//             Icons.arrow_back_ios,
+//             color: Colors.black,
+//           )),
+//       backgroundColor: Colors.redAccent,
+//       actions: [
+//         PopupMenuButton(itemBuilder: (context) {
+//           return [
+//             PopupMenuItem<int>(
+//               value: 0,
+//               child: Text("My Account"),
+//             ),
+//             PopupMenuItem<int>(
+//               value: 1,
+//               child: Text("Settings"),
+//             ),
+//             PopupMenuItem<int>(
+//               value: 2,
+//               child: Text("Logout"),
+//             ),
+//           ];
+//         }, onSelected: (value) {
+//           if (value == 0) {
+//             print("My account menu is selected.");
+//           } else if (value == 1) {
+//             print("Settings menu is selected.");
+//           } else if (value == 2) {
+//             print("Logout menu is selected.");
+//           }
+//         }),
+//       ],
+//     ));
+//   }
+// }
 
 // class LeadMain extends StatelessWidget {
 //   @override
@@ -214,7 +216,7 @@ class MyHomePage extends StatelessWidget {
               //   ),
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => SecondPage()),
+                MaterialPageRoute(builder: (context) => WarmLeads()),
               );
             },
           ),
@@ -271,7 +273,7 @@ class MyHomePage extends StatelessWidget {
 
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => ThirdPage()),
+                MaterialPageRoute(builder: (context) => ColdLeads()),
               );
             },
           ),

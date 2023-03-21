@@ -18,7 +18,8 @@ class Wrapper extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('users').doc(user.uid).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Scaffold
+            (body: Center(child: CircularProgressIndicator()));
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (!snapshot.hasData || snapshot.data == null) {

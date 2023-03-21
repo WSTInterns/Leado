@@ -38,11 +38,13 @@ class _HotLeadsState extends State<HotLeads> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hot Leads'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: const Text('Hot Leads',style: TextStyle(color: Colors.black),),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: Colors.white,
+            color: Colors.black,
           ),
           tooltip: 'Back',
           onPressed: () {
