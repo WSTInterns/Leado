@@ -68,9 +68,7 @@ class _NewTemplateState extends State<NewTemplate> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -230,6 +228,7 @@ class _NewTemplateState extends State<NewTemplate> {
               ),
             ),
           ),
-        ));
+        )
+        ;
   }
 }
