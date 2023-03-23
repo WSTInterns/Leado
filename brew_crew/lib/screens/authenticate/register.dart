@@ -95,6 +95,7 @@ class _Register extends State<Register>{
                     });
           }
           else{
+            print("registered successfully");
             Navigator.push(context,MaterialPageRoute(builder: (context) => RegisterScreen()),);
           }
           }

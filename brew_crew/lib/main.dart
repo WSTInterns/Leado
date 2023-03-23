@@ -1,3 +1,5 @@
+import 'package:brew_crew/screens/authenticate/login.dart';
+import 'package:brew_crew/screens/authenticate/resetPassword.dart';
 import 'package:brew_crew/screens/home/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
