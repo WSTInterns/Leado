@@ -25,28 +25,28 @@ Map<int, Color> color = {
   900: const Color(0xffA85CF9),
 };
 
-class HomeBar extends StatelessWidget {
-  const HomeBar({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: MaterialColor(0xffA85CF9, color),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+// class HomeBar extends StatelessWidget {
+//   const HomeBar({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         primarySwatch: MaterialColor(0xffA85CF9, color),
+//       ),
+//       home: const HomeBar(title: 'Flutter Demo Home Page'),
+//     );
+//   }
+// }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class HomeBar extends StatefulWidget {
+  const HomeBar({super.key, required this.title});
   final String title;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeBar> createState() => _HomeBarState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeBarState extends State<HomeBar> {
   List pages = [
     HomePage1(),
     Contents(),
@@ -103,19 +103,19 @@ class HomeBar extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomeBar(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class HomeBar extends StatefulWidget {
+  const HomeBar({super.key, required this.title});
   final String title;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeBar> createState() => _HomeBarState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeBarState extends State<HomeBar> {
   List pages=[
     HomePage(),
 Contents(),

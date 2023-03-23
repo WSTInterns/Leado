@@ -141,7 +141,7 @@ class _ColdLeadsState extends State<ColdLeads> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyHomePage(
+                    builder: (context) => HomeBar(
                           title: 'Leads',
                         )));
           },

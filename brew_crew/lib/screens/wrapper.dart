@@ -30,7 +30,7 @@ class Wrapper extends StatelessWidget {
           if (isAdmin == '1') {
             return adminHome();
           } else {
-            return HomeBar();
+            return HomeBar(title: "",);
           }
         },
       );

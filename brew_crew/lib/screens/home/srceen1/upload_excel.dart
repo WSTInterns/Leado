@@ -53,8 +53,9 @@ class UploadExcelPage extends StatelessWidget {
           ),
           tooltip: 'Show Snackbar',
           onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>const HomeBar(title: '',)));
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeBar()));
+                context, MaterialPageRoute(builder: (context) => HomeBar(title: '',)));
           },
         ),
         elevation: 0,

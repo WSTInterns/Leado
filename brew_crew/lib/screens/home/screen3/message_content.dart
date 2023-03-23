@@ -41,7 +41,7 @@ class MessageContentPage extends StatelessWidget {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyHomePage(
+                    builder: (context) => HomeBar(
                           title: "",
                         )));
           },

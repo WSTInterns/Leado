@@ -171,7 +171,7 @@ class HomePages extends State<phonecalls> {
       //Removing Debug Banner
     );
   }
-}
+
 
 // Show the modal that contains the CupertinoDatePicker
 void _showDatePicker(ctx) {
@@ -188,13 +188,13 @@ void _showDatePicker(ctx) {
                   child: CupertinoDatePicker(
                       initialDateTime: DateTime.now(),
                       onDateTimeChanged: (val) {
-                        //print('dateTime: $val');
+                        // print('dateTime: $val');
 
-                        //print(DateFormat('d MMMM y').format(DateTime.now()));
-                        //setState(() {
-                        //_chosenDateTime = val;
-                        //print('dateTime: $val');
-                        // });
+                        // print(DateFormat('d MMMM y').format(DateTime.now()));
+                        setState(() {
+                        _chosenDateTime = dateFormat.format(val);
+                        // print('dateTime: $val');
+                        });
                       }),
                 ),
 
@@ -206,4 +206,5 @@ void _showDatePicker(ctx) {
               ],
             ),
           ));
+}
 }

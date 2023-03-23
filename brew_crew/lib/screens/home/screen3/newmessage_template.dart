@@ -81,7 +81,7 @@ class _NewTemplateState extends State<NewTemplate> {
                 IconButton(
                     onPressed: () =>
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (BuildContext context) => const MyHomePage(
+                            builder: (BuildContext context) => const HomeBar(
                                   title: '',
                                 ))),
                     icon:

@@ -51,7 +51,7 @@ class _HotLeadsState extends State<HotLeads> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyHomePage(
+                    builder: (context) => HomeBar(
                           title: 'Leads',
                         )));
           },
