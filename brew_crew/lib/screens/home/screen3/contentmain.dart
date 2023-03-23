@@ -134,7 +134,7 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
                 child: templates(),
               ),
               Center(
-                child: Wid(),
+                child: contentFilesScreen(),
               ),
               Center(child: pages())
             ],

@@ -49,6 +49,8 @@ dependencies:
   firebase_core: ^2.7.1
   url_launcher: ^6.0.3
   another_stepper: ^1.2.2
+  firebase_storage: ^11.0.16
+  uuid: ^3.0.7
 
 
 dev_dependencies:

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'upload_file.dart';
 
-class Wid extends StatelessWidget {
+class contentFilesScreen extends StatefulWidget {
   String? title, message;
   // const templates({super.key});
 
-  Wid({this.title, this.message});
+  contentFilesScreen({this.title, this.message});
 
+  @override
+  State<contentFilesScreen> createState() => _contentFilesScreenState();
+}
+
+class _contentFilesScreenState extends State<contentFilesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
