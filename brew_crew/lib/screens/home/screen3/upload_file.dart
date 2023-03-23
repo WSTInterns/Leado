@@ -13,9 +13,7 @@ class _UploadFileState extends State<UploadFile> {
   File? pdffile;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Color(0xffffffff),
         appBar: AppBar(
@@ -173,7 +171,7 @@ class _UploadFileState extends State<UploadFile> {
             ],
           ),
         ),
-      ),
-    );
+      )
+    ;
   }
 }

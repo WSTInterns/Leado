@@ -13,6 +13,19 @@ void main() async {
   runApp(const MyApp());
 }
 
+Map<int, Color> color = {
+  50: const Color(0xffA85CF9),
+  100: const Color(0xffA85CF9),
+  200: const Color(0xffA85CF9),
+  300: const Color(0xffA85CF9),
+  400: const Color(0xffA85CF9),
+  500: const Color(0xffA85CF9),
+  600: const Color(0xffA85CF9),
+  700: const Color(0xffA85CF9),
+  800: const Color(0xffA85CF9),
+  900: const Color(0xffA85CF9),
+};
+ 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -23,6 +36,7 @@ class MyApp extends StatelessWidget {
       initialData: null,
       child: MaterialApp(
         theme: ThemeData(
+          primarySwatch: MaterialColor(0xffA85CF9, color),
           brightness: Brightness.light,
           primaryColor: const Color(0xffA85CF9),
           buttonTheme: ButtonThemeData(
@@ -30,6 +44,7 @@ class MyApp extends StatelessWidget {
             textTheme: ButtonTextTheme.primary,
             colorScheme:
                 Theme.of(context).colorScheme.copyWith(secondary: Colors.white),
+                
           ),
           fontFamily: "Helvetica",
           textTheme: const TextTheme(

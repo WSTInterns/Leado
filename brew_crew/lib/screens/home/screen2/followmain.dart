@@ -5,29 +5,28 @@ import 'overdue.dart';
 import 'someday.dart';
 import 'upcoming.dart';
 
-class MyAppSak extends StatelessWidget {
+// class MyAppSak extends StatelessWidget {
+//   const MyAppSak({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         primarySwatch: Colors.red,
+//       ),
+//       home: const MyAppSak(title: 'Flutter Demo Home Page'),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
+
+class MyAppSak extends StatefulWidget {
   const MyAppSak({super.key});
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<MyAppSak> createState() => _MyAppSakState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _MyAppSakState extends State<MyAppSak> {
   int currentIndex = 0;
   void onTap(int index) {
     setState(() {

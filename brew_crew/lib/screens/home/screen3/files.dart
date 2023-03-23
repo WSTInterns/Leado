@@ -9,9 +9,7 @@ class Wid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xffA85CF9),
           onPressed: () {
@@ -27,7 +25,7 @@ class Wid extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-      ),
-    );
+      )
+    ;
   }
 }

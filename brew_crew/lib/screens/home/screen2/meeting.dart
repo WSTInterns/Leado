@@ -23,8 +23,7 @@ class HomePage extends State<meetings> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text(
             "Activity with Privyr Support",
@@ -165,10 +164,9 @@ class HomePage extends State<meetings> {
             ],
           ),
         ),
-      ), //Scaffold
-      debugShowCheckedModeBanner: false,
+      ) //Scaffold
       //Removing Debug Banner
-    );
+    ;
   }
 }
 
@@ -201,5 +199,6 @@ void _showDatePicker(ctx) {
                 ),
               ],
             ),
-          ));
+          )
+          );
 }

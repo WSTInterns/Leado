@@ -48,7 +48,7 @@ class _StoreContactState extends State<StoreContact> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => HomeBar()));
+                    .push(MaterialPageRoute(builder: (context) => HomeBar(title: "",)));
               })),
       body: Padding(
         padding: const EdgeInsets.only(

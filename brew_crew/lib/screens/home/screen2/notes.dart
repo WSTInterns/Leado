@@ -25,8 +25,7 @@ class HomePage extends State<notes> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text(
             "Activity with Privyr Support",
@@ -165,10 +164,7 @@ class HomePage extends State<notes> {
             ],
           ),
         ),
-      ), //Scaffold
-      debugShowCheckedModeBanner: false,
-      //Removing Debug Banner
-    );
+      );
   }
 }
 

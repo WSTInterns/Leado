@@ -26,9 +26,7 @@ class EditTemplate extends StatefulWidget {
 class _EditTemplateState extends State<EditTemplate> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
               title: Row(
@@ -92,7 +90,8 @@ class _EditTemplateState extends State<EditTemplate> {
                   ),
                 )
               ],
-            )));
+            ))
+            ;
   }
 
   void bottomsheet(BuildContext context) {

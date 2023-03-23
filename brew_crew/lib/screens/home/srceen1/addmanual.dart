@@ -154,7 +154,7 @@ class _manualState extends State<manual> {
           onPressed: () {
             //  Navigator.pop(context);
             Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomeBar()));
+                MaterialPageRoute(builder: (context) => HomeBar(title: "",)));
           },
         ),
       ),

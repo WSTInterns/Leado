@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:another_stepper/another_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Phonecalls.dart';
@@ -9,8 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'meeting.dart';
 import 'messages.dart';
 import 'notes.dart';
-
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class clientProf extends StatefulWidget {
   const clientProf({super.key});
@@ -43,7 +43,7 @@ class _followState extends State<clientProf> {
             onPressed: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => MyAppSak()),
+                MaterialPageRoute(builder: (context) => const MyAppSak()),
               );
             },
             icon: Icon(
@@ -303,24 +303,79 @@ class _followState extends State<clientProf> {
                 )),
           ),
 
-          Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: InkWell(
-                onTap: () => _showAction(context),
-                child: Container(
-                  color: Colors.white,
-                  height: 50,
-                  child: Row(
-                    children: [
-                      Icon(Icons.add_circle_outline_rounded),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                        child: Text("Add Activity"),
-                      )
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            color: Colors.white,
+            // height: 50,
+            child: Expanded(
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('Follow-ups')
+                    .doc('1')
+                    .snapshots(),
+                builder: ((context, snapshot) {
+                  if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return const Center(
+                        child: CircularProgressIndicator());
+                  }
+                  final data = snapshot.data?.data() ?? {};
+                  return AnotherStepper(
+                    stepperList: [
+                      StepperData(
+                        title: StepperText(
+                          "Add Activity",
+                          textStyle: const TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        iconWidget: InkWell(
+                          onTap: () => _showAction(context),
+                          child: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: const BoxDecoration(
+                                color: Colors.green,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: const Icon(
+                              Icons.add_circle_outline_rounded,
+                            ),
+                          ),
+                        ),
+                      ),
+                      for (var i = 0; i < 3; i++)
+                      // for (var i = 0; i < data['xxx'].length; i++)
+                        StepperData(
+                          title: StepperText(
+                            "Order Placed",
+                            textStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          subtitle: StepperText(
+                              "Your order has been placed"),
+                          iconWidget: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: const BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(30))),
+                            child: const Icon(Icons.looks_one,
+                                color: Colors.white),
+                          ),
+                        ),
                     ],
-                  ),
-                ),
-              )),
+                    stepperDirection: Axis.vertical,
+                    iconWidth:
+                        40, // Height that will be applied to all the stepper icons
+                    iconHeight:
+                        40, // Width that will be applied to all the stepper icons
+                    verticalGap: 20,
+                  );
+                }),
+              ),
+            ),
+          ),
 
           //ScreenProgress(ticks: 2)
           Expanded(
