@@ -1,3 +1,4 @@
+import 'package:brew_crew/screens/home/convertedsaleslist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -43,13 +44,13 @@ class Moree extends StatelessWidget {
           backgroundColor: Color(0xffA85CF9),
           elevation: 0,
         ),
-        body: _taskList(),
+        body: _taskList(context),
       ),
     );
   }
 
   @override
-  Widget _taskList() {
+  Widget _taskList(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -197,7 +198,14 @@ class Moree extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    Icon(Icons.arrow_forward_ios),
+                   IconButton(
+              icon: const Icon(Icons.arrow_forward_ios),
+              color: Colors.black,
+              tooltip: 'Go back',
+              onPressed: () {
+            Navigator.push(
+          context, MaterialPageRoute(builder: (context) => convertedsales()));
+              }),
                   ],
                 ),
               ),
