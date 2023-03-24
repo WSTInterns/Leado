@@ -67,6 +67,8 @@ class _HomeBarState extends State<HomeBar> {
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: const Color(0xffA85CF9),
           onTap: onTap,
+          elevation: 0,
+          selectedLabelStyle: TextStyle(fontFamily: "Montserrat"),
           currentIndex: currentIndex,
           unselectedItemColor: Colors.grey.withOpacity(0.5),
           items: [

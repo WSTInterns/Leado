@@ -166,7 +166,12 @@ class _ProductScreenState extends State<ProductScreen> {
                 children: [
                   ListTile(
                     leading: Icon(Icons.edit),
-                    title: Text('Add Photos'),
+                    title: Text(
+                      'Add Photos',
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                      ),
+                    ),
                     // onTap: () {
                     //   // Navigator.pop(context);
                     //   pickImage(ImageSource.gallery);
@@ -174,7 +179,12 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                   ListTile(
                     leading: Icon(Icons.camera),
-                    title: Text('Take from camera'),
+                    title: Text(
+                      'Take from camera',
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                      ),
+                    ),
                     onTap: () {
                       // Navigator.pop(context);
                       pickImage(ImageSource.camera);
@@ -182,7 +192,12 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                   ListTile(
                     leading: Icon(Icons.photo_camera),
-                    title: Text('Select from gallery'),
+                    title: Text(
+                      'Select from gallery',
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                      ),
+                    ),
                     onTap: () {
                       // Navigator.pop(context);
                       pickImage(ImageSource.gallery);
@@ -217,6 +232,7 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
           title: const Text('Product or Event Page',
               style: TextStyle(
+                  fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 15, 10, 10),
                   fontWeight: FontWeight.bold)),
           elevation: 0,
@@ -232,13 +248,20 @@ class _ProductScreenState extends State<ProductScreen> {
         key: _formKey,
         child: ListView(
           children: [
-            const ListTile(
-              leading: Text(
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 25, 0, 7),
+              child: Text(
                 "TITLE",
                 style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
               ),
-              trailing: Text("*Required"),
             ),
+            // const ListTile(
+            //   leading: Text(
+            //     "TITLE",
+            //     style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+            //   ),
+            //   trailing: Text("*Required"),
+            // ),
 
             const SizedBox(height: 1),
             Padding(
@@ -266,14 +289,23 @@ class _ProductScreenState extends State<ProductScreen> {
                 },
               ),
             ),
-
-            const ListTile(
-              leading: Text(
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 23, 0, 7),
+              child: Text(
                 "DESCRIPTION",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
               ),
             ),
+            // const ListTile(
+            //   leading: Text(
+            //     "DESCRIPTION",
+            //     style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+            //     textAlign: TextAlign.left,
+            //   ),
+            // ),
 
             // Padding(
             //   padding:
@@ -302,7 +334,10 @@ class _ProductScreenState extends State<ProductScreen> {
                         BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                   ),
                   // hintText: "Enter A Message Here",
-                  hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
+                  hintStyle: TextStyle(
+                      fontFamily: "Montserrat",
+                      fontSize: 17,
+                      color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(3)),
                   ),
@@ -315,13 +350,16 @@ class _ProductScreenState extends State<ProductScreen> {
                 },
               ),
             ),
-            const ListTile(
-              leading: Text(
+
+            Padding(
+              padding: EdgeInsets.fromLTRB(18, 25, 0, 7),
+              child: Text(
                 "UPLOAD IMAGE",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
               ),
-              trailing: Text("Required"),
             ),
 
             //container
@@ -380,36 +418,44 @@ class _ProductScreenState extends State<ProductScreen> {
             //       }
             //       return null;
             //     },
-
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.fromLTRB(15, 18, 15, 20),
-                child: ElevatedButton(
-                  // Validate returns true if the form is valid, or false otherwise.
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-                      print("Validated");
-                      print(titleName.text);
-                      print(DescriptionName.text);
-                      print(
-                          "Title Name ${titleName.text}, Description ${DescriptionName.text}");
-                      Map userRequiredData = {
-                        "title_name": titleName.text,
-                        "description": DescriptionName.text
-                      };
-                    } else {
-                      print("Please enter the title");
-                    }
-                  },
-                  child: const Text('SAVE'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xffA85CF9),
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                    //margin: const EdgeInsets.all(20),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 25, 15, 0),
+              child: InkWell(
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    // If the form is valid, display a snackbar. In the real world,
+                    // you'd often call a server or save the information in a database.
+                    print("Validated");
+                    print(titleName.text);
+                    print(DescriptionName.text);
+                    print(
+                        "Title Name ${titleName.text}, Description ${DescriptionName.text}");
+                    Map userRequiredData = {
+                      "title_name": titleName.text,
+                      "description": DescriptionName.text
+                    };
+                  } else {
+                    print("Please enter the title");
+                  }
+                  //////////////////////////////////////////////////////
+                  // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
+                },
+                child: Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffA85CF9),
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  child: const Center(
+                      child: Text(
+                    "SAVE",
+                    style: TextStyle(
+                      fontFamily: "Montserrat",
+                      color: Color(0xffECF2FF),
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
                 ),
               ),
             ),

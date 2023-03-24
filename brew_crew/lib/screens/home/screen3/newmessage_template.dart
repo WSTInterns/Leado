@@ -2,7 +2,6 @@ import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(NewTemplate());
 }
@@ -36,7 +35,6 @@ class _NewTemplateState extends State<NewTemplate> {
 
   String message = '', title = '';
 
-
   late String form1Value;
   late String form2Value;
 
@@ -69,166 +67,166 @@ class _NewTemplateState extends State<NewTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+          title: Text('New Message Template',
+              style: TextStyle(
+                  fontFamily: "Montserrat",
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
+          elevation: 0,
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.white,
-            title: Row(
-              children: [
-                IconButton(
-                    onPressed: () =>
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (BuildContext context) => const HomeBar(
-                                  title: '',
-                                ))),
-                    icon:
-                        const Icon(Icons.arrow_back_ios, color: Colors.black)),
-                const Text(
-                  "New Message Template",
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios),
+              color: Colors.black,
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => HomeBar(
+                          title: "",
+                        )));
+              })),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(10, 10, 20, 4),
+                child: Text(
+                  "TITLE",
                   style: TextStyle(
-                    color: Colors.black,
+                    fontFamily: "Montserrat",
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
                   ),
-                )
-              ],
-            ),
-          ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 20, 4),
-                    child: Text(
-                      "TITLE",
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Form(
-                    key: _formkey1,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      child: TextFormField(
-                        onChanged: (value) => getTitle(value),
-                        
-
-                        // controller: titleController,
-
-
-                        validator: (value) {
-                          // if (value == null || value.isEmpty) {
-                          //   return 'Please enter some text';
-                          // }
-                          // return null;
-                          if (value!.isEmpty) {
-                            return "Required";
-                          } else {
-                            return null;
-                          }
-                          ;
-                        },
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 2.5, color: Color(0xffD9ACF5)),
-                          ),
-                          hintText: 'e.g.Ask for coffee in next 3 days',
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 23,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 20, 2),
-                    child: Text(
-                      "TEMPLATE MESSAGE",
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Form(
-                    key: _formkey2,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                      child: TextFormField(
-                        onChanged: (value) => getMessage(value),
-                        maxLines: null,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Required";
-                          } else {
-                            return null;
-                          }
-                        },
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 2.5, color: Color(0xffD9ACF5)),
-                          ),
-                          hintText: 'Hi @clientname...',
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: InkWell(
-                      onTap: () {
-                        bool _form1Valid = _formkey1.currentState!.validate();
-                        bool _form2Valid = _formkey2.currentState!.validate();
-
-                        if (_form1Valid && _form2Valid) {
-                          _formkey1.currentState!.save();
-                          _formkey2.currentState!.save();
-                          createMessage();
-                        }
-                        //////////////////////////////////////////////////////
-                        // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
-                      },
-                      child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffA85CF9),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Center(
-                            child: Text(
-                          "CREATE MESSAGE",
-                          style: TextStyle(
-                            color: Color(0xffECF2FF),
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
-                      ),
-                    ),
-                  ),
-                ],
+                  textAlign: TextAlign.left,
+                ),
               ),
-            ),
+              Form(
+                key: _formkey1,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: TextFormField(
+                    onChanged: (value) => getTitle(value),
+
+                    // controller: titleController,
+
+                    validator: (value) {
+                      // if (value == null || value.isEmpty) {
+                      //   return 'Please enter some text';
+                      // }
+                      // return null;
+                      if (value!.isEmpty) {
+                        return "Required";
+                      } else {
+                        return null;
+                      }
+                      ;
+                    },
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                        ),
+                        hintText: 'e.g.Ask for coffee in next 3 days',
+                        hintStyle: TextStyle(
+                          fontFamily: "Montserrat",
+                        )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 23,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(10, 10, 20, 2),
+                child: Text(
+                  "TEMPLATE MESSAGE",
+                  style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              Form(
+                key: _formkey2,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                  child: TextFormField(
+                    onChanged: (value) => getMessage(value),
+                    maxLines: null,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Required";
+                      } else {
+                        return null;
+                      }
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                      ),
+                      hintText: 'Hi @clientname...',
+                      hintStyle: TextStyle(
+                        fontFamily: "Montserrat",
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: InkWell(
+                  onTap: () {
+                    bool _form1Valid = _formkey1.currentState!.validate();
+                    bool _form2Valid = _formkey2.currentState!.validate();
+
+                    if (_form1Valid && _form2Valid) {
+                      _formkey1.currentState!.save();
+                      _formkey2.currentState!.save();
+                      createMessage();
+                    }
+                    //////////////////////////////////////////////////////
+                    // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
+                  },
+                  child: Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: const Color(0xffA85CF9),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                        child: Text(
+                      "CREATE MESSAGE",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        color: Color(0xffECF2FF),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                  ),
+                ),
+              ),
+            ],
           ),
-        )
-        ;
+        ),
+      ),
+    );
   }
 }

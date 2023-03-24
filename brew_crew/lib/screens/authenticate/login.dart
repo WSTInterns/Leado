@@ -113,7 +113,7 @@ class _Login extends State<Login> {
         },
         child: Text(
           "Log in",
-          style: TextStyle(color: Theme.of(context).primaryColorLight),
+          style: TextStyle(color: Colors.white),
           textAlign: TextAlign.center,
         ),
       ),

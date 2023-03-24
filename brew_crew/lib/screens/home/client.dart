@@ -31,6 +31,7 @@ class _HomePage1State extends State<HomePage1> {
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search for something',
+                    hintStyle: TextStyle(fontFamily: "Montserrat"),
                     prefixIcon: Icon(Icons.search),
                   ),
                 ),
@@ -40,13 +41,20 @@ class _HomePage1State extends State<HomePage1> {
             bottom: TabBar(
               tabs: [
                 Tab(
-                  text: 'All Clients',
+                  child: Text(
+                    'All Clients',
+                    style: TextStyle(fontFamily: 'Montserrat'),
+                  ),
                 ),
                 Tab(
-                  text: 'Team',
+                  child:
+                      Text('Team', style: TextStyle(fontFamily: "Montserrat")),
                 ),
                 Tab(
-                  text: 'Groups',
+                  child: Text(
+                    'Groups',
+                    style: TextStyle(fontFamily: "Montserrat"),
+                  ),
                 ),
               ],
             ),

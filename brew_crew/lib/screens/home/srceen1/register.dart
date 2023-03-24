@@ -36,10 +36,13 @@ class _StoreContactState extends State<StoreContact> {
     // than having to individually change instances of widgets.
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
           title: Text('Add New Client',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  fontFamily: "Montserrat",
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
           elevation: 0,
           backgroundColor: Colors.white,
           leading: IconButton(
@@ -47,8 +50,10 @@ class _StoreContactState extends State<StoreContact> {
               color: Colors.black,
               tooltip: 'Show Snackbar',
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => HomeBar(title: "",)));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HomeBar(
+                          title: "",
+                        )));
               })),
       body: Padding(
         padding: const EdgeInsets.only(
@@ -64,7 +69,11 @@ class _StoreContactState extends State<StoreContact> {
               padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
               child: Text(
                 "CLIENT NAME",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -76,7 +85,11 @@ class _StoreContactState extends State<StoreContact> {
               child: TextField(
                 controller: nameController,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xff000000),
+                    ),
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderSide:
                         BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
@@ -92,7 +105,11 @@ class _StoreContactState extends State<StoreContact> {
               padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
               child: Text(
                 "DISPLAY NAME",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    color: Colors.black,
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -109,6 +126,9 @@ class _StoreContactState extends State<StoreContact> {
                         BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                   ),
                   hintText: 'eg. abc',
+                  hintStyle: TextStyle(
+                    fontFamily: "Montserrat",
+                  ),
                 ),
               ),
             ),
@@ -119,7 +139,11 @@ class _StoreContactState extends State<StoreContact> {
               padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
               child: Text(
                 "PHONE NUMBER",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    color: Colors.black,
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -158,7 +182,11 @@ class _StoreContactState extends State<StoreContact> {
               padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
               child: Text(
                 "EMAIL ADDRESS",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    color: Colors.black,
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -185,28 +213,35 @@ class _StoreContactState extends State<StoreContact> {
                   // ),
                   // border: OutlineInputBorder(),
                   hintText: 'eg. abc@mail.com',
+                  hintStyle: TextStyle(
+                    fontFamily: "Montserrat",
+                  ),
 
                   // hintText: 'Ent',
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.fromLTRB(10, 50, 10, 0),
-                height: 50,
-                decoration: const BoxDecoration(
-                  color: Color(0xffA85CF9),
-                ),
-                child: const Center(
-                    child: Text(
-                  "ADD CLIENT",
-                  style: TextStyle(
-                    color: Color(0xffECF2FF),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 50, 15, 0),
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffA85CF9),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                )),
+                  child: const Center(
+                      child: Text(
+                    "ADD CLIENT",
+                    style: TextStyle(
+                      fontFamily: "Montserrat",
+                      color: Color(0xffECF2FF),
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+                ),
               ),
             ),
           ],

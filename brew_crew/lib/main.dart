@@ -25,7 +25,7 @@ Map<int, Color> color = {
   800: const Color(0xffA85CF9),
   900: const Color(0xffA85CF9),
 };
- 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -44,13 +44,20 @@ class MyApp extends StatelessWidget {
             textTheme: ButtonTextTheme.primary,
             colorScheme:
                 Theme.of(context).colorScheme.copyWith(secondary: Colors.white),
-                
           ),
-          fontFamily: "Helvetica",
+          fontFamily: "Montserrat",
           textTheme: const TextTheme(
-            headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            headline6: TextStyle(fontSize: 20.0, fontStyle: FontStyle.normal),
-            bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+            headline1: TextStyle(
+              fontSize: 72.0,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Montserrat",
+            ),
+            headline6: TextStyle(
+              fontSize: 20.0,
+              fontStyle: FontStyle.normal,
+              fontFamily: "Montserrat",
+            ),
+            bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),
           ),
         ),
         home: SplashScreen(),

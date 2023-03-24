@@ -17,8 +17,10 @@ class Special extends StatelessWidget {
 class phonebook extends StatelessWidget {
   //const phonebook({super.key});
   ValueNotifier<bool> isDialOpen = ValueNotifier(false);
-  static const IconData remove_circle_outline =
-      IconData(0xe518, fontFamily: 'MaterialIcons');
+  static const IconData remove_circle_outline = IconData(
+    0xe518,
+    fontFamily: "Montserrat",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class phonebook extends StatelessWidget {
                   labelBackgroundColor: Colors.transparent,
                   elevation: 0,
                   labelStyle: TextStyle(
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                       color: Colors.white),
@@ -69,6 +72,7 @@ class phonebook extends StatelessWidget {
                   label: 'Enter a new Contact',
                   labelBackgroundColor: Colors.transparent,
                   labelStyle: TextStyle(
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                       color: Colors.white),
@@ -86,6 +90,7 @@ class phonebook extends StatelessWidget {
                   label: 'Import Excel',
                   labelBackgroundColor: Colors.transparent,
                   labelStyle: TextStyle(
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                       color: Colors.white),
@@ -159,8 +164,9 @@ class phonebook extends StatelessWidget {
                                   child: Text(
                                     documentSnapshot["name"].toUpperCase(),
                                     style: TextStyle(
+                                      fontFamily: "Montserrat",
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),

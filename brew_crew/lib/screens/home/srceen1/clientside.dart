@@ -74,9 +74,10 @@ class _HomePageState extends State<HomePage> {
   removefromhot() {
     DocumentReference documentReference =
         FirebaseFirestore.instance.collection('Leads').doc(widget.email);
-        documentReference.update({"activity_status": "cold"})
-  .then((value) => print("Field updated"))
-  .catchError((error) => print("Failed to update field: $error"));
+    documentReference
+        .update({"activity_status": "cold"})
+        .then((value) => print("Field updated"))
+        .catchError((error) => print("Failed to update field: $error"));
     documentReference.set({"activity_status": 'cold'}).whenComplete(
         () => {print("created")});
   }
@@ -89,6 +90,7 @@ class _HomePageState extends State<HomePage> {
           title: Text(
             widget.title,
             style: TextStyle(
+              fontFamily: "Montserrat",
               color: Colors.black,
               fontStyle: FontStyle.normal,
             ),
@@ -114,18 +116,20 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(
-                          left: 15, bottom: 0, right: 20, top: 20),
+                          left: 10, bottom: 0, right: 20, top: 20),
                       child: Text(
                         "NAME",
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontFamily: "Montserrat",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       child: TextFormField(
-                        enabled: false,
+                        enabled: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
@@ -144,14 +148,16 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "PHONE NUMBER",
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontFamily: "Montserrat",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       child: TextFormField(
-                        enabled: false,
+                        enabled: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
@@ -170,14 +176,16 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "EMAIL",
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontFamily: "Montserrat",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       child: TextFormField(
-                        enabled: false,
+                        enabled: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
@@ -196,7 +204,9 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "PRODUCT",
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontFamily: "Montserrat",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -219,7 +229,10 @@ class _HomePageState extends State<HomePage> {
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
-                            child: Text(value),
+                            child: Text(value,
+                                style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                )),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
@@ -233,7 +246,9 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "PRODUCT CATEGORY",
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontFamily: "Montserrat",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -264,7 +279,9 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         "PRODUCT QUANTITY",
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontFamily: "Montserrat",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -321,6 +338,7 @@ class _HomePageState extends State<HomePage> {
                             child: Text(
                           "SAVE & NEXT",
                           style: TextStyle(
+                            fontFamily: "Montserrat",
                             color: Color(0xffECF2FF),
                             fontSize: 17,
                             fontWeight: FontWeight.bold,

@@ -13,7 +13,10 @@ class MessageContentPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Message title",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              fontFamily: "Montserrat",
+              color: Colors.black,
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -68,7 +71,12 @@ class MessageContentPage extends StatelessWidget {
               ),
             ],
           ),
-          child: Text(message),
+          child: Text(
+            message,
+            style: TextStyle(
+              fontFamily: "Montserrat",
+            ),
+          ),
         ),
       ),
     );
@@ -89,6 +97,7 @@ void bottomsheet(BuildContext context) {
                 title: Text(
                   'Options',
                   style: TextStyle(
+                    fontFamily: "Montserrat",
                     fontSize: 17,
                   ),
                 ),
@@ -107,7 +116,12 @@ void bottomsheet(BuildContext context) {
                       SizedBox(
                         width: 10,
                       ),
-                      Text('Edit Message Content'),
+                      Text(
+                        'Edit Message Content',
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -126,7 +140,12 @@ void bottomsheet(BuildContext context) {
                       SizedBox(
                         width: 10,
                       ),
-                      Text('Delete Message Template'),
+                      Text(
+                        'Delete Message Template',
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
                     ],
                   ),
                 ),

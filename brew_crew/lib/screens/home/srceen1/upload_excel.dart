@@ -39,10 +39,11 @@ class UploadExcelPage extends StatelessWidget {
         // ),
         backgroundColor: Colors.white,
         title: const Text(
-          'UPLOAD EXCEL',
+          'Upload Excel',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
+            fontFamily: "Montserrat",
             fontSize: 17,
           ),
         ),
@@ -53,9 +54,18 @@ class UploadExcelPage extends StatelessWidget {
           ),
           tooltip: 'Show Snackbar',
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>const HomeBar(title: '',)));
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomeBar(title: '',)));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomeBar(
+                          title: '',
+                        )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeBar(
+                          title: '',
+                        )));
           },
         ),
         elevation: 0,
@@ -102,6 +112,7 @@ class UploadExcelPage extends StatelessWidget {
                       child: Text(
                         "DOWNLOAD TEMPLATE",
                         style: TextStyle(
+                          fontFamily: "Montserrat",
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
@@ -123,15 +134,15 @@ class UploadExcelPage extends StatelessWidget {
               height: 23,
             ),
             InkWell(
-              onTap: () async {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (BuildContext context) => const Excel()));
-                FilePickerResult? result = await selectExcelFile();
-                if (result != null) {
-                  // Do something with the file
-                } else {
-                  // User canceled the picker
-                }
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (BuildContext context) => const ExcelPage()));
+                // FilePickerResult? result =async await selectExcelFile();
+                // if (result != null) {
+                //   // Do something with the file
+                // } else {
+                //   // User canceled the picker
+                // }
               },
               child: Container(
                 // margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -144,6 +155,7 @@ class UploadExcelPage extends StatelessWidget {
                   child: Text(
                     "UPLOAD EXCEL",
                     style: TextStyle(
+                      fontFamily: "Montserrat",
                       color: Color(0xffECF2FF),
                       fontSize: 17,
                       fontWeight: FontWeight.bold,

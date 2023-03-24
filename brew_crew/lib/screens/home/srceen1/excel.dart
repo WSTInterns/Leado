@@ -27,8 +27,8 @@ class ExcelPage extends StatelessWidget {
         //   ),
         // ),
         backgroundColor: Colors.white,
-        title:
-            const Text("Upload Excel", style: TextStyle(color: Colors.black)),
+        title: const Text("Upload Excel",
+            style: TextStyle(fontFamily: "Montserrat", color: Colors.black)),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -78,6 +78,7 @@ class ExcelPage extends StatelessWidget {
                     child: Text(
                       "EXCEL FILE.xls",
                       style: TextStyle(
+                        fontFamily: "Montserrat",
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -111,6 +112,7 @@ class ExcelPage extends StatelessWidget {
                     child: Text(
                   "UPLOAD ANOTHER",
                   style: TextStyle(
+                    fontFamily: "Montserrat",
                     color: Color(0xff000000),
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -133,6 +135,7 @@ class ExcelPage extends StatelessWidget {
                     child: Text(
                   "DELETE",
                   style: TextStyle(
+                    fontFamily: "Montserrat",
                     color: Color(0xffffffff),
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -162,6 +165,7 @@ class ExcelPage extends StatelessWidget {
                       child: Text(
                         "PROCEED",
                         style: TextStyle(
+                          fontFamily: "Montserrat",
                           color: Color(0xffECF2FF),
                           fontSize: 17,
                           fontWeight: FontWeight.bold,

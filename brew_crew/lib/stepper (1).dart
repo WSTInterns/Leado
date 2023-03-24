@@ -31,10 +31,14 @@ class _StepperDemoState extends State<StepperDemo> {
       title: StepperText(
         "Order Placed",
         textStyle: const TextStyle(
+          fontFamily: "Montserrat",
           color: Colors.grey,
         ),
       ),
-      subtitle: StepperText("Your order has been placed"),
+      subtitle: StepperText("Your order has been placed",
+          textStyle: TextStyle(
+            fontFamily: "Montserrat",
+          )),
       iconWidget: Container(
         padding: const EdgeInsets.all(8),
         decoration: const BoxDecoration(

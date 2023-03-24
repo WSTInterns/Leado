@@ -35,6 +35,7 @@ class Moree extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+                fontFamily: "Montserrat",
                 // fontSize: 22,
               ),
             ),
@@ -89,6 +90,7 @@ class Moree extends StatelessWidget {
                     Text(
                       "ACCOUNT",
                       style: TextStyle(
+                        fontFamily: "Montserrat",
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -137,6 +139,58 @@ class Moree extends StatelessWidget {
                     Text(
                       "SALES",
                       style: TextStyle(
+                        fontFamily: "Montserrat",
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 13,
+          ),
+          InkWell(
+            onTap: () {
+              // signOut();
+            },
+            child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromRGBO(50, 50, 93, 0.25)
+                        .withOpacity(0.08),
+                    // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                    spreadRadius: 10,
+                    blurRadius: 20,
+                    offset: const Offset(0, 8), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(18, 0, 15, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.logout,
+                      size: 38,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      "LOGOUT",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

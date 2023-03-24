@@ -106,17 +106,14 @@ class _manualState extends State<manual> {
       password = '',
       notes = '',
       activity_status = 'warm';
- 
 
   int phoneNo = 0;
 
   getName(String value) => {this.name = value};
 
   getPhoneNo(String value) => {this.phoneNo = int.parse(value)};
-  
 
   getEmail(String value) => {this.email = value};
-  
 
   getNotes(String value) => {this.notes = value};
 
@@ -132,166 +129,193 @@ class _manualState extends State<manual> {
     };
     doc.set(leadlist).whenComplete(() => {print("created")});
   }
- 
-
-
 
   final _formkey = GlobalKey<FormState>();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Add New Client',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          color: Colors.black,
-          tooltip: 'Back',
-          onPressed: () {
-            //  Navigator.pop(context);
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomeBar(title: "",)));
-          },
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: Text('Add New Client',
+              style: TextStyle(
+                  fontFamily: "Montserrat",
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+            tooltip: 'Back',
+            onPressed: () {
+              //  Navigator.pop(context);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => HomeBar(
+                        title: "",
+                      )));
+            },
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          top: 35.5,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-              child: Text(
-                "CLIENT NAME",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
+        body: Padding(
+            padding: const EdgeInsets.only(
+              top: 35.5,
             ),
-            const SizedBox(
-              height: 7,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: TextField(
-                onChanged: (value) => {getName(value)},
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+                  child: Text(
+                    "CLIENT NAME",
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
                   ),
-                  hintText: 'Enter a search term',
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 23,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-              child: Text(
-                "PHONE NUMBER",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            const SizedBox(
-              height: 7,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: TextField(
-                onChanged: (value) {
-                  getPhoneNo(value);
-                },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  // enabledBorder: OutlineInputBorder(
-                  //   borderSide: BorderSide(color: Colors.black),
-                  // ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                const SizedBox(
+                  height: 7,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: TextField(
+                    onChanged: (value) => {getName(value)},
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                      ),
+                      hintText: 'Enter a search term',
+                      hintStyle: TextStyle(
+                        fontFamily: "Montserrat",
+                      ),
+                    ),
                   ),
-                  // errorBorder: OutlineInputBorder(
-                  //   borderSide: BorderSide(
-                  //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
-                  // ),
-                  // border: OutlineInputBorder(),
-                  hintText: 'Enter the Phone Number',
+                ),
+                const SizedBox(
+                  height: 23,
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+                  child: Text(
+                    "PHONE NUMBER",
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(
+                  height: 7,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: TextField(
+                    onChanged: (value) {
+                      getPhoneNo(value);
+                    },
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      // enabledBorder: OutlineInputBorder(
+                      //   borderSide: BorderSide(color: Colors.black),
+                      // ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                      ),
+                      // errorBorder: OutlineInputBorder(
+                      //   borderSide: BorderSide(
+                      //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
+                      // ),
+                      // border: OutlineInputBorder(),
+                      hintText: 'Enter the Phone Number',
+                      hintStyle: TextStyle(
+                        fontFamily: "Montserrat",
+                      ),
 
-                  // hintText: 'Ent',
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 23,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-              child: Text(
-                "EMAIL ADDRESS",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            const SizedBox(
-              height: 7,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: TextField(
-                onChanged: (value) {
-                  getEmail(value);
-                },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  // enabledBorder: OutlineInputBorder(
-                  //   borderSide: BorderSide(color: Colors.black),
-                  // ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                      // hintText: 'Ent',
+                    ),
                   ),
-                  // errorBorder: OutlineInputBorder(
-                  //   borderSide: BorderSide(
-                  //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
-                  // ),
-                  // border: OutlineInputBorder(),
-                  hintText: 'Enter the Email Address',
-
-                  // hintText: 'Ent',
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 23,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
-              child: Text(
-                "NOTES",
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            const SizedBox(
-              height: 7,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: TextFormField(
-                onChanged: (value) {
-                  getNotes(value);
-                },
-                maxLength: 500,
-                expands: false,
+                const SizedBox(
+                  height: 23,
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+                  child: Text(
+                    "EMAIL ADDRESS",
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(
+                  height: 7,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: TextField(
+                    onChanged: (value) {
+                      getEmail(value);
+                    },
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        // enabledBorder: OutlineInputBorder(
+                        //   borderSide: BorderSide(color: Colors.black),
+                        // ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                        ),
+                        // errorBorder: OutlineInputBorder(
+                        //   borderSide: BorderSide(
+                        //       width: 3, color: Color.fromARGB(255, 66, 125, 145)),
+                        // ),
+                        // border: OutlineInputBorder(),
+                        hintText: 'Enter the Email Address',
+                        hintStyle: TextStyle(
+                          fontFamily: "Montserrat",
+                        )
+
+                        // hintText: 'Ent',
+                        ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 23,
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, bottom: 0, right: 15, top: 0),
+                  child: Text(
+                    "NOTES",
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(
+                  height: 7,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: TextFormField(
+                    onChanged: (value) {
+                      getNotes(value);
+                    },
+                    maxLength: 500,
+                    expands: false,
 
                     // minLines: 1,
 
@@ -310,28 +334,29 @@ class _manualState extends State<manual> {
                     ),
                   ),
                 ),
-
-                
-                InkWell(
-                  onTap: () {
-                    createlead();
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    height: 50,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffA85CF9),
-                    ),
-                    child: const Center(
-                        child: Text(
-                      "SAVE",
-                      style: TextStyle(
-                        color: Color(0xffECF2FF),
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      
+                Padding(
+                  padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                  child: InkWell(
+                    onTap: () {
+                      createlead();
+                    },
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffA85CF9),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    )),
+                      child: const Center(
+                          child: Text(
+                        "SAVE",
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                          color: Color(0xffECF2FF),
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                    ),
                   ),
                 ),
               ],

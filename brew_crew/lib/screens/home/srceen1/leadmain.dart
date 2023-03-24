@@ -12,13 +12,19 @@ class ThirdPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Cold Leads',
             style: TextStyle(
+              fontFamily: "Montserrat",
               color: Colors.black,
             )),
         backgroundColor: Colors.white,
         automaticallyImplyLeading: true,
       ),
       body: Center(
-        child: Text('Cold Leads are here.'),
+        child: Text(
+          'Cold Leads are here.',
+          style: TextStyle(
+            fontFamily: "Montserrat",
+          ),
+        ),
       ),
     );
   }
@@ -138,6 +144,7 @@ class MyHomePage extends StatelessWidget {
                     Text(
                       'HOT LEADS',
                       style: TextStyle(
+                        fontFamily: "Montserrat",
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -197,6 +204,7 @@ class MyHomePage extends StatelessWidget {
                     Text(
                       'WARM LEADS',
                       style: TextStyle(
+                        fontFamily: "Montserrat",
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -253,6 +261,7 @@ class MyHomePage extends StatelessWidget {
                     Text(
                       'COLD LEADS',
                       style: TextStyle(
+                        fontFamily: "Montserrat",
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),

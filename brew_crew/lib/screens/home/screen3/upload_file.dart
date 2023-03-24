@@ -61,49 +61,49 @@ class _UploadFileState extends State<UploadFile> {
   }
 
   @override
-  
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xffffffff),
+      backgroundColor: Color(0xffffffff),
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Row(
-          children: [
-            IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.arrow_back_ios, color: Colors.black)),
-            const Text(
-              "Upload File",
-              style: TextStyle(
+        title: Text('Upload File',
+            style: TextStyle(
+                fontFamily: "Montserrat",
                 color: Colors.black,
-              ),
-            )
-          ],
+                fontWeight: FontWeight.bold)),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          color: Colors.black,
+          tooltip: 'Back',
+          onPressed: () {
+            //  Navigator.pop(context);
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 35,
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.only(left: 20),
                 child: Text(
                   "FILE TITLE",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontFamily: "Montserrat", fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-             Padding(
+            SizedBox(height: 20),
+            Padding(
               padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: TextField(
-                controller: _fileTitleController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   // enabledBorder: OutlineInputBorder(
@@ -156,6 +156,7 @@ class _UploadFileState extends State<UploadFile> {
                       child: Text(
                         "UPLOAD FILE",
                         style: TextStyle(
+                          fontFamily: "Montserrat",
                           color: Color(0xffECF2FF),
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
@@ -166,9 +167,21 @@ class _UploadFileState extends State<UploadFile> {
                 ),
               ),
             ),
-            const SizedBox(
+
+            SizedBox(
               height: 360,
             ),
+
+            // ElevatedButton.icon(
+            //   onPressed: () {},
+            //   label: Text('Save File', style: TextStyle(color: Colors.white)),
+            //   style: ButtonStyle(
+            //     backgroundColor: MaterialStateProperty.all(
+            //       Color(0xffA85CF9),
+            //     ),
+            //   ),
+            //   icon: Icon(Icons.save_rounded),
+            // ),
             Container(
               // width: 200,
               color: Colors.white,
@@ -177,9 +190,9 @@ class _UploadFileState extends State<UploadFile> {
                 child: InkWell(
                   onTap: () async {
                     _uploadFile();
-                 Navigator.pop(context);
-                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('File added successfully!')));
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('File added successfully!')));
                   },
                   child: Container(
                     // margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -192,6 +205,7 @@ class _UploadFileState extends State<UploadFile> {
                       child: Text(
                         "SAVE FILE",
                         style: TextStyle(
+                          fontFamily: "Montserrat",
                           color: Color(0xffECF2FF),
                           fontSize: 17,
                           fontWeight: FontWeight.bold,

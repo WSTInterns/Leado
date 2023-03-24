@@ -12,6 +12,14 @@ class ClientList extends StatefulWidget {
 class _ClientListState extends State<ClientList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('client')),);
+    return Scaffold(
+      appBar: AppBar(
+          title: Text(
+        'client',
+        style: TextStyle(
+          fontFamily: "Montserrat",
+        ),
+      )),
+    );
   }
 }
