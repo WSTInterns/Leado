@@ -2,6 +2,7 @@ import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(NewTemplate());
 }
@@ -200,6 +201,7 @@ class _NewTemplateState extends State<NewTemplate> {
                       _formkey1.currentState!.save();
                       _formkey2.currentState!.save();
                       createMessage();
+                      Navigator.pop(context);
                     }
                     //////////////////////////////////////////////////////
                     // FirebaseFirestore.collection('collectionName').doc('documentName').set(formDetails);
@@ -214,7 +216,6 @@ class _NewTemplateState extends State<NewTemplate> {
                         child: Text(
                       "CREATE MESSAGE",
                       style: TextStyle(
-                        fontFamily: "Montserrat",
                         color: Color(0xffECF2FF),
                         fontSize: 17,
                         fontWeight: FontWeight.bold,

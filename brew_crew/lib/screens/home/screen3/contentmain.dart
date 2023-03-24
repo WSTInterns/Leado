@@ -70,7 +70,7 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
           resizeToAvoidBottomInset: true,
           floatingActionButton: _tabController.index == 0
               ? FloatingActionButton(
-                  onPressed: () => Navigator.pushReplacement(context,
+                  onPressed: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => NewTemplate())),
                   // onPressed: () => Navigator.of(context).pushReplacement(
                   //     MaterialPageRoute(
@@ -89,6 +89,7 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
           //     }),
           backgroundColor: Colors.grey,
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Color(0xffA85CF9),
             title: Container(
               //alignment: Alignment.topLeft,
@@ -160,6 +161,11 @@ class templates extends StatefulWidget {
 class _templatesState extends State<templates>
     with SingleTickerProviderStateMixin {
   // String? title, message;
+  String convertNewLine(String content) {
+    print("Converting");
+    return content.replaceAll(r'\n', '\n');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -257,11 +263,12 @@ class _templatesState extends State<templates>
                         child: IntrinsicHeight(
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          MessageContentPage(
-                                              message: message)));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MessageContentPage(
+                                        message: message,
+                                        title: title,
+                                      )));
                             },
                             child: Container(
                               margin: const EdgeInsets.only(
@@ -303,9 +310,8 @@ class _templatesState extends State<templates>
                                     child: Text(
                                       title.toUpperCase(),
                                       style: TextStyle(
-                                        fontFamily: "Montserrat",
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),
@@ -318,10 +324,7 @@ class _templatesState extends State<templates>
                     }),
                   );
                 } else {
-                  return Align(
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator(),
-                  );
+                  return CircularProgressIndicator();
                 }
               }),
             )),

@@ -311,6 +311,13 @@ class _manualState extends State<manual> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                   child: TextFormField(
+                validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required";
+                          } else {
+                            return null;
+                          }
+                        },
                     onChanged: (value) {
                       getNotes(value);
                     },

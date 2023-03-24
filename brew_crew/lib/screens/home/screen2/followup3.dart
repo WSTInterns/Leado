@@ -41,10 +41,11 @@ class _followState extends State<clientProf> {
         backgroundColor: Colors.white,
         title: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyAppSak()),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const MyAppSak()),
+              // );
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_ios,
@@ -314,10 +315,8 @@ class _followState extends State<clientProf> {
                     .doc('1')
                     .snapshots(),
                 builder: ((context, snapshot) {
-                  if (snapshot.connectionState ==
-                      ConnectionState.waiting) {
-                    return const Center(
-                        child: CircularProgressIndicator());
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
                   }
                   final data = snapshot.data?.data() ?? {};
                   return AnotherStepper(
@@ -344,7 +343,7 @@ class _followState extends State<clientProf> {
                         ),
                       ),
                       for (var i = 0; i < 3; i++)
-                      // for (var i = 0; i < data['xxx'].length; i++)
+                        // for (var i = 0; i < data['xxx'].length; i++)
                         StepperData(
                           title: StepperText(
                             "Order Placed",
@@ -352,14 +351,13 @@ class _followState extends State<clientProf> {
                               color: Colors.grey,
                             ),
                           ),
-                          subtitle: StepperText(
-                              "Your order has been placed"),
+                          subtitle: StepperText("Your order has been placed"),
                           iconWidget: Container(
                             padding: const EdgeInsets.all(8),
                             decoration: const BoxDecoration(
                                 color: Colors.green,
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(30))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
                             child: const Icon(Icons.looks_one,
                                 color: Colors.white),
                           ),

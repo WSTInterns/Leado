@@ -71,7 +71,7 @@ class _MyAppSakState extends State<MyAppSak> {
           ),
           InkWell(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => overdue()),
                 );
@@ -117,7 +117,7 @@ class _MyAppSakState extends State<MyAppSak> {
           Container(height: 2, color: Color(0xffEFEFEF)),
           InkWell(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => upcoming()),
                 );
@@ -160,7 +160,7 @@ class _MyAppSakState extends State<MyAppSak> {
           Container(height: 2, color: Color(0xffEFEFEF)),
           InkWell(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => someday()),
                 );
@@ -237,7 +237,7 @@ class _MyAppSakState extends State<MyAppSak> {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => clientProf()),
               );

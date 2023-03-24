@@ -151,12 +151,7 @@ class _WarmLeadsState extends State<WarmLeads> {
             ),
             tooltip: 'Back',
             onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => HomeBar(
-                            title: 'Leads',
-                          )));
+              Navigator.pop(context);
             },
           ),
         ),

@@ -14,7 +14,7 @@ void main() async {
 }
 
 Map<int, Color> color = {
-  50: const Color(0xffA85CF9),
+  50: Color(0xFFA85CF9),
   100: const Color(0xffA85CF9),
   200: const Color(0xffA85CF9),
   300: const Color(0xffA85CF9),

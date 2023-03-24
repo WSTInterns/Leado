@@ -16,22 +16,23 @@ class _upcomingState extends State<upcoming> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEFEFEF),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 168, 92, 249),
         title: Row(
           children: [
-            IconButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyAppSak()),
-                  );
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                )),
+            // IconButton(
+            //     onPressed: () {
+            //       // Navigator.pushReplacement(
+            //       //   context,
+            //       //   MaterialPageRoute(builder: (context) => MyAppSak()),
+            //       // );
+            //       Navigator.pop(context);
+            //     },
+            //     icon: Icon(
+            //       Icons.arrow_back_ios,
+            //       color: Colors.black,
+            //     )),
             Text(
               "   Upcoming(0)",
               style: TextStyle(

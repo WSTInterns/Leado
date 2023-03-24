@@ -38,7 +38,7 @@ class ThirdPage extends StatelessWidget {
 //       title: Text("Hot Lead"),
 //       leading: IconButton(
 //           onPressed: () {
-//             Navigator.pushReplacement(
+//             Navigator.push(
 //               context,
 //               MaterialPageRoute(builder: (context) => MyHomePage()),
 //             );
@@ -165,7 +165,7 @@ class MyHomePage extends StatelessWidget {
               //     builder: (context) => HotLeads(),
               //   ),
 
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => HotLeads()),
               );
@@ -222,7 +222,7 @@ class MyHomePage extends StatelessWidget {
               //   MaterialPageRoute(
               //     builder: (context) => SecondPage(),
               //   ),
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => WarmLeads()),
               );
@@ -280,7 +280,7 @@ class MyHomePage extends StatelessWidget {
               //     builder: (context) => ThirdPage(),
               //   ),
 
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ColdLeads()),
               );

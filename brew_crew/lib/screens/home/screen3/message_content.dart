@@ -1,16 +1,19 @@
-import 'package:brew_crew/screens/home/contents.dart';
-import 'package:brew_crew/screens/home/homescreen.dart';
-import 'package:brew_crew/screens/home/screen3/contentmain.dart';
+import 'package:brew_crew/screens/home/screen3/editmessage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../homescreen.dart';
 
 class MessageContentPage extends StatelessWidget {
-  MessageContentPage({super.key, required this.message});
-  String message;
+  MessageContentPage({super.key, required this.message, required this.title});
+  String message, title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
         title: Text(
           "Message title",
           style: TextStyle(
@@ -23,7 +26,7 @@ class MessageContentPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              bottomsheet(context);
+              bottomsheet(context, message, title);
             },
             icon: Icon(
               Icons.more_vert,
@@ -34,21 +37,22 @@ class MessageContentPage extends StatelessWidget {
             width: 10,
           ),
         ],
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
-          tooltip: 'Back',
-          onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HomeBar(
-                          title: "",
-                        )));
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios,
+        //     color: Colors.black,
+        //   ),
+        //   tooltip: 'Back',
+        //   onPressed: () {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => HomeBar(
+        //                   title: "",
+        //                 )));
+        //     // Navigator.pop(context);
+        //   },
+        // ),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(15, 30, 15, 0),
@@ -83,7 +87,7 @@ class MessageContentPage extends StatelessWidget {
   }
 }
 
-void bottomsheet(BuildContext context) {
+void bottomsheet(BuildContext context, String message, String title) {
   showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -106,6 +110,13 @@ void bottomsheet(BuildContext context) {
               InkWell(
                 onTap: () {},
                 child: ListTile(
+                  onTap: () => {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => EditMessageContent(
+                              message: message,
+                              title: title,
+                            )))
+                  },
                   dense: true,
                   title: Row(
                     children: [
@@ -130,6 +141,15 @@ void bottomsheet(BuildContext context) {
               InkWell(
                 onTap: () {},
                 child: ListTile(
+                  onTap: () {
+                    DocumentReference _docref = FirebaseFirestore.instance
+                        .collection("message")
+                        .doc(title);
+                    _docref.delete();
+                    print('${title} deleted');
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
                   dense: true,
                   title: Row(
                     children: [

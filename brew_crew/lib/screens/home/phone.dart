@@ -59,7 +59,7 @@ class phonebook extends StatelessWidget {
                       color: Colors.white),
                   backgroundColor: Colors.transparent,
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) => MyApp()));
                   }),
               SpeedDialChild(
@@ -176,7 +176,8 @@ class phonebook extends StatelessWidget {
                         );
                       }),
                     );
-                  } else {
+                  } 
+                  else {
                     return Center(child: CircularProgressIndicator());
                   }
                 }),

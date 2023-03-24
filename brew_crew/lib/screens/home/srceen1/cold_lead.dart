@@ -34,9 +34,14 @@ class _ColdLeadsState extends State<ColdLeads> {
   final CollectionReference leadsCollection =
       FirebaseFirestore.instance.collection('Leads');
 
+
   converttohot() {
     DocumentReference documentReference =
         FirebaseFirestore.instance.collection('Leads').doc(email);
+    documentReference
+        .update({"activity_status": "hot"})
+        .then((value) => print("Field updated"))
+        .catchError((error) => print("Failed to update field: $error"));
     documentReference
         .update({"activity_status": "hot"})
         .then((value) => print("Field updated"))
@@ -54,9 +59,14 @@ class _ColdLeadsState extends State<ColdLeads> {
         .update({"activity_status": "warm"})
         .then((value) => print("Field updated"))
         .catchError((error) => print("Failed to update field: $error"));
+    documentReference
+        .update({"activity_status": "warm"})
+        .then((value) => print("Field updated"))
+        .catchError((error) => print("Failed to update field: $error"));
     // documentReference.set({"activity_status": 'cold'}).whenComplete(
     //     () => {print("created")});
   }
+
 
   void bottomsheet(BuildContext context) {
     showModalBottomSheet(
@@ -142,7 +152,7 @@ class _ColdLeadsState extends State<ColdLeads> {
           elevation: 0,
           title: const Text(
             'Cold Leads',
-            style: TextStyle(fontFamily: "Montserrat", color: Colors.black),
+            style: TextStyle(color: Colors.black,fontFamily: "Montserrat"),
           ),
           leading: IconButton(
             icon: const Icon(
@@ -151,12 +161,7 @@ class _ColdLeadsState extends State<ColdLeads> {
             ),
             tooltip: 'Back',
             onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => HomeBar(
-                            title: 'Leads',
-                          )));
+              Navigator.pop(context);
             },
           ),
         ),
@@ -171,6 +176,9 @@ class _ColdLeadsState extends State<ColdLeads> {
                 return Text('Error: ${snapshot.error}');
               }
 
+              if (!snapshot.hasData) {
+                return const Center(child: CircularProgressIndicator());
+              }
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }

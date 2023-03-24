@@ -42,7 +42,7 @@ class _HotLeadsState extends State<HotLeads> {
           elevation: 0,
           title: const Text(
             'Hot Leads',
-            style: TextStyle(fontFamily: "Montserrat", color: Colors.black),
+            style: TextStyle(color: Colors.black,fontFamily: "Montserrat"),
           ),
           leading: IconButton(
             icon: const Icon(
@@ -51,12 +51,7 @@ class _HotLeadsState extends State<HotLeads> {
             ),
             tooltip: 'Back',
             onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => HomeBar(
-                            title: 'Leads',
-                          )));
+              Navigator.pop(context);
             },
           ),
         ),
