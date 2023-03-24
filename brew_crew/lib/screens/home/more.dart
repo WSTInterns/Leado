@@ -5,31 +5,23 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../../services/auth.dart';
 import '../authenticate/handler.dart';
 
-class Moree extends StatelessWidget {
-  final AuthService _auth = AuthService();
-
+class Moree extends StatefulWidget {
   Moree({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    signOut() async {
-      await _auth.signOut();
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Handler()));
-    }
+  State<Moree> createState() => _MoreeState();
+}
 
+class _MoreeState extends State<Moree> {
+  final AuthService _auth = AuthService();
+
+  @override
+  Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            ElevatedButton.icon(
-                onPressed: () {
-                  signOut();
-                },
-                icon: Icon(Icons.logout_outlined),
-                label: Text('Logout'))
-          ],
+          actions: [],
           title: const Center(
             child: Text(
               "ADDITIONAL OPTIONS",
@@ -50,6 +42,12 @@ class Moree extends StatelessWidget {
   }
 
   @override
+  signOut() async {
+    await _auth.signOut();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Handler()));
+  }
+
   Widget _taskList(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16.0),
@@ -158,7 +156,7 @@ class Moree extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // signOut();
+              signOut();
             },
             child: Container(
               height: 70,
@@ -198,14 +196,16 @@ class Moree extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                   IconButton(
-              icon: const Icon(Icons.arrow_forward_ios),
-              color: Colors.black,
-              tooltip: 'Go back',
-              onPressed: () {
-            Navigator.push(
-          context, MaterialPageRoute(builder: (context) => convertedsales()));
-              }),
+                    IconButton(
+                        icon: const Icon(Icons.arrow_forward_ios),
+                        color: Colors.black,
+                        tooltip: 'Go back',
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => convertedsales()));
+                        }),
                   ],
                 ),
               ),
@@ -236,66 +236,66 @@ class Moree extends StatelessWidget {
   }
 }
   
-/*
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// /*
+// import 'package:flutter/material.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/widgets/placeholder.dart';
 
-class Moree extends StatelessWidget {
-  const Moree({super.key});
+// class Moree extends StatelessWidget {
+//   const Moree({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 3,
-        child: Scaffold(
+//   @override
+//   Widget build(BuildContext context) {
+//     return DefaultTabController(
+//         length: 3,
+//         child: Scaffold(
 
-          appBar: AppBar(
-            title: Container(
-              //alignment: Alignment.topLeft,
-              width: double.infinity,
-              height: 40,
-              color: Colors.white,
-              child: const Center(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search for something',
-                    prefixIcon: Icon(Icons.search),
-                  ),
-                ),
-              ),
-            ),
-            centerTitle: true,
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  text: 'All Clients',
-                ),
-                Tab(
-                  text: 'Team',
-                ),
-                Tab(
-                  text: 'Groups',
-                ),
-              ],
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              Center(
-                child: Text('Chats Page'),
-              ),
-              Center(
-                child: Text('Status Page'),
-              ),
-              Center(
-                child: Text('Calls Page'),
-              ),
+//           appBar: AppBar(
+//             title: Container(
+//               //alignment: Alignment.topLeft,
+//               width: double.infinity,
+//               height: 40,
+//               color: Colors.white,
+//               child: const Center(
+//                 child: TextField(
+//                   decoration: InputDecoration(
+//                     hintText: 'Search for something',
+//                     prefixIcon: Icon(Icons.search),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             centerTitle: true,
+//             bottom: TabBar(
+//               tabs: [
+//                 Tab(
+//                   text: 'All Clients',
+//                 ),
+//                 Tab(
+//                   text: 'Team',
+//                 ),
+//                 Tab(
+//                   text: 'Groups',
+//                 ),
+//               ],
+//             ),
+//           ),
+//           body: TabBarView(
+//             children: [
+//               Center(
+//                 child: Text('Chats Page'),
+//               ),
+//               Center(
+//                 child: Text('Status Page'),
+//               ),
+//               Center(
+//                 child: Text('Calls Page'),
+//               ),
               
-            ],
-          ),
-        ));
-  }
+//             ],
+//           ),
+//         ));
+//   }
 
-}
-*/
+// }
+// */
