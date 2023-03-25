@@ -204,130 +204,134 @@ class _templatesState extends State<templates>
             // ),
 
             Container(
-                // padding: EdgeInsets.symmetric(horizontal: 7),
-                // transform: Matrix4.translationValues(0.0, -30.0, 0.0),
-                child:
-                    // ListView(
-                    //   shrinkWrap: true,
-                    //   children: <Widget>[
-                    //     ListTile(
-                    //       title: Padding(
-                    //         padding: EdgeInsets.only(left: 5, top: 15),
-                    //         child: Text(
-                    //           'Example 1-Introduction-ACME Residences',
-                    //           style: TextStyle(
-                    //               fontWeight: FontWeight.bold, fontSize: 15),
-                    //         ),
-                    //       ),
-                    //       subtitle: Padding(
-                    //         padding:
-                    //             EdgeInsets.only(left: 5, top: 6, bottom: 4),
-                    //         child: Text(
-                    //           'Hi,Thank you for your interest in ACME residences.',
-                    //           style: TextStyle(fontSize: 12.5),
-                    //         ),
-                    //       ),
-                    //       trailing: Padding(
-                    //         padding: EdgeInsets.only(top: 7, left: 7),
-                    //         child: IconButton(
-                    //           icon: Icon(
-                    //             Icons.keyboard_arrow_right,
-                    //             size: 30,
-                    //             color: Colors.black,
-                    //           ),
-                    //           onPressed: () => Navigator.push(
-                    //               context,
-                    //               MaterialPageRoute(
-                    //                   builder: (context) => EditTemplate())),
-                    //         ),
-                    //       ),
-                    //       tileColor: Colors.white,
-                    //     )
-                    //   ],
-                    // ),
-                    StreamBuilder(
-              stream:
-                  FirebaseFirestore.instance.collection("message").snapshots(),
-              builder: ((context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: ((context, int index) {
-                      DocumentSnapshot documentSnapshot =
-                          snapshot.data!.docs[index];
-                      var title = documentSnapshot["title"];
-                      var message = documentSnapshot["message"];
-                      return SingleChildScrollView(
-                        child: IntrinsicHeight(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      MessageContentPage(
-                                        message: message,
-                                        title: title,
-                                      )));
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(
-                                top: 10,
-                                right: 15,
-                                left: 15,
-                              ),
-                              padding: const EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    // color: const Color.fromRGBO(
-                                    //         0, 0, 0, 0)
-                                    //     .withOpacity(0.04),
-                                    color:
-                                        const Color.fromRGBO(50, 50, 93, 0.25)
-                                            .withOpacity(0.08),
-                                    // color:
-                                    //     const Color.fromRGBO(50, 50, 93, 0.25).withOpacity(0.1),
-                                    spreadRadius: 10,
-                                    blurRadius: 20,
-                                    offset: const Offset(
-                                        0, 8), // changes position of shadow
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.message_outlined,
-                                    size: 27,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      title.toUpperCase(),
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
+              // padding: EdgeInsets.symmetric(horizontal: 7),
+              // transform: Matrix4.translationValues(0.0, -30.0, 0.0),
+              child:
+                  // ListView(
+                  //   shrinkWrap: true,
+                  //   children: <Widget>[
+                  //     ListTile(
+                  //       title: Padding(
+                  //         padding: EdgeInsets.only(left: 5, top: 15),
+                  //         child: Text(
+                  //           'Example 1-Introduction-ACME Residences',
+                  //           style: TextStyle(
+                  //               fontWeight: FontWeight.bold, fontSize: 15),
+                  //         ),
+                  //       ),
+                  //       subtitle: Padding(
+                  //         padding:
+                  //             EdgeInsets.only(left: 5, top: 6, bottom: 4),
+                  //         child: Text(
+                  //           'Hi,Thank you for your interest in ACME residences.',
+                  //           style: TextStyle(fontSize: 12.5),
+                  //         ),
+                  //       ),
+                  //       trailing: Padding(
+                  //         padding: EdgeInsets.only(top: 7, left: 7),
+                  //         child: IconButton(
+                  //           icon: Icon(
+                  //             Icons.keyboard_arrow_right,
+                  //             size: 30,
+                  //             color: Colors.black,
+                  //           ),
+                  //           onPressed: () => Navigator.push(
+                  //               context,
+                  //               MaterialPageRoute(
+                  //                   builder: (context) => EditTemplate())),
+                  //         ),
+                  //       ),
+                  //       tileColor: Colors.white,
+                  //     )
+                  //   ],
+                  // ),
+                  StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("message")
+                    .snapshots(),
+                builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: ((context, int index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+                        var title = documentSnapshot["title"];
+                        var message = documentSnapshot["message"];
+                        return SingleChildScrollView(
+                          child: IntrinsicHeight(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        MessageContentPage(
+                                          message: message,
+                                          title: title,
+                                        )));
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                  top: 10,
+                                  right: 15,
+                                  left: 15,
+                                ),
+                                padding: const EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      // color: const Color.fromRGBO(
+                                      //         0, 0, 0, 0)
+                                      //     .withOpacity(0.04),
+                                      color:
+                                          const Color.fromRGBO(50, 50, 93, 0.25)
+                                              .withOpacity(0.08),
+                                      // color:
+                                      //     const Color.fromRGBO(50, 50, 93, 0.25).withOpacity(0.1),
+                                      spreadRadius: 10,
+                                      blurRadius: 20,
+                                      offset: const Offset(
+                                          0, 8), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.message_outlined,
+                                      size: 27,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        title.toUpperCase(),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
-                  );
-                } else {
-                  return CircularProgressIndicator();
-                }
-              }),
-            )),
+                        );
+                      }),
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                }),
+              ),
+            ),
 
             // Container(
             //   child: Text('Title:' + title.toString()),

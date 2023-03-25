@@ -33,8 +33,8 @@ class _EditMessageContentState extends State<EditMessageContent> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Edit Message - ${widget.title}",
-          style: TextStyle(color: Colors.black),
+          "${widget.title}",
+          style: TextStyle(fontFamily: "Montserrat", color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -68,9 +68,9 @@ class _EditMessageContentState extends State<EditMessageContent> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(15, 30, 15, 0),
+            padding: EdgeInsets.fromLTRB(15, 30, 15, 20),
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
@@ -92,7 +92,7 @@ class _EditMessageContentState extends State<EditMessageContent> {
               child: Form(
                 key: _formkey,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                   child: TextFormField(
                     maxLines: null, // Allows for unlimited lines of text
                     keyboardType: TextInputType.multiline,
@@ -101,11 +101,8 @@ class _EditMessageContentState extends State<EditMessageContent> {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
                       hintText: 'e.g.Your Message',
                     ),
                   ),
@@ -113,30 +110,33 @@ class _EditMessageContentState extends State<EditMessageContent> {
               ),
             ),
           ),
-          InkWell(
-            onTap: () {
-              if (_formkey.currentState!.validate()) {
-                editmessage();
-                Navigator.pop(context);
-                Navigator.pop(context);
-                Navigator.pop(context);
-              }
-            },
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              height: 50,
-              decoration: const BoxDecoration(
-                color: Color(0xffA85CF9),
-              ),
-              child: const Center(
-                  child: Text(
-                "SAVE",
-                style: TextStyle(
-                  color: Color(0xffECF2FF),
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+            child: InkWell(
+              onTap: () {
+                if (_formkey.currentState!.validate()) {
+                  editmessage();
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                }
+              },
+              child: Container(
+                height: 60,
+                decoration: BoxDecoration(
+                  color: const Color(0xffA85CF9),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              )),
+                child: const Center(
+                    child: Text(
+                  "SAVE",
+                  style: TextStyle(
+                    color: Color(0xffECF2FF),
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+              ),
             ),
           ),
         ],
