@@ -5,30 +5,30 @@ import 'hot_lead.dart';
 import "warm_lead.dart";
 import "cold_lead.dart";
 
-class ThirdPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cold Leads',
-            style: TextStyle(
-              fontFamily: "Montserrat",
-              color: Colors.black,
-            )),
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: true,
-      ),
-      body: Center(
-        child: Text(
-          'Cold Leads are here.',
-          style: TextStyle(
-            fontFamily: "Montserrat",
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class ThirdPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Cold Leads',
+//             style: TextStyle(
+//               fontFamily: "Montserrat",
+//               color: Colors.black,
+//             )),
+//         backgroundColor: Colors.white,
+//         automaticallyImplyLeading: true,
+//       ),
+//       body: Center(
+//         child: Text(
+//           'Cold Leads are here.',
+//           style: TextStyle(
+//             fontFamily: "Montserrat",
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 // class SecondPage extends StatelessWidget {
 //   @override

@@ -23,10 +23,10 @@ import 'upcoming.dart';
 class MyAppSak extends StatefulWidget {
   const MyAppSak({super.key});
   @override
-  State<MyAppSak> createState() => _MyAppSakState();
+  State<MyAppSak> createState() => _MyAppSak();
 }
 
-class _MyAppSakState extends State<MyAppSak> {
+class _MyAppSak extends State<MyAppSak> {
   int currentIndex = 0;
   void onTap(int index) {
     setState(() {
@@ -37,10 +37,10 @@ class _MyAppSakState extends State<MyAppSak> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEFEFEF),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffA85CF9),
         title: Column(
           children: [
             Container(
@@ -50,7 +50,7 @@ class _MyAppSakState extends State<MyAppSak> {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                      color: Colors.white,),
                 ),
               ),
             ),
@@ -58,221 +58,364 @@ class _MyAppSakState extends State<MyAppSak> {
         ),
       ),
 
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 30,
-            ),
-            child: Container(
-              height: 5,
-              color: Color(0xffEFEFEF),
-            ),
-          ),
-          InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => overdue()),
-                );
-              },
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
+        child: Column(
+          children: [
+            GestureDetector(
               child: Container(
-                height: 50,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 8), // changes position of shadow
                     ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Icon(
-                            Icons.calendar_today,
+                  ],
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: double.infinity,
+                    minHeight: 50,
+                  ),
+                  child: Row(
+                    children: [
+                     SizedBox(width: 10,),
+                          Icon(
+                              Icons.calendar_today,
+                              color: Colors.red,
+                            ),
+                          SizedBox(width: 10,),
+                          Text(
+                              "OVERDUE",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
+                            ),
+                          
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward_ios,
                             color: Colors.red,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text(
-                            "OVERDUE",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red),
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.red,
-                        )
-                      ],
-                    ),
+                          )
+                    ],
                   ),
                 ),
-              )),
-          Container(height: 2, color: Color(0xffEFEFEF)),
-          InkWell(
+              ),
               onTap: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => upcoming()),
-                );
+                    context,
+                    MaterialPageRoute(builder: (context) => overdue()),
+                  );
+              
               },
+            ),
+            
+            // InkWell(
+            //     onTap: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => overdue()),
+            //       );
+            //     },
+            //     child: Container(
+            //       height: 50,
+                  
+            //         padding: EdgeInsets.all(10),
+            //           decoration: BoxDecoration(
+            //             color: Colors.white,
+            //           ),
+            //           child: Row(
+            //             children: [
+            //               SizedBox(width: 10,),
+            //               Icon(
+            //                   Icons.calendar_today,
+            //                   color: Colors.red,
+            //                 ),
+            //               SizedBox(width: 10,),
+            //               Text(
+            //                   "OVERDUE",
+            //                   style: TextStyle(
+            //                       fontSize: 16,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.red),
+            //                 ),
+                          
+            //               Spacer(),
+            //               Icon(
+            //                 Icons.arrow_forward_ios,
+            //                 color: Colors.red,
+            //               )
+            //             ],
+            //           ),
+                    
+                  
+            //     )),
+            SizedBox(height: 10,),
+             GestureDetector(
               child: Container(
-                color: Colors.white,
-                height: 50,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Icon(
-                            Icons.calendar_today,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text(
-                            "UPCOMING",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 8), // changes position of shadow
                     ),
+                  ],
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: double.infinity,
+                    minHeight: 50,
+                  ),
+                  child: Row(
+                    children: [
+                     SizedBox(width: 10,),
+                          Icon(
+                              Icons.calendar_today,
+                              
+                            ),
+                          SizedBox(width: 10,),
+                          Text(
+                              "UPCOMING",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            
+                          )
+                    ],
                   ),
                 ),
-              )),
-          Container(height: 2, color: Color(0xffEFEFEF)),
-          InkWell(
+              ),
               onTap: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => someday()),
-                );
+                    context,
+                    MaterialPageRoute(builder: (context) => upcoming()),
+                  );
+              
               },
+            ),
+            
+            // InkWell(
+            //     onTap: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => upcoming()),
+            //       );
+            //     },
+            //     child: Container(
+            //       height: 50,
+                  
+            //         padding: EdgeInsets.all(10),
+            //           decoration: BoxDecoration(
+            //             color: Colors.white,
+            //           ),
+            //           child: Row(
+            //             children: [
+            //               SizedBox(width: 10,),
+            //               Icon(
+            //                   Icons.calendar_today,
+                            
+            //                 ),
+            //               SizedBox(width: 10,),
+            //               Text(
+            //                   "UPCOMING",
+            //                   style: TextStyle(
+            //                       fontSize: 16,
+            //                       fontWeight: FontWeight.bold,
+            //                       ),
+            //                 ),
+                          
+            //               Spacer(),
+            //               Icon(
+            //                 Icons.arrow_forward_ios,
+                            
+            //               )
+            //             ],
+            //           ),
+                    
+                  
+            //     )),
+            SizedBox(height: 10, ),
+            GestureDetector(
               child: Container(
-                height: 50,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Icon(
-                            Icons.calendar_today,
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 8), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: double.infinity,
+                    minHeight: 50,
+                  ),
+                  child: Row(
+                    children: [
+                     SizedBox(width: 10,),
+                          Icon(
+                              Icons.calendar_today,
+                              color: Colors.blueGrey,
+                            ),
+                          SizedBox(width: 10,),
+                          Text(
+                              "SOMEDAY",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blueGrey),
+                            ),
+                          
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward_ios,
                             color: Colors.blueGrey,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text(
-                            "SOMEDAY",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blueGrey),
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.blueGrey,
-                        )
-                      ],
-                    ),
+                          )
+                    ],
                   ),
                 ),
-              )),
-          Container(
-            height: 8,
-            color: Color(0xffEFEFEF),
-          ),
-          Container(
-            color: Colors.white,
-            height: 50,
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Container(
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: Icon(
-                        Icons.calendar_today,
-                        color: Color.fromARGB(255, 4, 54, 78),
-                      ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => someday()),
+                  );
+              
+              },
+            ),
+            
+            
+            SizedBox(
+              height: 20,
+              
+            ),
+            Container(
+             
+              height: 50,
+             decoration: BoxDecoration(
+               color: Colors.white,
+             borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+              ),
+               boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 8), // changes position of shadow
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: Text(
-                        "TODAY",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                  ],
+            ),
+                padding: EdgeInsets.all(10),
+                child: Row(
+                    children: [
+                      SizedBox(width:10),
+                      Icon(
+                          Icons.calendar_today,
                           color: Color.fromARGB(255, 4, 54, 78),
                         ),
-                      ),
+                      
+                      SizedBox(width: 10,),
+                      Text(
+                          "TODAY",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 4, 54, 78),
+                          ),
+                        ),
+                      
+                    ],
+                  ),
+                
+              
+            ),
+            Divider(height: 1,),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => clientProf()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(bottomLeft:Radius.circular(10),bottomRight: Radius.circular(10)),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 8), // changes position of shadow
                     ),
                   ],
                 ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => clientProf()),
-              );
-            },
-            child: Padding(
-              padding: EdgeInsets.all(2),
-              child: ListTile(
-                tileColor: Colors.white,
-                leading: CircleAvatar(
-                  backgroundColor: Color(0xffA85CF9),
-                  radius: 20,
-                  child: Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 15,
+                child: ListTile(
+                  tileColor: Colors.white,
+                  leading: CircleAvatar(
+                    backgroundColor: Color(0xffA85CF9),
+                    radius: 20,
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 15,
+                    ),
                   ),
-                ),
-                title: Text("Privyr Support"),
-                subtitle: Row(
-                  children: [
-                    Text("Due today"),
-                    Spacer(),
-                  ],
-                ),
-                trailing: CupertinoButton(
-                  onPressed: () => _showActionSheet(context),
-                  child: const Icon(
-                    Icons.more_vert,
-                    color: Colors.grey,
+                  title: Text("Privyr Support"),
+                  subtitle: Row(
+                    children: [
+                      Text("Due today"),
+                      Spacer(),
+                    ],
+                  ),
+                  trailing: CupertinoButton(
+                    onPressed: () => _showActionSheet(context),
+                    child: const Icon(
+                      Icons.more_vert,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ),
             ),
-          )
-        ],
+           
+          ],
+        ),
       ),
 
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -316,7 +459,7 @@ class _MyAppSakState extends State<MyAppSak> {
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => CupertinoActionSheet(
-        title: const Text('Schedule follow up for Client'),
+        title: const Text('Schedule follow up for Client',style: TextStyle(fontFamily: "Montserrat",fontSize: 17,),),
         actions: <CupertinoActionSheetAction>[
           CupertinoActionSheetAction(
             /// This parameter indicates the action would be a default
@@ -328,6 +471,7 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               'Today',
               style: TextStyle(
+                fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
             ),
           ),
@@ -338,6 +482,7 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               'Tomorrow',
               style: TextStyle(
+                fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
             ),
           ),
@@ -352,6 +497,7 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               '3 days from now',
               style: TextStyle(
+                fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
             ),
           ),
@@ -362,7 +508,8 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               '1 week from now',
               style: TextStyle(
-                  color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
+                fontFamily: "Montserrat",
+                  color: Color(0xFF848383), fontSize: 15),
             ),
           ),
           CupertinoActionSheetAction(
@@ -372,6 +519,7 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               '1 month from now',
               style: TextStyle(
+                fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
             ),
           ),
@@ -380,6 +528,7 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               'Select custom date and time',
               style: TextStyle(
+                fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
             ),
           ),
@@ -390,6 +539,7 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               'Someday',
               style: TextStyle(
+                fontFamily: "Montserrat",
                   color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
             ),
           ),
@@ -401,7 +551,10 @@ class _MyAppSakState extends State<MyAppSak> {
             child: const Text(
               'Never ',
               style: TextStyle(
-                  color: Color.fromARGB(255, 132, 131, 131), fontSize: 15),
+                fontFamily: "Montserrat",
+                  // color: Color.fromARGB(255, 132, 131, 131), 
+                  color: Colors.black,
+                  fontSize: 15),
             ),
           ),
         ],

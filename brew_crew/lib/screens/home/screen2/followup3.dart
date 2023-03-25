@@ -16,10 +16,10 @@ class clientProf extends StatefulWidget {
   const clientProf({super.key});
 
   @override
-  State<clientProf> createState() => _followState();
+  State<clientProf> createState() => _clientProf();
 }
 
-class _followState extends State<clientProf> {
+class _clientProf extends State<clientProf> {
   final FollowupController followupController = Get.put(FollowupController());
 
   TextEditingController note = TextEditingController();
