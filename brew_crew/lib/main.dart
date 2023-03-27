@@ -1,5 +1,3 @@
-import 'package:brew_crew/screens/authenticate/login.dart';
-import 'package:brew_crew/screens/authenticate/resetPassword.dart';
 import 'package:brew_crew/screens/home/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,6 +34,8 @@ class MyApp extends StatelessWidget {
       initialData: null,
       child: MaterialApp(
         theme: ThemeData(
+          appBarTheme:
+              AppBarTheme(iconTheme: IconThemeData(color: Color.fromARGB(255, 0, 0, 0))),
           primarySwatch: MaterialColor(0xffA85CF9, color),
           brightness: Brightness.light,
           primaryColor: const Color(0xffA85CF9),
