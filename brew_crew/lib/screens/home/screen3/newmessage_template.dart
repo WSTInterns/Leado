@@ -1,7 +1,7 @@
 import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 void main() {
   runApp(NewTemplate());
@@ -47,12 +47,14 @@ class _NewTemplateState extends State<NewTemplate> {
     this.title = title;
   }
 
+  String uid = FirebaseAuth.instance.currentUser!.uid;
   createMessage() async {
     DocumentReference doc =
         await FirebaseFirestore.instance.collection("message").doc(title);
     Map<String, dynamic> messages = {
       "title": title,
       "message": message,
+      "uid": uid,
     };
     doc.set(messages).whenComplete(() => {print("Saved Message")});
   }
@@ -71,23 +73,25 @@ class _NewTemplateState extends State<NewTemplate> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
-          title: Text('New Message Template',
-              style: TextStyle(
-                  fontFamily: "Montserrat",
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold)),
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
-              color: Colors.black,
-              tooltip: 'Show Snackbar',
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => HomeBar(
-                          title: "",
-                        )));
-              })),
+        title: Text('New Message Template',
+            style: TextStyle(
+                fontFamily: "Montserrat",
+                color: Colors.black,
+                fontWeight: FontWeight.bold)),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        
+        // leading: IconButton(
+        //     icon: const Icon(Icons.arrow_back_ios),
+        //     color: Colors.black,
+        //     tooltip: 'Show Snackbar',
+        //     onPressed: () {
+        //       Navigator.of(context).push(MaterialPageRoute(
+        //           builder: (BuildContext context) => HomeBar(
+        //                 title: "",
+        //               )));
+        //     })
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15),

@@ -1,10 +1,15 @@
 import 'package:brew_crew/screens/home/screen3/message_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class EditMessageContent extends StatefulWidget {
-  EditMessageContent({super.key, required this.message, required this.title});
-  String message, title;
+  EditMessageContent(
+      {super.key,
+      required this.message,
+      required this.title,
+      required this.uid});
+  String message, title, uid;
 
   @override
   State<EditMessageContent> createState() => _EditMessageContentState();
@@ -19,6 +24,7 @@ class _EditMessageContentState extends State<EditMessageContent> {
   TextEditingController tec = TextEditingController();
 
   void editmessage() {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
     DocumentReference documentReference =
         FirebaseFirestore.instance.collection('message').doc(widget.title);
     documentReference
@@ -110,35 +116,33 @@ class _EditMessageContentState extends State<EditMessageContent> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
-            child: InkWell(
-              onTap: () {
-                if (_formkey.currentState!.validate()) {
-                  editmessage();
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                }
-              },
-              child: Container(
-                height: 60,
-                decoration: BoxDecoration(
-                  color: const Color(0xffA85CF9),
-                  borderRadius: BorderRadius.circular(10),
+          InkWell(
+            onTap: () {
+              if (_formkey.currentState!.validate()) {
+                editmessage();
+                Navigator.pop(context);
+                Navigator.pop(context);
+                // Navigator.pop(context);
+              }
+            },
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              height: 50,
+              decoration: const BoxDecoration(
+                color: Color(0xffA85CF9),
+              ),
+              child: const Center(
+                  child: Text(
+                "SAVE",
+                style: TextStyle(
+                  color: Color(0xffECF2FF),
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: const Center(
-                    child: Text(
-                  "SAVE",
-                  style: TextStyle(
-                    color: Color(0xffECF2FF),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
+                
               ),
             ),
-          ),
+          ),),
         ],
       ),
     );

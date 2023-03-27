@@ -1,5 +1,6 @@
 import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'clientside.dart';
@@ -136,6 +137,7 @@ class _WarmLeadsState extends State<WarmLeads> {
   }
 
   Widget build(BuildContext context) {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -160,6 +162,7 @@ class _WarmLeadsState extends State<WarmLeads> {
           child: StreamBuilder<QuerySnapshot>(
             stream: leadsCollection
                 .where('activity_status', isEqualTo: 'warm')
+                .where('uid', isEqualTo: uid)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {

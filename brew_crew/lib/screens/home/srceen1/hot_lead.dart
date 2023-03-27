@@ -1,5 +1,6 @@
 import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'clientside.dart';
@@ -31,6 +32,7 @@ class _HotLeadsState extends State<HotLeads> {
   String salesmail = '';
   int phonenumber = 0;
   bool _showButton = false;
+  String uid = FirebaseAuth.instance.currentUser!.uid;
   final CollectionReference leadsCollection =
       FirebaseFirestore.instance.collection('Leads');
 
@@ -42,7 +44,7 @@ class _HotLeadsState extends State<HotLeads> {
           elevation: 0,
           title: const Text(
             'Hot Leads',
-            style: TextStyle(color: Colors.black,fontFamily: "Montserrat"),
+            style: TextStyle(color: Colors.black, fontFamily: "Montserrat"),
           ),
           leading: IconButton(
             icon: const Icon(
@@ -60,6 +62,7 @@ class _HotLeadsState extends State<HotLeads> {
           child: StreamBuilder<QuerySnapshot>(
             stream: leadsCollection
                 .where('activity_status', isEqualTo: 'hot')
+                .where('uid', isEqualTo: uid)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {

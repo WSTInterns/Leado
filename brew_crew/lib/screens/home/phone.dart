@@ -1,11 +1,14 @@
 import 'package:brew_crew/screens/home/srceen1/upload_excel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:brew_crew/screens/home/srceen1/pb.dart';
 import 'package:brew_crew/screens/home/srceen1/addmanual.dart';
+
+import 'screen2/followUp3.dart';
 
 class Special extends StatelessWidget {
   @override
@@ -24,6 +27,7 @@ class phonebook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
     return WillPopScope(
         onWillPop: () async {
           if (isDialOpen.value) {
@@ -107,8 +111,11 @@ class phonebook extends StatelessWidget {
             child: Container(
               alignment: Alignment.topCenter,
               child: StreamBuilder<QuerySnapshot>(
-                stream:
-                    FirebaseFirestore.instance.collection("Leads").snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("Leads")
+                    .orderBy('email', descending: false)
+                    .where('uid', isEqualTo: uid)
+                    .snapshots(),
                 builder: ((context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
                     print('Error: ${snapshot.error}');
@@ -163,6 +170,7 @@ class phonebook extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     documentSnapshot["name"].toUpperCase(),
+                                    // '${documentSnapshot["name"].toUpperCase()} \n ${documentSnapshot["activity_status"]}',
                                     style: TextStyle(
                                       fontFamily: "Montserrat",
                                       fontSize: 16,
@@ -176,8 +184,7 @@ class phonebook extends StatelessWidget {
                         );
                       }),
                     );
-                  } 
-                  else {
+                  } else {
                     return Center(child: CircularProgressIndicator());
                   }
                 }),

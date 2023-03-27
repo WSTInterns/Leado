@@ -1,12 +1,13 @@
 import 'package:brew_crew/screens/home/screen3/editmessage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../homescreen.dart';
 
 class MessageContentPage extends StatelessWidget {
-  MessageContentPage({super.key, required this.message, required this.title});
+  MessageContentPage({super.key, required this.message, required this.title,required this.uid});
   String message, title;
-
+String uid = FirebaseAuth.instance.currentUser!.uid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class MessageContentPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              bottomsheet(context, message, title);
+              bottomsheet(context, message, title,uid);
             },
             icon: Icon(
               Icons.more_vert,
@@ -87,7 +88,7 @@ class MessageContentPage extends StatelessWidget {
   }
 }
 
-void bottomsheet(BuildContext context, String message, String title) {
+void bottomsheet(BuildContext context, String message, String title,uid) {
   showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -115,11 +116,12 @@ void bottomsheet(BuildContext context, String message, String title) {
                         builder: (BuildContext context) => EditMessageContent(
                               message: message,
                               title: title,
+                              uid: uid,
                             )))
                   },
                   dense: true,
                   title: Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.edit_note,
                         size: 28,
@@ -137,30 +139,31 @@ void bottomsheet(BuildContext context, String message, String title) {
                   ),
                 ),
               ),
-              Divider(thickness: 2, height: 5),
+              const Divider(thickness: 2, height: 5),
               InkWell(
                 onTap: () {},
                 child: ListTile(
                   onTap: () {
-                    DocumentReference _docref = FirebaseFirestore.instance
+                    
+                    DocumentReference docref = FirebaseFirestore.instance
                         .collection("message")
                         .doc(title);
-                    _docref.delete();
+                    docref.delete();
                     print('${title} deleted');
                     Navigator.pop(context);
                     Navigator.pop(context);
                   },
                   dense: true,
                   title: Row(
-                    children: [
-                      Icon(
+                    children: const [
+                       Icon(
                         Icons.delete,
                         size: 26,
                       ),
-                      SizedBox(
+                       SizedBox(
                         width: 10,
                       ),
-                      Text(
+                       Text(
                         'Delete Message Template',
                         style: TextStyle(
                           fontFamily: "Montserrat",

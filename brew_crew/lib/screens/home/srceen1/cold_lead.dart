@@ -1,5 +1,6 @@
 import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'clientside.dart';
@@ -34,7 +35,6 @@ class _ColdLeadsState extends State<ColdLeads> {
   final CollectionReference leadsCollection =
       FirebaseFirestore.instance.collection('Leads');
 
-
   converttohot() {
     DocumentReference documentReference =
         FirebaseFirestore.instance.collection('Leads').doc(email);
@@ -66,7 +66,6 @@ class _ColdLeadsState extends State<ColdLeads> {
     // documentReference.set({"activity_status": 'cold'}).whenComplete(
     //     () => {print("created")});
   }
-
 
   void bottomsheet(BuildContext context) {
     showModalBottomSheet(
@@ -146,13 +145,14 @@ class _ColdLeadsState extends State<ColdLeads> {
   }
 
   Widget build(BuildContext context) {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
           title: const Text(
             'Cold Leads',
-            style: TextStyle(color: Colors.black,fontFamily: "Montserrat"),
+            style: TextStyle(color: Colors.black, fontFamily: "Montserrat"),
           ),
           leading: IconButton(
             icon: const Icon(
@@ -170,6 +170,7 @@ class _ColdLeadsState extends State<ColdLeads> {
           child: StreamBuilder<QuerySnapshot>(
             stream: leadsCollection
                 .where('activity_status', isEqualTo: 'cold')
+                .where('uid', isEqualTo: uid)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {

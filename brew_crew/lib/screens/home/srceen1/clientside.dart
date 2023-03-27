@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:brew_crew/screens/home/srceen1/leadmain.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'hot_lead.dart';
@@ -72,8 +73,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   removefromhot() {
-    DocumentReference documentReference =
-        FirebaseFirestore.instance.collection('Leads').doc(widget.email);
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('Leads')
+        // .where('uid', isEqualTo: uid)
+        .doc(widget.email);
     documentReference
         .update({"activity_status": "cold"})
         .then((value) => print("Field updated"))
