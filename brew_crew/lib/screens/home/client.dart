@@ -16,7 +16,7 @@ class _HomePage1State extends State<HomePage1> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -47,10 +47,6 @@ class _HomePage1State extends State<HomePage1> {
                   ),
                 ),
                 Tab(
-                  child:
-                      Text('Team', style: TextStyle(fontFamily: "Montserrat")),
-                ),
-                Tab(
                   child: Text(
                     'Groups',
                     style: TextStyle(fontFamily: "Montserrat"),
@@ -62,9 +58,7 @@ class _HomePage1State extends State<HomePage1> {
           body: TabBarView(
             children: [
               Center(child: Scaffold(body: phonebook())),
-              Center(
-                child: Text('Status Page'),
-              ),
+
 // <<<<<<< Updated upstream
               Center(child: Scaffold(body: MyHomePage())),
 // =======

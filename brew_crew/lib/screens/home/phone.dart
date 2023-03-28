@@ -133,6 +133,7 @@ class phonebook extends StatelessWidget {
                             snapshot.data!.docs[index];
 
                         // var clientName = documentSnapshot["name"];
+                        //${documentSnapshot["activity_status"]}
                         return GestureDetector(
                           onTap: () {
                             print("I'm a disco dancer");
@@ -141,7 +142,7 @@ class phonebook extends StatelessWidget {
                             margin: const EdgeInsets.only(
                               top: 10,
                             ),
-                            padding: const EdgeInsets.all(14),
+                            padding: const EdgeInsets.all(15),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Colors.white,
@@ -162,21 +163,37 @@ class phonebook extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.person,
-                                  size: 27,
+                                  size: 30,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 15,
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    documentSnapshot["name"].toUpperCase(),
-                                    // '${documentSnapshot["name"].toUpperCase()} \n ${documentSnapshot["activity_status"]}',
-                                    style: TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      documentSnapshot["name"].toUpperCase(),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      documentSnapshot["activity_status"]
+                                          .toUpperCase(),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: "Montserrat",
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

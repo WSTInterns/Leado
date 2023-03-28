@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 import '../homescreen.dart';
 
 class MessageContentPage extends StatelessWidget {
-  MessageContentPage({super.key, required this.message, required this.title,required this.uid});
+  MessageContentPage(
+      {super.key,
+      required this.message,
+      required this.title,
+      required this.uid});
   String message, title;
-String uid = FirebaseAuth.instance.currentUser!.uid;
+  String uid = FirebaseAuth.instance.currentUser!.uid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +31,7 @@ String uid = FirebaseAuth.instance.currentUser!.uid;
         actions: [
           IconButton(
             onPressed: () {
-              bottomsheet(context, message, title,uid);
+              bottomsheet(context, message, title, uid);
             },
             icon: Icon(
               Icons.more_vert,
@@ -88,12 +92,18 @@ String uid = FirebaseAuth.instance.currentUser!.uid;
   }
 }
 
-void bottomsheet(BuildContext context, String message, String title,uid) {
+void bottomsheet(BuildContext context, String message, String title, uid) {
   showModalBottomSheet(
       context: context,
       builder: (context) {
         return Container(
-          // height: 670,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
+            ),
+            color: Colors.white,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -144,7 +154,6 @@ void bottomsheet(BuildContext context, String message, String title,uid) {
                 onTap: () {},
                 child: ListTile(
                   onTap: () {
-                    
                     DocumentReference docref = FirebaseFirestore.instance
                         .collection("message")
                         .doc(title);
@@ -156,14 +165,14 @@ void bottomsheet(BuildContext context, String message, String title,uid) {
                   dense: true,
                   title: Row(
                     children: const [
-                       Icon(
+                      Icon(
                         Icons.delete,
                         size: 26,
                       ),
-                       SizedBox(
+                      SizedBox(
                         width: 10,
                       ),
-                       Text(
+                      Text(
                         'Delete Message Template',
                         style: TextStyle(
                           fontFamily: "Montserrat",

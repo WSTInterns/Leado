@@ -48,6 +48,7 @@ class _MyAppSak extends State<MyAppSak> {
                 child: Text(
                   "FOLLOW UPS",
                   style: TextStyle(
+                    fontFamily: "Montserrat",
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -100,6 +101,7 @@ class _MyAppSak extends State<MyAppSak> {
                       Text(
                         "OVERDUE",
                         style: TextStyle(
+                            fontFamily: "Montserrat",
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.red),
@@ -199,6 +201,7 @@ class _MyAppSak extends State<MyAppSak> {
                       Text(
                         "UPCOMING",
                         style: TextStyle(
+                          fontFamily: "Montserrat",
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -298,6 +301,7 @@ class _MyAppSak extends State<MyAppSak> {
                       Text(
                         "SOMEDAY",
                         style: TextStyle(
+                            fontFamily: "Montserrat",
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.blueGrey),
@@ -355,6 +359,7 @@ class _MyAppSak extends State<MyAppSak> {
                   Text(
                     "TODAY",
                     style: TextStyle(
+                      fontFamily: "Montserrat",
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 4, 54, 78),
@@ -402,10 +407,12 @@ class _MyAppSak extends State<MyAppSak> {
                       size: 15,
                     ),
                   ),
-                  title: Text("Privyr Support"),
+                  title: Text("Privyr Support",
+                      style: TextStyle(fontFamily: "Montserrat")),
                   subtitle: Row(
                     children: [
-                      Text("Due today"),
+                      Text("Due today",
+                          style: TextStyle(fontFamily: "Montserrat")),
                       Spacer(),
                     ],
                   ),
