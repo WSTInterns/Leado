@@ -50,7 +50,7 @@ class _MoreeState extends State<Moree> {
 
   Widget _taskList(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(15.0),
       child: Column(
         children: [
           SizedBox(
@@ -97,6 +97,9 @@ class _MoreeState extends State<Moree> {
                     ),
                     Spacer(),
                     Icon(Icons.arrow_forward_ios),
+                    SizedBox(
+                      width: 11,
+                    ),
                   ],
                 ),
               ),
@@ -145,7 +148,17 @@ class _MoreeState extends State<Moree> {
                       ),
                     ),
                     Spacer(),
-                    Icon(Icons.arrow_forward_ios),
+                    IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios),
+                      color: Colors.black,
+                      tooltip: 'Go back',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => convertedsales()));
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -196,16 +209,10 @@ class _MoreeState extends State<Moree> {
                       ),
                     ),
                     Spacer(),
-                    IconButton(
-                        icon: const Icon(Icons.arrow_forward_ios),
-                        color: Colors.black,
-                        tooltip: 'Go back',
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => convertedsales()));
-                        }),
+                    Icon(Icons.arrow_forward_ios),
+                    SizedBox(
+                      width: 11,
+                    ),
                   ],
                 ),
               ),
