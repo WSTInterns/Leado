@@ -1,3 +1,4 @@
+import 'package:brew_crew/screens/home/screen2/followup4.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'followUp3.dart';
@@ -379,7 +380,53 @@ class _MyAppSak extends State<MyAppSak> {
                 );
               },
               child: Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 8), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: ListTile(
+                  tileColor: Colors.white,
+                  leading: Icon(
+                    Icons.person,
+                    color: Colors.black,
+                    size: 35,
+                  ),
+                  title: Text("Privyr Support",
+                      style: TextStyle(fontFamily: "Montserrat")),
+                  subtitle: Text("Due today",
+                      style: TextStyle(fontFamily: "Montserrat")),
+                  trailing: CupertinoButton(
+                    onPressed: () => _showActionSheet(context),
+                    child: const Icon(
+                      Icons.more_vert,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Divider(
+              height: 1,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FollowUp4()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(10),
@@ -398,24 +445,15 @@ class _MyAppSak extends State<MyAppSak> {
                 ),
                 child: ListTile(
                   tileColor: Colors.white,
-                  leading: CircleAvatar(
-                    backgroundColor: Color(0xffA85CF9),
-                    radius: 20,
-                    child: Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 15,
-                    ),
+                  leading: Icon(
+                    Icons.person,
+                    color: Colors.black,
+                    size: 35,
                   ),
                   title: Text("Privyr Support",
                       style: TextStyle(fontFamily: "Montserrat")),
-                  subtitle: Row(
-                    children: [
-                      Text("Due today",
-                          style: TextStyle(fontFamily: "Montserrat")),
-                      Spacer(),
-                    ],
-                  ),
+                  subtitle: Text("Due today",
+                      style: TextStyle(fontFamily: "Montserrat")),
                   trailing: CupertinoButton(
                     onPressed: () => _showActionSheet(context),
                     child: const Icon(
