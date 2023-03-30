@@ -1,4 +1,4 @@
-import 'package:brew_crew/screens/home/screen2/followup4.dart';
+//import 'package:brew_crew/screens/home/screen2/followup4.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'followUp3.dart';
@@ -420,10 +420,10 @@ class _MyAppSak extends State<MyAppSak> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FollowUp4()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => FollowUp4()),
+                // );
               },
               child: Container(
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
